@@ -1,9 +1,23 @@
-
+/*--------------------------------------------------------------
+# Font Import
+--------------------------------------------------------------*/
+@font-face {
+  font-family: 'Argentum Sans Bold';
+  src: url('../fonts/argentum-sans.bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Argentum Sans Regular';
+  src: url('../fonts/argentum-sans.regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   color: #444444;
 }
 
@@ -13,11 +27,11 @@ a {
 }
 
 a:hover {
-  color: #BF8F55;
+  color: #d6394c;
   text-decoration: none;
 }
 .active_lang{
-  color: #BF8F55;
+  color: #f6adad;
 }
 
 
@@ -28,7 +42,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Raleway", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
 }
 
 /*--------------------------------------------------------------
@@ -41,7 +55,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #BF8F55;
+  background: #d6394c;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -55,7 +69,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #F5C832;
+  background: #f6adad;
   color: #fff;
 }
 
@@ -79,7 +93,7 @@ h6 {
   transition: all 0.5s;
   z-index: 997;
   transition: all 0.5s;
-  background: rgba(42, 44, 57, 0.9);
+  background: rgba(85, 40, 46, 0.9);
 }
 
 #header.header-transparent {
@@ -87,7 +101,7 @@ h6 {
 }
 
 #header.header-scrolled {
-  background: rgba(27, 33, 62, 0.9);
+  background: rgba(85, 40, 46, 0.9);
 }
 
 #header .logo h1 {
@@ -170,7 +184,7 @@ h6 {
 .navbar .active,
 .navbar .active:focus,
 .navbar li:hover>a {
-  background: #BF8F55;
+  background: #f6adad;
   border-radius: 50px;
   
 }
@@ -197,7 +211,7 @@ h6 {
 
 .navbar .dropdown ul a {
   padding: 10px 20px;
-  color: #2a2c39;
+  color: #55282e;
   margin: 0 5px;
   font-size: 14px;
 }
@@ -355,7 +369,7 @@ h6 {
   width: 100%;
   overflow: hidden;
   position: relative;
-  background: linear-gradient(0deg, #1B213E 0%, #101226 100%);
+  background: linear-gradient(0deg, #55282e 0%, #55282e 100%);
   padding: 0;
 }
 
@@ -399,7 +413,7 @@ h6 {
 }
 
 #hero .btn-get-started {
-  font-family: "Raleway", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   font-weight: 500;
   font-size: 14px;
   letter-spacing: 1px;
@@ -411,11 +425,11 @@ h6 {
   margin: 10px;
   color: #fff;
   animation-delay: 0.8s;
-  border: 2px solid #BF8F55;
+  border: 2px solid #f6adad;
 }
 
 #hero .btn-get-started:hover {
-  background: #BF8F55;
+  background: #f6adad;
   color: #fff;
   text-decoration: none;
 }
@@ -514,8 +528,8 @@ section {
   margin: 0 0 5px 0;
   letter-spacing: 2px;
   text-transform: uppercase;
-  color: #aaaaaa;
-  font-family: "Poppins", sans-serif;
+  color: #751101;
+  font-family: "Argentum Sans Regular", sans-serif;
 }
 
 .section-title h2::after {
@@ -523,7 +537,7 @@ section {
   width: 120px;
   height: 1px;
   display: inline-block;
-  background: #BF8F55;
+  background: #55282e;
   margin: 4px 10px;
 }
 
@@ -533,7 +547,7 @@ section {
   font-size: 36px;
   font-weight: 700;
   text-transform: uppercase;
-  font-family: "Poppins", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   color: #2a2c39;
 }
 
@@ -568,7 +582,7 @@ section {
   left: 0;
   top: 2px;
   font-size: 20px;
-  color: #BF8F55;
+  color: #d6394c;
   line-height: 1;
 }
 
@@ -586,14 +600,14 @@ section {
   border-radius: 5px;
   transition: 0.3s;
   line-height: 1;
-  color: #BF8F55;
+  color: #55282e;
   animation-delay: 0.8s;
   margin-top: 6px;
-  border: 2px solid #BF8F55;
+  border: 2px solid #f6adad;
 }
 
 .about .content .btn-learn-more:hover {
-  background: #BF8F55;
+  background: #f6adad;
   color: #fff;
   text-decoration: none;
 }
@@ -606,10 +620,10 @@ section {
 }
 
 .features .nav-link {
-  border: 1px solid #d4d6df;
+  border: 1px solid #f6adad;
   padding: 15px;
   transition: 0.3s;
-  color: #2a2c39;
+  color: #f6adad;
   border-radius: 0;
   display: flex;
   align-items: center;
@@ -628,13 +642,13 @@ section {
 }
 
 .features .nav-link:hover {
-  color: #E0AA26;
+  color: #f6adad;
 }
 
 .features .nav-link.active {
-  background: #F5C832;
+  background: #f6adad;
   color: #fff;
-  border-color: #F5C832;
+  border-color: #f6adad;
 }
 
 @media (max-width: 768px) {
@@ -676,7 +690,7 @@ section {
 .features .tab-pane ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #BF8F55;
+  color: #d6394c;
 }
 
 .features .tab-pane p:last-child {
@@ -695,7 +709,7 @@ section {
 
 
 .bar {
-  background: #1B213E;
+  background: #d6394c;
   width: 0;
   margin: 0.25em 0;
   color: #fff;
@@ -705,21 +719,21 @@ section {
   clear: both;
 }
 .bar:nth-of-type(2n) {
-  background: #4D4B66;
+  background: #f6adad;
 }
 .bar .label {
   font-size: 0.75em;
   padding: 1em;
-  background: #E0AA26;
+  background: #751101;
   width: 8em;
   display: inline-block;
   position: relative;
   z-index: 2;
   font-weight: bold;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
 }
 .bar .label.light {
-  background: #F5C832;
+  background: #55282e;
 }
 
 .count {
@@ -729,7 +743,7 @@ section {
   padding: 0.15em;
   font-size: 0.75em;
   font-weight: bold;
-  font-family: "Montserrat", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
 }
 
 
@@ -737,7 +751,7 @@ section {
 # Cta
 --------------------------------------------------------------*/
 .cta {
-  background: #1B213E;
+  background: #55282e;
   padding: 80px 0;
 }
 
@@ -752,7 +766,7 @@ section {
 }
 
 .cta .cta-btn {
-  font-family: "Raleway", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   text-transform: uppercase;
   font-weight: 700;
   font-size: 14px;
@@ -763,12 +777,12 @@ section {
   transition: 0.5s;
   margin: 10px;
   color: #fff;
-  background: #855C24;
+  border: 2px solid #f6adad;
 }
 
 .cta .cta-btn:hover {
-  background: #fff;
-  color: #855C24;
+  background: #f6adad;
+  color: #ffff;
 }
 
 @media (max-width: 1024px) {
@@ -830,7 +844,7 @@ section {
 }
 
 .services .title a:hover {
-  color: #BF8F55;
+  color: #d6394c;
 }
 
 .services .description {
@@ -885,12 +899,12 @@ section {
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  color: #855C24;
+  color: #d6394c;
 }
 
 .portfolio #portfolio-flters li.filter-active::before,
 .portfolio #portfolio-flters li.filter-active::after {
-  color: #855C24;
+  color: #f6adad;
 }
 
 .portfolio .portfolio-item {
@@ -1150,7 +1164,7 @@ section {
   font-size: 36px;
   color: #ef6603;
   font-weight: 600;
-  font-family: "Poppins", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   margin-bottom: 20px;
 }
 
@@ -1206,7 +1220,7 @@ section {
   transition: none;
   font-size: 14px;
   font-weight: 400;
-  font-family: "Raleway", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   font-weight: 600;
   transition: 0.3s;
 }
@@ -1258,13 +1272,12 @@ section {
 .faq .faq-list .question {
   display: block;
   position: relative;
-  font-family: #BF8F55;
   font-size: 18px;
   line-height: 24px;
   font-weight: 400;
   padding-left: 25px;
   cursor: pointer;
-  color: #BF8F55;
+  color: #f6adad;
   transition: 0.3s;
 }
 
@@ -1289,7 +1302,7 @@ section {
 }
 
 .faq .faq-list .collapsed:hover {
-  color: #BF8F55;
+  color: #d6394c;
 }
 
 .faq .faq-list .collapsed .icon-show {
@@ -1350,7 +1363,7 @@ section {
 }
 
 .team .member .social a:hover {
-  background: #E0AA26;
+  background: #55282e;
 }
 
 .team .member .social i {
@@ -1398,11 +1411,11 @@ section {
 
 .contact .info i {
   font-size: 20px;
-  color: #BF8F53;
+  color: #55282e;
   float: left;
   width: 44px;
   height: 44px;
-  background: #ffecde;
+  background: #f6adad;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1438,7 +1451,7 @@ section {
 .contact .info .email:hover i,
 .contact .info .address:hover i,
 .contact .info .phone:hover i {
-  background: #E0AA26;
+  background: #f6adad;
   color: #fff;
 }
 
@@ -1603,7 +1616,7 @@ section {
   font-weight: 700;
   color: #fff;
   position: relative;
-  font-family: "Poppins", sans-serif;
+  font-family: "Argentum Sans Regular", sans-serif;
   padding: 0;
   margin: 0 0 15px 0;
 }
