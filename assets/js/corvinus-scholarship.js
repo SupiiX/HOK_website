@@ -215,10 +215,30 @@
     tabLinks.forEach(tab => {
       tab.addEventListener('shown.bs.tab', function (event) {
         if (event.target.getAttribute('href') === '#tab-4') {
-          init();
+          // Check if stats sub-tab is active
+          const statsRadio = document.getElementById('tools-stats');
+          if (statsRadio && statsRadio.checked) {
+            init();
+          }
+        }
+      });
+    });
+
+    // Listen to sub-tab changes
+    const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
+    toolsRadios.forEach(radio => {
+      radio.addEventListener('change', function() {
+        if (this.value === 'stats' && !initialized) {
+          // Initialize when switching to stats for the first time
+          setTimeout(() => {
+            init();
+          }, 50);
         }
       });
     });
   });
+
+  // Expose init function globally so it can be called from navigation
+  window.initCorvinusChart = init;
 
 })();

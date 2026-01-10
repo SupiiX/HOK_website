@@ -1095,13 +1095,20 @@
                   statsRadio.checked = true;
                   statsRadio.dispatchEvent(new Event('change'));
 
-                  // Scroll to Corvinus chart section
+                  // Initialize Corvinus chart if needed
                   setTimeout(() => {
-                    const corvinusSection = document.getElementById('corvinus-chart-section');
-                    if (corvinusSection) {
-                      corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    if (window.initCorvinusChart) {
+                      window.initCorvinusChart();
                     }
-                  }, 300);
+
+                    // Scroll to Corvinus chart section
+                    setTimeout(() => {
+                      const corvinusSection = document.getElementById('corvinus-chart-section');
+                      if (corvinusSection) {
+                        corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }, 200);
+                  }, 100);
                 }
               }, 100);
             }
