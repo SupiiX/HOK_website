@@ -1070,12 +1070,20 @@
 
               toolsRadios.forEach(radio => {
                 radio.addEventListener('change', function() {
+                  console.log('Tools tab changed to:', this.value);
                   if (this.value === 'calculator') {
                     calculatorContent.classList.remove('d-none');
                     statsContent.classList.add('d-none');
+                    console.log('Calculator shown, stats hidden');
                   } else if (this.value === 'stats') {
                     calculatorContent.classList.add('d-none');
                     statsContent.classList.remove('d-none');
+                    console.log('Stats shown, calculator hidden');
+
+                    // Verify corvinus chart section exists
+                    const corvinusSection = document.getElementById('corvinus-chart-section');
+                    console.log('Corvinus chart section found:', corvinusSection !== null);
+                    console.log('Corvinus canvas found:', document.getElementById('corvinus-chart') !== null);
                   }
                 });
               });
