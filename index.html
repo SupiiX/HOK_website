@@ -351,6 +351,162 @@
             .subject-row:hover .remove-btn {
               visibility: visible;
             }
+
+            /* Corvinus Toggle Switch - Modern 3D Design */
+            .corvinus-toggle-wrapper {
+              position: relative;
+              width: 100%;
+              max-width: 400px;
+              margin: 0 auto;
+              height: 60px;
+              background: linear-gradient(145deg, #e6e6e6, #ffffff);
+              border-radius: 50px;
+              box-shadow:
+                8px 8px 16px rgba(0, 0, 0, 0.15),
+                -8px -8px 16px rgba(255, 255, 255, 0.7),
+                inset 0px 0px 0px rgba(0, 0, 0, 0);
+              padding: 5px;
+              display: flex;
+              align-items: center;
+              transition: all 0.3s ease;
+            }
+
+            .corvinus-toggle-wrapper input[type="radio"] {
+              display: none;
+            }
+
+            .corvinus-toggle-label {
+              flex: 1;
+              text-align: center;
+              position: relative;
+              z-index: 2;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              font-weight: 600;
+              font-size: 15px;
+              padding: 15px 10px;
+              color: #666;
+              user-select: none;
+            }
+
+            .corvinus-toggle-label span {
+              display: inline-block;
+              transition: all 0.3s ease;
+            }
+
+            .corvinus-toggle-slider {
+              position: absolute;
+              top: 5px;
+              left: 5px;
+              width: calc(50% - 5px);
+              height: calc(100% - 10px);
+              background: linear-gradient(145deg, #d6394c, #ff4d63);
+              border-radius: 50px;
+              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              box-shadow:
+                4px 4px 12px rgba(214, 57, 76, 0.4),
+                -2px -2px 8px rgba(255, 77, 99, 0.2),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+              z-index: 1;
+            }
+
+            #corvinus-level-alap:checked ~ .corvinus-toggle-slider {
+              left: 5px;
+            }
+
+            #corvinus-level-mester:checked ~ .corvinus-toggle-slider {
+              left: calc(50% + 0px);
+            }
+
+            #corvinus-level-alap:checked ~ .corvinus-toggle-left {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            #corvinus-level-mester:checked ~ .corvinus-toggle-right {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            .corvinus-toggle-label:active {
+              transform: scale(0.98);
+            }
+
+            /* Chart card styling */
+            .corvinus-chart-card {
+              border: none;
+              border-radius: 15px;
+              overflow: hidden;
+              background: #ffffff;
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+              .corvinus-toggle-wrapper {
+                height: 55px;
+                max-width: 100%;
+              }
+
+              .corvinus-toggle-label {
+                font-size: 13px;
+                padding: 12px 8px;
+              }
+
+              .corvinus-chart-card .card-body {
+                padding: 1rem !important;
+              }
+
+              #tab-4 h3 {
+                font-size: 1.5rem;
+                text-align: center;
+              }
+
+              #tab-4 .text-muted {
+                font-size: 0.9rem;
+                text-align: center;
+              }
+            }
+
+            @media (max-width: 480px) {
+              .corvinus-toggle-wrapper {
+                height: 50px;
+              }
+
+              .corvinus-toggle-label {
+                font-size: 12px;
+                padding: 10px 5px;
+              }
+
+              .corvinus-toggle-label span {
+                display: inline-block;
+                max-width: 100%;
+              }
+            }
+
+            /* Form select styling for consistency */
+            #corvinus-course-select {
+              border-radius: 10px;
+              border: 2px solid #e6e6e6;
+              padding: 12px 16px;
+              font-size: 15px;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            #corvinus-course-select:focus {
+              border-color: #d6394c;
+              box-shadow: 0 4px 12px rgba(214, 57, 76, 0.15);
+              outline: none;
+            }
+
+            /* Alert info styling */
+            #corvinus-info {
+              border-radius: 10px;
+              border-left: 4px solid #d6394c;
+              background: linear-gradient(145deg, #fff5f6, #ffffff);
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
           </style>
 
           <script>
@@ -462,28 +618,32 @@
           <div class="tab-pane" id="tab-4">
             <div class="row g-4 align-items-start py-4">
               <!-- BAL: Kontrollok -->
-              <div class="col-lg-5">
+              <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
                 <h3 class="mb-3">Corvinus ösztöndíjas helyek aránya</h3>
                 <p class="text-muted mb-4">
                   Válaszd ki a képzési szintet és a szakot, hogy lásd az ösztöndíjas helyek arányának alakulását 2020-2024 között.
                 </p>
 
-                <!-- Képzési szint választó -->
+                <!-- Képzési szint választó - Modern Toggle -->
                 <div class="mb-4">
-                  <label class="form-label fw-bold">Képzési szint</label>
-                  <div class="btn-group w-100" role="group">
-                    <input type="radio" class="btn-check" name="corvinus-level" id="corvinus-level-alap" value="alapképzés" checked>
-                    <label class="btn btn-outline-primary" for="corvinus-level-alap">Alapképzés</label>
-
-                    <input type="radio" class="btn-check" name="corvinus-level" id="corvinus-level-mester" value="mesterképzés">
-                    <label class="btn btn-outline-primary" for="corvinus-level-mester">Mesterképzés</label>
+                  <label class="form-label fw-bold mb-3 d-block text-center">Képzési szint</label>
+                  <div class="corvinus-toggle-wrapper">
+                    <input type="radio" name="corvinus-level" id="corvinus-level-alap" value="alapképzés" checked>
+                    <input type="radio" name="corvinus-level" id="corvinus-level-mester" value="mesterképzés">
+                    <label for="corvinus-level-alap" class="corvinus-toggle-label corvinus-toggle-left">
+                      <span>Alapképzés</span>
+                    </label>
+                    <label for="corvinus-level-mester" class="corvinus-toggle-label corvinus-toggle-right">
+                      <span>Mesterképzés</span>
+                    </label>
+                    <div class="corvinus-toggle-slider"></div>
                   </div>
                 </div>
 
                 <!-- Szak választó -->
                 <div class="mb-4">
                   <label for="corvinus-course-select" class="form-label fw-bold">Szak</label>
-                  <select id="corvinus-course-select" class="form-select">
+                  <select id="corvinus-course-select" class="form-select form-select-lg">
                     <option value="">-- Válassz szakot --</option>
                   </select>
                 </div>
@@ -495,9 +655,9 @@
               </div>
 
               <!-- JOBB: Diagram -->
-              <div class="col-lg-7">
-                <div class="card shadow-sm">
-                  <div class="card-body">
+              <div class="col-lg-7 col-md-12">
+                <div class="card shadow-sm corvinus-chart-card">
+                  <div class="card-body p-3 p-md-4">
                     <canvas id="corvinus-chart"></canvas>
                   </div>
                 </div>
