@@ -227,8 +227,8 @@
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
-              <i class="ri-store-line"></i>
-              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+              <i class="ri-line-chart-line"></i>
+              <h4 class="d-none d-lg-block">Corvinus ösztöndíj</h4>
             </a>
           </li>
         </ul>
@@ -458,36 +458,53 @@
 
           <!-- Ösztöndíj kalkulátor vége -->
 
+          <!-- TAB 4: Corvinus ösztöndíj -->
           <div class="tab-pane" id="tab-4">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
+            <div class="row g-4 align-items-start py-4">
+              <!-- BAL: Kontrollok -->
+              <div class="col-lg-5">
+                <h3 class="mb-3">Corvinus ösztöndíjas helyek aránya</h3>
+                <p class="text-muted mb-4">
+                  Válaszd ki a képzési szintet és a szakot, hogy lásd az ösztöndíjas helyek arányának alakulását 2020-2024 között.
                 </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
-                  </li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                    aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla
-                    pariatur.</li>
-                </ul>
+
+                <!-- Képzési szint választó -->
+                <div class="mb-4">
+                  <label class="form-label fw-bold">Képzési szint</label>
+                  <div class="btn-group w-100" role="group">
+                    <input type="radio" class="btn-check" name="corvinus-level" id="corvinus-level-alap" value="alapképzés" checked>
+                    <label class="btn btn-outline-primary" for="corvinus-level-alap">Alapképzés</label>
+
+                    <input type="radio" class="btn-check" name="corvinus-level" id="corvinus-level-mester" value="mesterképzés">
+                    <label class="btn btn-outline-primary" for="corvinus-level-mester">Mesterképzés</label>
+                  </div>
+                </div>
+
+                <!-- Szak választó -->
+                <div class="mb-4">
+                  <label for="corvinus-course-select" class="form-label fw-bold">Szak</label>
+                  <select id="corvinus-course-select" class="form-select">
+                    <option value="">-- Válassz szakot --</option>
+                  </select>
+                </div>
+
+                <!-- Info box -->
+                <div id="corvinus-info" class="alert alert-info d-none" role="alert">
+                  <strong>Adatforrás:</strong> Corvinus ösztöndíjas helyek aránya (2020-2024)
+                </div>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-4.png" alt="" class="img-fluid">
+
+              <!-- JOBB: Diagram -->
+              <div class="col-lg-7">
+                <div class="card shadow-sm">
+                  <div class="card-body">
+                    <canvas id="corvinus-chart"></canvas>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+          <!-- /TAB 4 -->
         </div>
 
       </div>
@@ -1332,10 +1349,12 @@
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/corvinus-scholarship.js"></script>
 
 </body>
 
