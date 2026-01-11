@@ -1045,9 +1045,24 @@
           </script>
 
           <script>
-            // Sub-tab switching logic
+            /**
+             * Sub-tab switching logika
+             *
+             * Az ösztöndíj szekció 4 fő tab-ja mindegyikében van 2-3 sub-tab custom toggle switchekkel.
+             * Ez a script kezeli a sub-tab váltást (d-none osztály toggle-lésével).
+             *
+             * Struktúra:
+             * - Tab 1 (Teljesítményalapú): Tanulmányi / Corvinus
+             * - Tab 2 (Szociális): Rendszeres / Rendkívüli / Kollégiumi
+             * - Tab 3 (Közéleti): Nincs sub-tab
+             * - Tab 4 (Eszközök): Kalkulátor / Statisztikák
+             */
             document.addEventListener('DOMContentLoaded', function() {
-              // Performance tab (Tanulmányi/Corvinus)
+              /**
+               * Tab 1: Teljesítményalapú ösztöndíj
+               * - Tanulmányi: Általános tanulmányi ösztöndíj
+               * - Corvinus: Corvinus ösztöndíj (külön szabályzat, árnyak szerint változik)
+               */
               const performanceRadios = document.querySelectorAll('input[name="performance-type"]');
               const tanulmanyContent = document.getElementById('tanulmany-content');
               const corvinusContent = document.getElementById('corvinus-content');
@@ -1066,7 +1081,14 @@
                 });
               }
 
-              // Social tab (Rendszeres/Rendkívüli/Kollégiumi)
+              /**
+               * Tab 2: Szociális ösztöndíj
+               * - Rendszeres: Havi rendszeres szociális támogatás
+               * - Rendkívüli: Egyszeri, rendkívüli segély
+               * - Kollégiumi: Kollégiumi elhelyezés támogatása
+               *
+               * 3-option toggle: először összes content-et elrejtjük, majd a kiválasztottat megjelenítjük
+               */
               const socialRadios = document.querySelectorAll('input[name="social-type"]');
               const rendszeresContent = document.getElementById('rendszeres-content');
               const rendkivuliContent = document.getElementById('rendkivuli-content');
@@ -1075,10 +1097,12 @@
               if (socialRadios.length > 0) {
                 socialRadios.forEach(radio => {
                   radio.addEventListener('change', function() {
+                    // Összes elrejtése
                     rendszeresContent.classList.add('d-none');
                     rendkivuliContent.classList.add('d-none');
                     kollegiumiContent.classList.add('d-none');
 
+                    // Kiválasztott megjelenítése
                     if (this.value === 'rendszeres') {
                       rendszeresContent.classList.remove('d-none');
                     } else if (this.value === 'rendkivuli') {
@@ -1090,7 +1114,11 @@
                 });
               }
 
-              // Tools tab (Kalkulátor/Statisztikák)
+              /**
+               * Tab 4: Eszközök
+               * - Kalkulátor: Ösztöndíj átlag kalkulátor (30 kredites súlyozott átlag)
+               * - Statisztikák: Corvinus ösztöndíj chart + csoport átlagok
+               */
               const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
               const calculatorContent = document.getElementById('calculator-content');
               const statsContent = document.getElementById('stats-content');
@@ -1110,25 +1138,39 @@
               }
             });
 
-            // Navigate to Corvinus chart function
+            /**
+             * Navigáció a Corvinus ösztöndíj chart-hoz
+             *
+             * Használat: Tab 1 (Corvinus ösztöndíj info kártya) gombja hívja
+             * Működés:
+             * 1. Tab 4 (Eszközök) aktiválása
+             * 2. Statisztikák sub-tab aktiválása
+             * 3. Chart inicializálása (ha még nem történt meg)
+             * 4. Smooth scroll a chart szekcióhoz
+             *
+             * requestAnimationFrame: smooth UX, DOM update után futnak a műveletek
+             */
             function navigateToCorvinusChart() {
+              // Tab 4 aktiválása Bootstrap Tab API-val
               const tab4Link = document.querySelector('a[href="#tab-4"]');
               const tab4 = new bootstrap.Tab(tab4Link);
               tab4.show();
 
-              // Switch to stats sub-tab after a brief delay
+              // Sub-tab váltás: Statisztikák
               requestAnimationFrame(() => {
                 const statsRadio = document.getElementById('tools-stats');
                 if (statsRadio) {
                   statsRadio.checked = true;
-                  statsRadio.dispatchEvent(new Event('change'));
+                  statsRadio.dispatchEvent(new Event('change')); // Trigger sub-tab switch
 
-                  // Initialize chart and scroll
+                  // Chart inicializálás és scroll
                   requestAnimationFrame(() => {
+                    // Corvinus chart init (corvinus-scholarship.js)
                     if (window.initCorvinusChart) {
                       window.initCorvinusChart();
                     }
 
+                    // Smooth scroll a chart szekcióhoz (kis delay: tab animáció miatt)
                     setTimeout(() => {
                       const corvinusSection = document.getElementById('corvinus-chart-section');
                       if (corvinusSection) {
@@ -1140,15 +1182,29 @@
               });
             }
 
-            // Navigate to scholarship tab from menu
+            /**
+             * Navigáció ösztöndíj tab-okhoz (header menu dropdown)
+             *
+             * @param {string} tabId - Tab ID (pl. "tab-1", "tab-2", ...)
+             *
+             * Használat: Header menü "Ösztöndíjak" dropdown menüpontjai
+             * - Teljesítményalapú → tab-1
+             * - Szociális → tab-2
+             * - Közéleti → tab-3
+             * - Kalkulátor & Eszközök → tab-4
+             *
+             * Működés:
+             * 1. Smooth scroll az ösztöndíj szekcióhoz
+             * 2. Kiválasztott tab aktiválása
+             */
             function navigateToScholarshipTab(tabId) {
-              // First scroll to the scholarship section
+              // Scroll az ösztöndíj szekcióhoz
               const scholarshipSection = document.getElementById('osztondij');
               if (scholarshipSection) {
                 scholarshipSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
 
-              // Then activate the requested tab
+              // Tab aktiválás (requestAnimationFrame: smooth UX)
               requestAnimationFrame(() => {
                 const tabLink = document.querySelector('a[href="#' + tabId + '"]');
                 if (tabLink) {
@@ -1158,9 +1214,19 @@
               });
             }
 
-            // UX - Event listeners (no inline onclick handlers)
+            /**
+             * Event listener-ek regisztrálása (modern, nem inline onclick)
+             *
+             * UX best practice:
+             * - Inline onclick helyett addEventListener
+             * - Jobb karbantarthatóság
+             * - Könnyebb tesztelhetőség
+             */
             document.addEventListener('DOMContentLoaded', function() {
-              // Menu navigation links
+              /**
+               * Header menü navigáció
+               * Elemek: .scholarship-nav-link (data-tab attribútummal)
+               */
               const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
               scholarshipNavLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -1172,7 +1238,10 @@
                 });
               });
 
-              // Corvinus chart navigation button
+              /**
+               * Corvinus chart navigációs gomb
+               * Elem: #corvinus-chart-nav-btn (Tab 1, Corvinus info kártya)
+               */
               const corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
               if (corvinusChartNavBtn) {
                 corvinusChartNavBtn.addEventListener('click', function(e) {

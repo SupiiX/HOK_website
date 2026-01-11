@@ -1,20 +1,35 @@
+/**
+ * Corvinus ösztöndíj statisztikák - Chart.js integráció
+ *
+ * Ösztöndíjas helyek arányának megjelenítése szakonként és képzési szintenként (2020-2024)
+ * - Alapképzés és mesterképzés szűrés
+ * - Dinamikus szaklista generálás
+ * - Interaktív Chart.js oszlopdiagram
+ * - Loading state és error handling
+ */
 (function () {
   'use strict';
 
-  let scholarshipData = null;
-  let currentChart = null;
-  let initialized = false;
+  // Globális változók
+  let scholarshipData = null;    // JSON adatok (corvinus-scholarship.json)
+  let currentChart = null;       // Chart.js instance
+  let initialized = false;       // Inicializálás flag (csak egyszer fut le)
 
+  // DOM elemek referenciák (performance optimalizálás)
   const elements = {
-    levelRadios: null,
-    courseSelect: null,
-    chartCanvas: null,
-    infoBox: null,
-    loadingSpinner: null,
-    errorMessage: null
+    levelRadios: null,           // Alapképzés/Mesterképzés toggle
+    courseSelect: null,          // Szakválasztó dropdown
+    chartCanvas: null,           // Canvas elem a chart-hoz
+    infoBox: null,               // Info box az adatforrásról
+    loadingSpinner: null,        // Loading spinner
+    errorMessage: null           // Hibaüzenet elem
   };
 
-  // UX - Loading state megjelenítése
+  /**
+   * Loading state megjelenítése
+   * - Spinner láthatóvá tétele
+   * - Kontrollok (dropdown, togglek) letiltása
+   */
   function showLoading() {
     if (elements.loadingSpinner) {
       elements.loadingSpinner.classList.remove('d-none');
@@ -27,7 +42,11 @@
     }
   }
 
-  // UX - Loading state elrejtése
+  /**
+   * Loading state elrejtése
+   * - Spinner elrejtése
+   * - Kontrollok újra engedélyezése
+   */
   function hideLoading() {
     if (elements.loadingSpinner) {
       elements.loadingSpinner.classList.add('d-none');
@@ -40,7 +59,10 @@
     }
   }
 
-  // UX - Error message megjelenítése
+  /**
+   * Hibaüzenet megjelenítése
+   * @param {string} message - Felhasználóbarát hibaüzenet
+   */
   function showError(message) {
     if (elements.errorMessage) {
       elements.errorMessage.textContent = message;
@@ -48,26 +70,34 @@
     }
   }
 
-  // UX - Error message elrejtése
+  /**
+   * Hibaüzenet elrejtése
+   */
   function hideError() {
     if (elements.errorMessage) {
       elements.errorMessage.classList.add('d-none');
     }
   }
 
-  // Inicializálás
+  /**
+   * Inicializálás
+   * - Chart.js library ellenőrzés
+   * - DOM elemek referálása
+   * - JSON adatok betöltése (corvinus-scholarship.json)
+   * - Event listener-ek regisztrálása
+   */
   async function init() {
     if (initialized) return;
     initialized = true;
 
-    // Chart.js ellenőrzése
+    // Chart.js ellenőrzése (CDN betöltődött-e)
     if (typeof Chart === 'undefined') {
       showError('A diagram megjelenítéshez szükséges könyvtár nem töltődött be. Kérjük, frissítsd az oldalt!');
       console.error('Chart.js library not loaded');
       return;
     }
 
-    // Elemek kiválasztása
+    // DOM elemek kiválasztása
     elements.levelRadios = document.querySelectorAll('input[name="corvinus-level"]');
     elements.courseSelect = document.getElementById('corvinus-course-select');
     elements.chartCanvas = document.getElementById('corvinus-chart');
@@ -75,28 +105,29 @@
     elements.loadingSpinner = document.getElementById('corvinus-loading');
     elements.errorMessage = document.getElementById('corvinus-error');
 
-    // JSON betöltése
+    // JSON adatok betöltése fetch API-val
     showLoading();
     hideError();
 
     try {
       const response = await fetch('assets/js/corvinus-scholarship.json');
 
-      // HTTP response validáció
+      // HTTP response validáció (404, 500, stb.)
       if (!response.ok) {
         throw new Error(`HTTP hiba: ${response.status} - ${response.statusText}`);
       }
 
       scholarshipData = await response.json();
 
-      // Alapképzés szakok betöltése alapértelmezettként
+      // Alapértelmezett szaklista: alapképzés
       updateCourseList('alapképzés');
 
-      // Event listeners
+      // Event listener: képzési szint váltás (alapképzés ↔ mesterképzés)
       elements.levelRadios.forEach(radio => {
         radio.addEventListener('change', handleLevelChange);
       });
 
+      // Event listener: szakválasztás (dropdown change)
       elements.courseSelect.addEventListener('change', handleCourseChange);
 
       hideLoading();
@@ -105,7 +136,7 @@
       hideLoading();
       console.error('Hiba az adatok betöltésekor:', error);
 
-      // Részletes hibaüzenet a felhasználónak
+      // Felhasználóbarát hibaüzenet generálás
       let userMessage = 'Hiba történt az adatok betöltésekor. ';
       if (error.message.includes('HTTP')) {
         userMessage += 'A szerver nem érhető el. ';
@@ -122,12 +153,15 @@
     }
   }
 
-  // Képzési szint változás kezelése
+  /**
+   * Képzési szint váltás kezelése (alapképzés ↔ mesterképzés)
+   * @param {Event} event - Radio button change event
+   */
   function handleLevelChange(event) {
     const selectedLevel = event.target.value;
     updateCourseList(selectedLevel);
 
-    // Chart törlése
+    // Meglévő chart törlése (új szint → új szakok)
     if (currentChart) {
       currentChart.destroy();
       currentChart = null;
@@ -135,15 +169,22 @@
     elements.infoBox.classList.add('d-none');
   }
 
-  // Szak lista frissítése
+  /**
+   * Szaklista frissítése a kiválasztott képzési szint alapján
+   * @param {string} level - "alapképzés" vagy "mesterképzés"
+   *
+   * Működés:
+   * 1. Összegyűjti az összes szakot az adott szintről (duplikátumok kiszűrése Map-pel)
+   * 2. ABC sorrendbe rendezi (magyar locale)
+   * 3. Feltölti a dropdown-t
+   */
   function updateCourseList(level) {
-    // Összes szak gyűjtése az adott szintről
+    // Map használata: szak név alapján deduplikálás
     const courses = new Map();
 
     scholarshipData.periods.forEach(period => {
       period.courses.forEach(course => {
         if (course.level === level) {
-          // Használjuk a szak nevét kulcsként, hogy ne legyenek duplikációk
           if (!courses.has(course.name)) {
             courses.set(course.name, course);
           }
@@ -151,14 +192,15 @@
       });
     });
 
-    // Dropdown feltöltése
+    // Dropdown reset
     elements.courseSelect.innerHTML = '<option value="">-- Válassz szakot --</option>';
 
-    // Rendezzük ABC sorrendbe
+    // ABC rendezés (magyar locale: á, é, ö, stb. helyes sorrendben)
     const sortedCourses = Array.from(courses.values()).sort((a, b) =>
       a.name.localeCompare(b.name, 'hu')
     );
 
+    // Option elemek generálása
     sortedCourses.forEach(course => {
       const option = document.createElement('option');
       option.value = course.name;
@@ -167,12 +209,20 @@
     });
   }
 
-  // Szak változás kezelése
+  /**
+   * Szakválasztás kezelése
+   * @param {Event} event - Select change event
+   *
+   * Amikor a felhasználó kiválaszt egy szakot:
+   * 1. Összegyűjti az adatokat 2020-2024 periódusokból
+   * 2. Chart.js oszlopdiagramot generál
+   * 3. Smooth UX: requestAnimationFrame + loading state
+   */
   function handleCourseChange(event) {
     const courseName = event.target.value;
 
     if (!courseName) {
-      // Ha nincs kiválasztott szak, töröljük a chartot
+      // Nincs kiválasztott szak → chart törlése
       if (currentChart) {
         currentChart.destroy();
         currentChart = null;
@@ -181,14 +231,14 @@
       return;
     }
 
-    // UX - Loading state chart készítéskor
+    // Loading state (spinner + disabled controls)
     showLoading();
 
     // Adatok gyűjtése a kiválasztott szakhoz
     const selectedLevel = document.querySelector('input[name="corvinus-level"]:checked').value;
     const chartData = prepareChartData(courseName, selectedLevel);
 
-    // Chart megjelenítése kis késleltetéssel (smooth UX)
+    // Smooth UX: requestAnimationFrame (optimalizált rendering)
     requestAnimationFrame(() => {
       renderChart(chartData, courseName);
       elements.infoBox.classList.remove('d-none');
@@ -196,19 +246,28 @@
     });
   }
 
-  // Chart adatok előkészítése
+  /**
+   * Chart adatok előkészítése
+   * @param {string} courseName - Szak neve (pl. "gazdálkodási és menedzsment")
+   * @param {string} level - Képzési szint
+   * @returns {Object} { labels: ["2020/21", "2021/22", ...], values: [80, 85, ...] }
+   *
+   * Működés:
+   * - Végigmegy az összes perióduson (2020-2024)
+   * - Megkeresi az adott szakot minden évben
+   * - Kiszedi az ösztöndíjas helyek arányát (scholarship_ratio)
+   */
   function prepareChartData(courseName, level) {
     const periods = [];
     const scholarshipRatios = [];
 
     scholarshipData.periods.forEach(period => {
-      // Keressük meg az adott szakot ebben a periódusban
       const course = period.courses.find(c =>
         c.name === courseName && c.level === level
       );
 
       if (course) {
-        // Periódus formázása (pl. "2020/2021/1" -> "2020/21")
+        // Periódus formázás: "2020/2021/1" → "2020/21"
         const periodLabel = period.period.split('/').slice(0, 2).join('/');
         periods.push(periodLabel);
         scholarshipRatios.push(course.scholarship_ratio);
@@ -221,9 +280,19 @@
     };
   }
 
-  // Chart megjelenítése
+  /**
+   * Chart.js oszlopdiagram megjelenítése
+   * @param {Object} data - Chart adatok (labels, values)
+   * @param {string} courseName - Szak neve (chart title)
+   *
+   * Konfigurálás:
+   * - Bar chart (oszlopdiagram)
+   * - Corvinus brand color (#d6394c)
+   * - Responsive + tooltipek
+   * - Y tengely: 0-100% skála
+   */
   function renderChart(data, courseName) {
-    // Töröljük a régi chartot ha van
+    // Meglévő chart törlése (destroy() memória felszabadítás)
     if (currentChart) {
       currentChart.destroy();
     }
@@ -233,14 +302,14 @@
     currentChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: data.labels,
+        labels: data.labels,  // ["2020/21", "2021/22", ...]
         datasets: [{
           label: 'Ösztöndíjas helyek aránya (%)',
-          data: data.values,
-          backgroundColor: 'rgba(214, 57, 76, 0.6)',
-          borderColor: 'rgba(214, 57, 76, 1)',
+          data: data.values,  // [80, 85, 90, ...]
+          backgroundColor: 'rgba(214, 57, 76, 0.6)',  // Corvinus red (transzparens)
+          borderColor: 'rgba(214, 57, 76, 1)',        // Corvinus red (solid)
           borderWidth: 2,
-          borderRadius: 5,
+          borderRadius: 5,  // Lekerekített oszlopok
         }]
       },
       options: {
@@ -253,7 +322,7 @@
           },
           title: {
             display: true,
-            text: courseName,
+            text: courseName,  // Szak neve a chart tetején
             font: {
               size: 16,
               weight: 'bold'
@@ -270,7 +339,7 @@
         scales: {
           y: {
             beginAtZero: true,
-            max: 100,
+            max: 100,  // 0-100% skála
             ticks: {
               callback: function(value) {
                 return value + '%';
@@ -292,14 +361,25 @@
     });
   }
 
-  // Bootstrap tab esemény figyelése
+  /**
+   * Event listener-ek inicializálása
+   *
+   * Lazy loading: chart csak akkor inicializálódik amikor:
+   * 1. Tab 4 (Eszközök) aktiválódik ÉS
+   * 2. Statisztikák sub-tab aktív
+   *
+   * Előnyök:
+   * - Gyorsabb oldalbetöltés (nem töltődik azonnal a Chart.js)
+   * - Jobb performance (csak amikor szükséges)
+   */
   document.addEventListener('DOMContentLoaded', function() {
     const tabLinks = document.querySelectorAll('[data-bs-toggle="tab"]');
 
+    // Bootstrap tab váltás figyelése
     tabLinks.forEach(tab => {
       tab.addEventListener('shown.bs.tab', function (event) {
         if (event.target.getAttribute('href') === '#tab-4') {
-          // Check if stats sub-tab is active
+          // Tab 4 aktiválva → ellenőrizzük a sub-tab-ot
           const statsRadio = document.getElementById('tools-stats');
           if (statsRadio && statsRadio.checked) {
             init();
@@ -308,12 +388,12 @@
       });
     });
 
-    // Listen to sub-tab changes
+    // Sub-tab váltás figyelése (Kalkulátor ↔ Statisztikák)
     const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
     toolsRadios.forEach(radio => {
       radio.addEventListener('change', function() {
         if (this.value === 'stats' && !initialized) {
-          // Initialize when switching to stats for the first time
+          // Statisztikák sub-tab → init (csak először)
           requestAnimationFrame(() => {
             init();
           });
@@ -322,7 +402,7 @@
     });
   });
 
-  // Expose init function globally so it can be called from navigation
+  // Globális scope-ba export (navigateToCorvinusChart() használja)
   window.initCorvinusChart = init;
 
 })();
