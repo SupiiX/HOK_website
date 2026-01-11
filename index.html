@@ -53,10 +53,10 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Ösztöndíjak</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Ösztöndíjmutatók</a></li>
-              <li><a href="#">Közéleti pályázat</a></li>
-              <li><a href="#">Kalkulátor</a></li>
-
+              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-1')">Teljesítményalapú</a></li>
+              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-2')">Szociális</a></li>
+              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-3')">Közéleti</a></li>
+              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-4')">Kalkulátor & Eszközök</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Hasznos</span> <i
@@ -1136,6 +1136,24 @@
                       }
                     }, 100);
                   });
+                }
+              });
+            }
+
+            // Navigate to scholarship tab from menu
+            function navigateToScholarshipTab(tabId) {
+              // First scroll to the scholarship section
+              const scholarshipSection = document.getElementById('osztondij');
+              if (scholarshipSection) {
+                scholarshipSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+
+              // Then activate the requested tab
+              requestAnimationFrame(() => {
+                const tabLink = document.querySelector('a[href="#' + tabId + '"]');
+                if (tabLink) {
+                  const tab = new bootstrap.Tab(tabLink);
+                  tab.show();
                 }
               });
             }
