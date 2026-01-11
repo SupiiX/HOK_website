@@ -920,8 +920,8 @@
           </style>
 
           <script>
+            // Ösztöndíj kalkulátor
             (function () {
-              const pane = document.getElementById('tab-4');
               let initialized = false;
 
               function createSubjectRow(subjectsEl, values = {}) {
@@ -949,7 +949,6 @@
                 row.querySelector('.remove-btn').addEventListener('click', () => {
                   row.remove();
                   if (!subjectsEl.querySelector('.subject-row')) {
-                    // ha minden sort töröltünk, visszateszünk egy üreset
                     createSubjectRow(subjectsEl, { name: '', credit: '', grade: '' });
                   }
                 });
@@ -960,11 +959,22 @@
                 if (initialized) return;
                 initialized = true;
 
-                const subjectsEl = pane.querySelector('#oszto-subjects');
-                const addBtn = pane.querySelector('#oszto-add');
-                const calcBtn = pane.querySelector('#oszto-calc');
-                const alertEl = pane.querySelector('#oszto-alert');
-                const resultEl = pane.querySelector('#oszto-result');
+                const calculatorPane = document.getElementById('calculator-content');
+                if (!calculatorPane) {
+                  console.error('Calculator pane not found');
+                  return;
+                }
+
+                const subjectsEl = calculatorPane.querySelector('#oszto-subjects');
+                const addBtn = calculatorPane.querySelector('#oszto-add');
+                const calcBtn = calculatorPane.querySelector('#oszto-calc');
+                const alertEl = calculatorPane.querySelector('#oszto-alert');
+                const resultEl = calculatorPane.querySelector('#oszto-result');
+
+                if (!subjectsEl || !addBtn || !calcBtn || !alertEl || !resultEl) {
+                  console.error('Calculator elements not found');
+                  return;
+                }
 
                 // ALAPSOR (üres minta)
                 createSubjectRow(subjectsEl);
@@ -988,7 +998,7 @@
                     const credit = Number(row.querySelector('.subject-credit').value);
                     const grade = Number(row.querySelector('.subject-grade').value);
 
-                    const validCredit = Number.isFinite(credit) && credit > 0; // nincs felső korlát
+                    const validCredit = Number.isFinite(credit) && credit > 0;
                     const validGrade = Number.isFinite(grade) && grade >= 1 && grade <= 5;
 
                     if (!validCredit || !validGrade) {
@@ -1005,19 +1015,32 @@
                 });
               }
 
-              // Bootstrap tab esemény – amikor a 4. fülre váltanak, inicializálunk
+              // Bootstrap tab esemény – amikor a 4. fülre váltanak
               document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
                 tab.addEventListener('shown.bs.tab', (e) => {
                   if (e.target.getAttribute('href') === '#tab-4') {
-                    initCalculatorOnce();
+                    // Check if calculator sub-tab is active
+                    const calcRadio = document.getElementById('tools-calculator');
+                    if (calcRadio && calcRadio.checked) {
+                      initCalculatorOnce();
+                    }
                   }
                 });
               });
 
-              // Ha oldalbetöltéskor már a #tab-3 aktív, akkor is inicializáljuk
-              if (pane.classList.contains('active') || pane.classList.contains('show')) {
-                initCalculatorOnce();
-              }
+              // Listen to tools sub-tab changes
+              document.addEventListener('DOMContentLoaded', () => {
+                const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
+                toolsRadios.forEach(radio => {
+                  radio.addEventListener('change', function() {
+                    if (this.value === 'calculator' && !initialized) {
+                      setTimeout(() => {
+                        initCalculatorOnce();
+                      }, 50);
+                    }
+                  });
+                });
+              });
             })();
           </script>
 
