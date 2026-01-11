@@ -9,23 +9,84 @@
     levelRadios: null,
     courseSelect: null,
     chartCanvas: null,
-    infoBox: null
+    infoBox: null,
+    loadingSpinner: null,
+    errorMessage: null
   };
+
+  // UX - Loading state megjelenítése
+  function showLoading() {
+    if (elements.loadingSpinner) {
+      elements.loadingSpinner.classList.remove('d-none');
+    }
+    if (elements.courseSelect) {
+      elements.courseSelect.disabled = true;
+    }
+    if (elements.levelRadios) {
+      elements.levelRadios.forEach(radio => radio.disabled = true);
+    }
+  }
+
+  // UX - Loading state elrejtése
+  function hideLoading() {
+    if (elements.loadingSpinner) {
+      elements.loadingSpinner.classList.add('d-none');
+    }
+    if (elements.courseSelect) {
+      elements.courseSelect.disabled = false;
+    }
+    if (elements.levelRadios) {
+      elements.levelRadios.forEach(radio => radio.disabled = false);
+    }
+  }
+
+  // UX - Error message megjelenítése
+  function showError(message) {
+    if (elements.errorMessage) {
+      elements.errorMessage.textContent = message;
+      elements.errorMessage.classList.remove('d-none');
+    }
+  }
+
+  // UX - Error message elrejtése
+  function hideError() {
+    if (elements.errorMessage) {
+      elements.errorMessage.classList.add('d-none');
+    }
+  }
 
   // Inicializálás
   async function init() {
     if (initialized) return;
     initialized = true;
 
+    // Chart.js ellenőrzése
+    if (typeof Chart === 'undefined') {
+      showError('A diagram megjelenítéshez szükséges könyvtár nem töltődött be. Kérjük, frissítsd az oldalt!');
+      console.error('Chart.js library not loaded');
+      return;
+    }
+
     // Elemek kiválasztása
     elements.levelRadios = document.querySelectorAll('input[name="corvinus-level"]');
     elements.courseSelect = document.getElementById('corvinus-course-select');
     elements.chartCanvas = document.getElementById('corvinus-chart');
     elements.infoBox = document.getElementById('corvinus-info');
+    elements.loadingSpinner = document.getElementById('corvinus-loading');
+    elements.errorMessage = document.getElementById('corvinus-error');
 
     // JSON betöltése
+    showLoading();
+    hideError();
+
     try {
       const response = await fetch('assets/js/corvinus-scholarship.json');
+
+      // HTTP response validáció
+      if (!response.ok) {
+        throw new Error(`HTTP hiba: ${response.status} - ${response.statusText}`);
+      }
+
       scholarshipData = await response.json();
 
       // Alapképzés szakok betöltése alapértelmezettként
@@ -38,9 +99,26 @@
 
       elements.courseSelect.addEventListener('change', handleCourseChange);
 
+      hideLoading();
+
     } catch (error) {
+      hideLoading();
       console.error('Hiba az adatok betöltésekor:', error);
-      alert('Hiba történt az adatok betöltésekor. Kérjük, frissítsd az oldalt!');
+
+      // Részletes hibaüzenet a felhasználónak
+      let userMessage = 'Hiba történt az adatok betöltésekor. ';
+      if (error.message.includes('HTTP')) {
+        userMessage += 'A szerver nem érhető el. ';
+      } else if (error.message.includes('JSON')) {
+        userMessage += 'Az adatok formátuma hibás. ';
+      } else if (error.message.includes('network')) {
+        userMessage += 'Nincs internetkapcsolat. ';
+      } else {
+        userMessage += error.message + ' ';
+      }
+      userMessage += 'Kérjük, frissítsd az oldalt vagy próbáld újra később!';
+
+      showError(userMessage);
     }
   }
 
@@ -103,13 +181,19 @@
       return;
     }
 
+    // UX - Loading state chart készítéskor
+    showLoading();
+
     // Adatok gyűjtése a kiválasztott szakhoz
     const selectedLevel = document.querySelector('input[name="corvinus-level"]:checked').value;
     const chartData = prepareChartData(courseName, selectedLevel);
 
-    // Chart megjelenítése
-    renderChart(chartData, courseName);
-    elements.infoBox.classList.remove('d-none');
+    // Chart megjelenítése kis késleltetéssel (smooth UX)
+    requestAnimationFrame(() => {
+      renderChart(chartData, courseName);
+      elements.infoBox.classList.remove('d-none');
+      hideLoading();
+    });
   }
 
   // Chart adatok előkészítése

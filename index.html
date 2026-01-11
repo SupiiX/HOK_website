@@ -53,10 +53,10 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Ösztöndíjak</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-1')">Teljesítményalapú</a></li>
-              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-2')">Szociális</a></li>
-              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-3')">Közéleti</a></li>
-              <li><a href="#osztondij" onclick="navigateToScholarshipTab('tab-4')">Kalkulátor & Eszközök</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Teljesítményalapú</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Szociális</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Közéleti</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Kalkulátor & Eszközök</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Hasznos</span> <i
@@ -325,7 +325,7 @@
                            class="btn btn-primary">
                           <i class="ri-external-link-line"></i> Részletek a szabályzatban
                         </a>
-                        <button onclick="navigateToCorvinusChart()" class="btn btn-outline-primary">
+                        <button id="corvinus-chart-nav-btn" class="btn btn-outline-primary">
                           <i class="ri-bar-chart-box-line"></i> Corvinus ösztöndíj statisztikák
                         </button>
                       </div>
@@ -1157,6 +1157,30 @@
                 }
               });
             }
+
+            // UX - Event listeners (no inline onclick handlers)
+            document.addEventListener('DOMContentLoaded', function() {
+              // Menu navigation links
+              const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
+              scholarshipNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  const tabId = this.getAttribute('data-tab');
+                  if (tabId) {
+                    navigateToScholarshipTab(tabId);
+                  }
+                });
+              });
+
+              // Corvinus chart navigation button
+              const corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
+              if (corvinusChartNavBtn) {
+                corvinusChartNavBtn.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  navigateToCorvinusChart();
+                });
+              }
+            });
           </script>
 
 
@@ -1249,6 +1273,20 @@
                   <!-- Corvinus ösztöndíj chart -->
                   <div id="corvinus-chart-section" class="mt-5">
                     <hr class="my-5">
+
+                    <!-- Loading spinner -->
+                    <div id="corvinus-loading" class="text-center py-5 d-none">
+                      <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Betöltés...</span>
+                      </div>
+                      <p class="text-muted mt-3">Adatok betöltése...</p>
+                    </div>
+
+                    <!-- Error message -->
+                    <div id="corvinus-error" class="alert alert-danger d-none" role="alert">
+                      <i class="ri-error-warning-line"></i> <strong>Hiba:</strong> <span></span>
+                    </div>
+
                     <div class="row g-4 align-items-start">
                       <!-- BAL: Kontrollok -->
                       <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
