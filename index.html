@@ -1045,20 +1045,16 @@
           </script>
 
           <script>
-            // Sub-tab switching logic - MUST wait for DOM
+            // Sub-tab switching logic
             document.addEventListener('DOMContentLoaded', function() {
-              console.log('=== Sub-tab switching initialized ===');
-
               // Performance tab (Tanulmányi/Corvinus)
               const performanceRadios = document.querySelectorAll('input[name="performance-type"]');
               const tanulmanyContent = document.getElementById('tanulmany-content');
               const corvinusContent = document.getElementById('corvinus-content');
 
               if (performanceRadios.length > 0) {
-                console.log('Performance radios found:', performanceRadios.length);
                 performanceRadios.forEach(radio => {
                   radio.addEventListener('change', function() {
-                    console.log('Performance tab changed to:', this.value);
                     if (this.value === 'tanulmany') {
                       tanulmanyContent.classList.remove('d-none');
                       corvinusContent.classList.add('d-none');
@@ -1077,10 +1073,8 @@
               const kollegiumiContent = document.getElementById('kollegiumi-content');
 
               if (socialRadios.length > 0) {
-                console.log('Social radios found:', socialRadios.length);
                 socialRadios.forEach(radio => {
                   radio.addEventListener('change', function() {
-                    console.log('Social tab changed to:', this.value);
                     rendszeresContent.classList.add('d-none');
                     rendkivuliContent.classList.add('d-none');
                     kollegiumiContent.classList.add('d-none');
@@ -1096,77 +1090,54 @@
                 });
               }
 
-              // Tools tab (Kalkulátor/Statisztikák) - CRITICAL!
+              // Tools tab (Kalkulátor/Statisztikák)
               const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
               const calculatorContent = document.getElementById('calculator-content');
               const statsContent = document.getElementById('stats-content');
 
-              console.log('Tools radios found:', toolsRadios.length);
-              console.log('Calculator content:', calculatorContent ? 'YES' : 'NO');
-              console.log('Stats content:', statsContent ? 'YES' : 'NO');
-
               if (toolsRadios.length > 0 && calculatorContent && statsContent) {
                 toolsRadios.forEach(radio => {
                   radio.addEventListener('change', function() {
-                    console.log('=== Tools tab CHANGED to:', this.value, '===');
-
                     if (this.value === 'calculator') {
                       calculatorContent.classList.remove('d-none');
                       statsContent.classList.add('d-none');
-                      console.log('✓ Calculator shown');
-                      console.log('Calculator classes:', calculatorContent.className);
-                      console.log('Stats classes:', statsContent.className);
                     } else if (this.value === 'stats') {
                       calculatorContent.classList.add('d-none');
                       statsContent.classList.remove('d-none');
-                      console.log('✓ Stats shown');
-                      console.log('Calculator classes:', calculatorContent.className);
-                      console.log('Stats classes:', statsContent.className);
-
-                      // Verify corvinus chart section
-                      const corvinusSection = document.getElementById('corvinus-chart-section');
-                      const corvinusCanvas = document.getElementById('corvinus-chart');
-                      console.log('Corvinus section:', corvinusSection ? 'FOUND' : 'NOT FOUND');
-                      console.log('Corvinus canvas:', corvinusCanvas ? 'FOUND' : 'NOT FOUND');
                     }
                   });
                 });
-                console.log('✓ Tools radio listeners attached');
-              } else {
-                console.error('ERROR: Tools tab elements not found!');
               }
             });
 
             // Navigate to Corvinus chart function
             function navigateToCorvinusChart() {
-              // Switch to tab-4 (Eszközök)
               const tab4Link = document.querySelector('a[href="#tab-4"]');
               const tab4 = new bootstrap.Tab(tab4Link);
               tab4.show();
 
-              // Switch to stats sub-tab
-              setTimeout(() => {
+              // Switch to stats sub-tab after a brief delay
+              requestAnimationFrame(() => {
                 const statsRadio = document.getElementById('tools-stats');
                 if (statsRadio) {
                   statsRadio.checked = true;
                   statsRadio.dispatchEvent(new Event('change'));
 
-                  // Initialize Corvinus chart if needed
-                  setTimeout(() => {
+                  // Initialize chart and scroll
+                  requestAnimationFrame(() => {
                     if (window.initCorvinusChart) {
                       window.initCorvinusChart();
                     }
 
-                    // Scroll to Corvinus chart section
                     setTimeout(() => {
                       const corvinusSection = document.getElementById('corvinus-chart-section');
                       if (corvinusSection) {
                         corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                       }
-                    }, 200);
-                  }, 100);
+                    }, 100);
+                  });
                 }
-              }, 100);
+              });
             }
           </script>
 

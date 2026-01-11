@@ -230,9 +230,9 @@
       radio.addEventListener('change', function() {
         if (this.value === 'stats' && !initialized) {
           // Initialize when switching to stats for the first time
-          setTimeout(() => {
+          requestAnimationFrame(() => {
             init();
-          }, 50);
+          });
         }
       });
     });
