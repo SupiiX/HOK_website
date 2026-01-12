@@ -1,0 +1,745 @@
+{
+  "dataset_info": {
+    "source": "Corvinus ösztöndíjas helyek aránya (2020-2024)",
+    "generated_at": "2024-05-20"
+  },
+  "periods": [
+    {
+      "period": "2020/2021/1",
+      "courses": [
+        {
+          "level": "egységes, osztatlan képzés",
+          "name": "gazdaság- és pénzügy-matematikai elemzés",
+          "code": "4ONGPME17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 100
+        }
+      ]
+    },
+    {
+      "period": "2021/2022/1",
+      "courses": [
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 82
+        },
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 84
+        },
+        {
+          "level": "alapképzés",
+          "name": "Communication and Media Science",
+          "code": "7BNKOMM17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 59
+        },
+        {
+          "level": "alapképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7BNKOMM17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 54
+        },
+        {
+          "level": "alapképzés",
+          "name": "International Relations",
+          "code": "7BNNEMZ17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 61
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi tanulmányok",
+          "code": "7BNNEMZ17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 53
+        },
+        {
+          "level": "alapképzés",
+          "name": "politikatudományok",
+          "code": "7BNPOLI17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 90
+        },
+        {
+          "level": "alapképzés",
+          "name": "Sociology",
+          "code": "7BNSZOC17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 89
+        },
+        {
+          "level": "alapképzés",
+          "name": "szociológia",
+          "code": "7BNSZOC17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdaságinformatikus",
+          "code": "BNGINF21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 87
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 80
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN21MSF",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 80
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment (BA)",
+          "code": "2BNGMEN17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 75
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi gazdálkodás",
+          "code": "BNNKGA20ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 67
+        },
+        {
+          "level": "alapképzés",
+          "name": "pénzügy és számvitel",
+          "code": "BNPSZV21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 91
+        },
+        {
+          "level": "egységes, osztatlan képzés",
+          "name": "gazdaság- és pénzügy-matematikai elemzés",
+          "code": "4ONGPME17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 83
+        }
+      ]
+    },
+    {
+      "period": "2022/2023/1",
+      "courses": [
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 56
+        },
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 80
+        },
+        {
+          "level": "alapképzés",
+          "name": "Communication and Media Science",
+          "code": "7BNKOMM17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 67
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 70
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 76
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN21MSF",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdaságinformatikus",
+          "code": "BNGINF21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 77
+        },
+        {
+          "level": "alapképzés",
+          "name": "International Relations",
+          "code": "7BNNEMZ17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 57
+        },
+        {
+          "level": "alapképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7BNKOMM17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 56
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi gazdálkodás",
+          "code": "BNNKGA20ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 45
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi tanulmányok",
+          "code": "7BNNEMZ17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 48
+        },
+        {
+          "level": "alapképzés",
+          "name": "pénzügy és számvitel",
+          "code": "BNPSZV21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 77
+        },
+        {
+          "level": "alapképzés",
+          "name": "politikatudományok",
+          "code": "7BNPOLI17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 92
+        },
+        {
+          "level": "alapképzés",
+          "name": "Sociology",
+          "code": "7BNSZOC17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "egységes osztatlan képzés",
+          "name": "gazdaság- és pénzügy-matematikai elemzés",
+          "code": "4ONGPME17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 84
+        }
+      ]
+    },
+    {
+      "period": "2023/2024/1",
+      "courses": [
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 91
+        },
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 71
+        },
+        {
+          "level": "alapképzés",
+          "name": "filozófia, politika, gazdaság",
+          "code": "BNFPGA22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 64
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 84
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 77
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdaságinformatikus",
+          "code": "BNGINF21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 61
+        },
+        {
+          "level": "alapképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7BNKOMM17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 59
+        },
+        {
+          "level": "alapképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7BNKOMM17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 46
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi gazdálkodás",
+          "code": "BNNKGA20ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 53
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi tanulmányok",
+          "code": "7BNNEMZ17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 65
+        },
+        {
+          "level": "alapképzés",
+          "name": "pénzügy és számvitel",
+          "code": "BNPSZV21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 68
+        },
+        {
+          "level": "alapképzés",
+          "name": "politikatudományok",
+          "code": "7BNPOLI17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 97
+        },
+        {
+          "level": "alapképzés",
+          "name": "szociológia",
+          "code": "7BNSZOC17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "alapképzés",
+          "name": "üzleti adattudomány",
+          "code": "BNUZAD22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 70
+        },
+        {
+          "level": "egységes osztatlan képzés",
+          "name": "gazdaság- és pénzügy-matematikai elemzés",
+          "code": "ONGPME23MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 82
+        },
+        {
+          "level": "mesterképzés",
+          "name": "biztosítási és pénzügyi matematika",
+          "code": "4MNBPUM17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 96
+        },
+        {
+          "level": "mesterképzés",
+          "name": "gazdaságinformatikus",
+          "code": "MNGINF23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "gazdasági-viselkedéselemzés",
+          "code": "MNGAVI23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7MNKOMM17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 90
+        },
+        {
+          "level": "mesterképzés",
+          "name": "közgazdálkodás és közpolitika",
+          "code": "MNKGKP23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "közgazdasági elemző",
+          "code": "MNKOZE20ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "parameter": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "marketing",
+          "code": "MNMARK23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 91
+        },
+        {
+          "level": "mesterképzés",
+          "name": "marketingstratégia és -innováció",
+          "code": "MNMAIN23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "nemzetközi gazdaság és gazdálkodás",
+          "code": "MNNGAZ23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 94
+        },
+        {
+          "level": "mesterképzés",
+          "name": "nemzetközi tanulmányok",
+          "code": "MNNEMZ23ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "pénzügy",
+          "code": "MNPENZ22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "politikai gazdaságtan",
+          "code": "MNPOGA22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 95
+        },
+        {
+          "level": "mesterképzés",
+          "name": "számvitel",
+          "code": "MNSZVI23MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 92
+        },
+        {
+          "level": "mesterképzés",
+          "name": "vállalkozásfejlesztés",
+          "code": "MNVAFE21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 95
+        },
+        {
+          "level": "mesterképzés",
+          "name": "vezetés és szervezés",
+          "code": "MNVESZ21ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 96
+        },
+        {
+          "level": "mesterképzés",
+          "name": "vezetés és szervezés",
+          "code": "MNVESZ21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 95
+        }
+      ]
+    },
+    {
+      "period": "2024/2025/1",
+      "courses": [
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "alapképzés",
+          "name": "alkalmazott közgazdaságtan",
+          "code": "4BNAKGT17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 78
+        },
+        {
+          "level": "alapképzés",
+          "name": "filozófia, politika, gazdaság",
+          "code": "BNFPGA22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 80
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 74
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdálkodási és menedzsment",
+          "code": "BNGMEN21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 80
+        },
+        {
+          "level": "alapképzés",
+          "name": "gazdaságinformatikus",
+          "code": "BNGINF21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 87
+        },
+        {
+          "level": "alapképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7BNKOMM17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 84
+        },
+        {
+          "level": "alapképzés",
+          "name": "kommunikáció- és médiatudomány",
+          "code": "7BNKOMM17MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 92
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi gazdálkodás",
+          "code": "BNNKGA20ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 52
+        },
+        {
+          "level": "alapképzés",
+          "name": "nemzetközi tanulmányok",
+          "code": "7BNNEMZ17ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 79
+        },
+        {
+          "level": "alapképzés",
+          "name": "pénzügy és számvitel",
+          "code": "BNPSZV21MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 80
+        },
+        {
+          "level": "alapképzés",
+          "name": "üzleti adattudomány",
+          "code": "BNUZAD22ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 89
+        },
+        {
+          "level": "egységes, osztatlan képzés",
+          "name": "gazdaság- és pénzügy-matematikai elemzés",
+          "code": "ONGPME23MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 92
+        },
+        {
+          "level": "mesterképzés",
+          "name": "gazdaságinformatikus",
+          "code": "MNGINF24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "gazdasági-viselkedéselemzés",
+          "code": "MNGAVI24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 94
+        },
+        {
+          "level": "mesterképzés",
+          "name": "közgazdálkodás és közpolitika",
+          "code": "MNKGKP24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "közgazdasági elemző",
+          "code": "MNKOZE24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "marketing",
+          "code": "MNMARK24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 96
+        },
+        {
+          "level": "mesterképzés",
+          "name": "marketingstratégia és - innováció",
+          "code": "MNMAIN24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "nemzetközi gazdaság és gazdálkodás",
+          "code": "MNNGAZ24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "nemzetközi számvitel és könyvvizsgálat",
+          "code": "MNNSZV24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "pénzügy",
+          "code": "MNPENZ24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 100
+        },
+        {
+          "level": "mesterképzés",
+          "name": "politikai gazdaságtan",
+          "code": "MNPOGA24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 92
+        },
+        {
+          "level": "mesterképzés",
+          "name": "vállalkozásfejlesztés",
+          "code": "MNVAFE24MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 97
+        },
+        {
+          "level": "mesterképzés",
+          "name": "vezetés és szervezés",
+          "code": "MNVESZ24ABP",
+          "schedule": "Nappali",
+          "language": "angol",
+          "scholarship_ratio": 95
+        },
+        {
+          "level": "mesterképzés",
+          "name": "vezetés és szervezés",
+          "code": "MNVESZ24MBP",
+          "schedule": "Nappali",
+          "language": "magyar",
+          "scholarship_ratio": 98
+        }
+      ]
+    }
+  ]
+}
