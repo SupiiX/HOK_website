@@ -105,7 +105,6 @@
       const isNext = event.id === nextEventId;
       const category = getCategoryById(event.category);
       const categoryColor = category ? category.color : '#666';
-      const categoryName = category ? (lang === 'en' ? category.nameEn : category.name) : '';
 
       // Címek és szövegek nyelvesítve
       const title = lang === 'en' ? event.titleEn : event.title;
@@ -117,11 +116,6 @@
       if (event.endDate) {
         dateDisplay += ' - ' + formatDate(event.endDate);
       }
-
-      // Lezajlott címke
-      const pastBadge = status === 'past'
-        ? `<span class="event-past-badge">${lang === 'en' ? 'COMPLETED' : 'LEZAJLOTT'}</span>`
-        : '';
 
       // Kör típusa: teli (●) ha következő, különben üres (○)
       const circleClass = isNext ? 'timeline-circle-filled' : 'timeline-circle-empty';
@@ -142,14 +136,10 @@
               ${linkStart}
               <span class="event-date">${dateDisplay}</span>
               <span class="event-title-text"> - ${title}</span>
-              ${pastBadge}
               ${linkEnd}
             </div>
             ${description ? `<div class="event-description">${description}</div>` : ''}
-            <div class="event-meta">
-              <span class="event-category" style="color: ${categoryColor};">${categoryName}</span>
-              ${location ? `<span class="event-location">📍 ${location}</span>` : ''}
-            </div>
+            ${location ? `<div class="event-meta"><span class="event-location">📍 ${location}</span></div>` : ''}
           </div>
         </div>
       `;
