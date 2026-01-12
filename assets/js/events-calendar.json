@@ -1,0 +1,147 @@
+{
+  "semester": {
+    "id": "2024-osz",
+    "name": "2024 Őszi félév",
+    "nameEn": "2024 Fall Semester",
+    "startDate": "2024-09-01",
+    "endDate": "2025-01-31"
+  },
+  "categories": [
+    {
+      "id": "tanulmanyi",
+      "name": "Tanulmányi",
+      "nameEn": "Academic",
+      "color": "#d6394c"
+    },
+    {
+      "id": "bulik",
+      "name": "Bulik/Szórakozás",
+      "nameEn": "Parties/Entertainment",
+      "color": "#28a745"
+    },
+    {
+      "id": "sport",
+      "name": "Sport",
+      "nameEn": "Sports",
+      "color": "#007bff"
+    },
+    {
+      "id": "adminisztrativ",
+      "name": "Adminisztratív",
+      "nameEn": "Administrative",
+      "color": "#ffc107"
+    },
+    {
+      "id": "egyeb",
+      "name": "Egyéb",
+      "nameEn": "Other",
+      "color": "#6f42c1"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Gólyahét",
+      "titleEn": "Freshmen Week",
+      "date": "2024-09-02",
+      "endDate": "2024-09-06",
+      "category": "bulik",
+      "description": "Elsőévesek beilleszkedési héte, ismerkedés, programok",
+      "descriptionEn": "Integration week for first-year students, meet & greet, programs",
+      "location": "Corvinus kampusz",
+      "locationEn": "Corvinus campus",
+      "link": null
+    },
+    {
+      "id": 2,
+      "title": "Corvinus Szemeszternyitó",
+      "titleEn": "Corvinus Season Opening",
+      "date": "2024-09-18",
+      "endDate": null,
+      "category": "bulik",
+      "description": "Az őszi félév nagy nyitóbuija",
+      "descriptionEn": "The big opening party of the fall semester",
+      "location": "DOJO boutique club",
+      "locationEn": "DOJO boutique club",
+      "link": null
+    },
+    {
+      "id": 3,
+      "title": "Ösztöndíj pályázat beadási határidő",
+      "titleEn": "Scholarship application deadline",
+      "date": "2024-10-15",
+      "endDate": null,
+      "category": "tanulmanyi",
+      "description": "Corvinus teljesítmény ösztöndíj pályázat leadási határideje",
+      "descriptionEn": "Corvinus performance scholarship application deadline",
+      "location": "Online",
+      "locationEn": "Online",
+      "link": "#osztondij"
+    },
+    {
+      "id": 4,
+      "title": "Sporthét",
+      "titleEn": "Sports Week",
+      "date": "2024-10-21",
+      "endDate": "2024-10-25",
+      "category": "sport",
+      "description": "Corvinus hagyományos sportrendezvénye",
+      "descriptionEn": "Corvinus traditional sports event",
+      "location": "Corvinus sportlétesítmények",
+      "locationEn": "Corvinus sports facilities",
+      "link": null
+    },
+    {
+      "id": 5,
+      "title": "Beiratkozás tavaszi félévre",
+      "titleEn": "Spring semester registration",
+      "date": "2024-11-15",
+      "endDate": "2024-11-30",
+      "category": "adminisztrativ",
+      "description": "Tavaszi félév tárgyainak felvétele",
+      "descriptionEn": "Course registration for spring semester",
+      "location": "Neptun",
+      "locationEn": "Neptun",
+      "link": null
+    },
+    {
+      "id": 6,
+      "title": "Tavaszi Bál",
+      "titleEn": "Spring Ball",
+      "date": "2024-11-20",
+      "endDate": null,
+      "category": "bulik",
+      "description": "A HÖK hagyományos Tavaszi bálja",
+      "descriptionEn": "HÖK's traditional Spring Ball",
+      "location": "DOJO boutique club",
+      "locationEn": "DOJO boutique club",
+      "link": null
+    },
+    {
+      "id": 7,
+      "title": "Vizsgaidőszak kezdete",
+      "titleEn": "Exam period starts",
+      "date": "2025-01-06",
+      "endDate": null,
+      "category": "tanulmanyi",
+      "description": "Őszi félév vizsgaidőszakának kezdete",
+      "descriptionEn": "Start of fall semester exam period",
+      "location": "Corvinus",
+      "locationEn": "Corvinus",
+      "link": null
+    },
+    {
+      "id": 8,
+      "title": "Vizsgaidőszak vége",
+      "titleEn": "Exam period ends",
+      "date": "2025-01-31",
+      "endDate": null,
+      "category": "tanulmanyi",
+      "description": "Őszi félév vizsgaidőszakának vége",
+      "descriptionEn": "End of fall semester exam period",
+      "location": "Corvinus",
+      "locationEn": "Corvinus",
+      "link": null
+    }
+  ]
+}

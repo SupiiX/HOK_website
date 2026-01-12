@@ -1660,3 +1660,270 @@ section {
 #footer .credits {
   font-size: 13px;
 }
+
+/*--------------------------------------------------------------
+# Events Calendar Timeline
+--------------------------------------------------------------*/
+
+/* Események szekció */
+.events-calendar-section {
+  margin-bottom: 60px;
+}
+
+.events-calendar-section h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #552832;
+  margin-bottom: 20px;
+  font-family: "Argentum Sans Bold", sans-serif;
+}
+
+/* Szűrők */
+.events-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 30px;
+  padding: 20px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.event-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  padding: 8px 12px;
+  background: white;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  user-select: none;
+}
+
+.event-filter-label:hover {
+  border-color: #d6394c;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.event-filter-checkbox {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+}
+
+.filter-color-indicator {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.filter-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+}
+
+/* Timeline konténer */
+.events-timeline-container {
+  position: relative;
+  padding-left: 0;
+}
+
+/* Egyedi timeline esemény */
+.timeline-event {
+  display: flex;
+  margin-bottom: 40px;
+  position: relative;
+}
+
+.timeline-event:last-child {
+  margin-bottom: 0;
+}
+
+/* Bal oldali marker (kör + vonal) */
+.timeline-marker {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  min-width: 30px;
+}
+
+/* Kör (○ vagy ●) */
+.timeline-circle-empty,
+.timeline-circle-filled {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 3px solid;
+  flex-shrink: 0;
+  z-index: 2;
+  background: white;
+  transition: all 0.3s ease;
+}
+
+.timeline-circle-filled {
+  /* Teli kör - következő esemény */
+  border-width: 8px;
+}
+
+/* Függőleges vonal */
+.timeline-line {
+  width: 3px;
+  flex: 1;
+  min-height: 40px;
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+/* Jobb oldali tartalom */
+.timeline-content {
+  flex: 1;
+  padding: 10px 20px;
+  background: white;
+  border-radius: 8px;
+  border-left: 4px solid #e0e0e0;
+  transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateX(5px);
+}
+
+/* Dátum és cím */
+.event-date-title {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.event-date {
+  font-weight: 700;
+  color: #552832;
+  font-size: 16px;
+  font-family: "Argentum Sans Bold", sans-serif;
+}
+
+.event-title-text {
+  font-weight: 600;
+  color: #333;
+  font-size: 16px;
+}
+
+/* Link stílus */
+.event-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.event-link:hover {
+  color: #d6394c;
+}
+
+/* LEZAJLOTT címke */
+.event-past-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  background: #6c757d;
+  color: white;
+  font-size: 11px;
+  font-weight: 600;
+  border-radius: 4px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Leírás */
+.event-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 8px;
+}
+
+/* Meta információk */
+.event-meta {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 13px;
+}
+
+.event-category {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 12px;
+}
+
+.event-location {
+  color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .events-calendar-section h3 {
+    font-size: 24px;
+  }
+
+  .events-filter-container {
+    gap: 10px;
+    padding: 15px;
+  }
+
+  .event-filter-label {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .timeline-marker {
+    margin-right: 15px;
+    min-width: 24px;
+  }
+
+  .timeline-circle-empty,
+  .timeline-circle-filled {
+    width: 12px;
+    height: 12px;
+    border-width: 2px;
+  }
+
+  .timeline-circle-filled {
+    border-width: 6px;
+  }
+
+  .timeline-line {
+    width: 2px;
+  }
+
+  .timeline-content {
+    padding: 12px 15px;
+  }
+
+  .event-date,
+  .event-title-text {
+    font-size: 14px;
+  }
+
+  .event-description {
+    font-size: 13px;
+  }
+
+  .event-meta {
+    font-size: 12px;
+  }
+}
