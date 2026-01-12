@@ -1019,7 +1019,7 @@
               document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
                 tab.addEventListener('shown.bs.tab', (e) => {
                   if (e.target.getAttribute('href') === '#tab-4') {
-                    // Check if calculator sub-tab is active
+                    // Ellenőrzi hogy a kalkulátor sub-tab aktív-e
                     const calcRadio = document.getElementById('tools-calculator');
                     if (calcRadio && calcRadio.checked) {
                       initCalculatorOnce();
@@ -1028,7 +1028,7 @@
                 });
               });
 
-              // Listen to tools sub-tab changes
+              // Eszközök sub-tab változásának figyelése
               document.addEventListener('DOMContentLoaded', () => {
                 const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
                 toolsRadios.forEach(radio => {
@@ -1161,11 +1161,11 @@
                 const statsRadio = document.getElementById('tools-stats');
                 if (statsRadio) {
                   statsRadio.checked = true;
-                  statsRadio.dispatchEvent(new Event('change')); // Trigger sub-tab switch
+                  statsRadio.dispatchEvent(new Event('change')); // Sub-tab váltás triggerelése
 
                   // Chart inicializálás és scroll
                   requestAnimationFrame(() => {
-                    // Corvinus chart init (corvinus-scholarship.js)
+                    // Corvinus chart inicializálása (corvinus-scholarship.js)
                     if (window.initCorvinusChart) {
                       window.initCorvinusChart();
                     }
@@ -1215,10 +1215,10 @@
             }
 
             /**
-             * Event listener-ek regisztrálása (modern, nem inline onclick)
+             * Event listener-ek regisztrálása (modern módszer, nem inline onclick)
              *
-             * UX best practice:
-             * - Inline onclick helyett addEventListener
+             * UX legjobb gyakorlatok:
+             * - Inline onclick helyett addEventListener használata
              * - Jobb karbantarthatóság
              * - Könnyebb tesztelhetőség
              */
