@@ -1046,11 +1046,6 @@
 
           <script>
             /**
-             * Sub-tab switching logika
-             *
-             * Az ösztöndíj szekció 4 fő tab-ja mindegyikében van 2-3 sub-tab custom toggle switchekkel.
-             * Ez a script kezeli a sub-tab váltást (d-none osztály toggle-lésével).
-             *
              * Struktúra:
              * - Tab 1 (Teljesítményalapú): Tanulmányi / Corvinus
              * - Tab 2 (Szociális): Rendszeres / Rendkívüli / Kollégiumi
@@ -1081,14 +1076,6 @@
                 });
               }
 
-              /**
-               * Tab 2: Szociális ösztöndíj
-               * - Rendszeres: Havi rendszeres szociális támogatás
-               * - Rendkívüli: Egyszeri, rendkívüli segély
-               * - Kollégiumi: Kollégiumi elhelyezés támogatása
-               *
-               * 3-option toggle: először összes content-et elrejtjük, majd a kiválasztottat megjelenítjük
-               */
               const socialRadios = document.querySelectorAll('input[name="social-type"]');
               const rendszeresContent = document.getElementById('rendszeres-content');
               const rendkivuliContent = document.getElementById('rendkivuli-content');
@@ -1114,11 +1101,6 @@
                 });
               }
 
-              /**
-               * Tab 4: Eszközök
-               * - Kalkulátor: Ösztöndíj átlag kalkulátor (30 kredites súlyozott átlag)
-               * - Statisztikák: Corvinus ösztöndíj chart + csoport átlagok
-               */
               const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
               const calculatorContent = document.getElementById('calculator-content');
               const statsContent = document.getElementById('stats-content');
@@ -1138,18 +1120,6 @@
               }
             });
 
-            /**
-             * Navigáció a Corvinus ösztöndíj chart-hoz
-             *
-             * Használat: Tab 1 (Corvinus ösztöndíj info kártya) gombja hívja
-             * Működés:
-             * 1. Tab 4 (Eszközök) aktiválása
-             * 2. Statisztikák sub-tab aktiválása
-             * 3. Chart inicializálása (ha még nem történt meg)
-             * 4. Smooth scroll a chart szekcióhoz
-             *
-             * requestAnimationFrame: smooth UX, DOM update után futnak a műveletek
-             */
             function navigateToCorvinusChart() {
               // Tab 4 aktiválása Bootstrap Tab API-val
               const tab4Link = document.querySelector('a[href="#tab-4"]');
@@ -1182,21 +1152,6 @@
               });
             }
 
-            /**
-             * Navigáció ösztöndíj tab-okhoz (header menu dropdown)
-             *
-             * @param {string} tabId - Tab ID (pl. "tab-1", "tab-2", ...)
-             *
-             * Használat: Header menü "Ösztöndíjak" dropdown menüpontjai
-             * - Teljesítményalapú → tab-1
-             * - Szociális → tab-2
-             * - Közéleti → tab-3
-             * - Kalkulátor & Eszközök → tab-4
-             *
-             * Működés:
-             * 1. Smooth scroll az ösztöndíj szekcióhoz
-             * 2. Kiválasztott tab aktiválása
-             */
             function navigateToScholarshipTab(tabId) {
               // Scroll az ösztöndíj szekcióhoz
               const scholarshipSection = document.getElementById('osztondij');
@@ -1214,19 +1169,7 @@
               });
             }
 
-            /**
-             * Event listener-ek regisztrálása (modern módszer, nem inline onclick)
-             *
-             * UX legjobb gyakorlatok:
-             * - Inline onclick helyett addEventListener használata
-             * - Jobb karbantarthatóság
-             * - Könnyebb tesztelhetőség
-             */
             document.addEventListener('DOMContentLoaded', function() {
-              /**
-               * Header menü navigáció
-               * Elemek: .scholarship-nav-link (data-tab attribútummal)
-               */
               const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
               scholarshipNavLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
@@ -1238,10 +1181,6 @@
                 });
               });
 
-              /**
-               * Corvinus chart navigációs gomb
-               * Elem: #corvinus-chart-nav-btn (Tab 1, Corvinus info kártya)
-               */
               const corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
               if (corvinusChartNavBtn) {
                 corvinusChartNavBtn.addEventListener('click', function(e) {

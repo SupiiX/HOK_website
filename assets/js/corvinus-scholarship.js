@@ -1,12 +1,4 @@
-/**
- * Corvinus ösztöndíj statisztikák - Chart.js integráció
- *
- * Ösztöndíjas helyek arányának megjelenítése szakonként és képzési szintenként (2020-2024)
- * - Alapképzés és mesterképzés szűrés
- * - Dinamikus szaklista generálás
- * - Interaktív Chart.js oszlopdiagram
- * - Loading state és error handling
- */
+
 (function () {
   'use strict';
 
@@ -24,12 +16,6 @@
     loadingSpinner: null,        // Loading spinner
     errorMessage: null           // Hibaüzenet elem
   };
-
-  /**
-   * Loading state megjelenítése
-   * - Spinner láthatóvá tétele
-   * - Kontrollok (dropdown, togglek) letiltása
-   */
   function showLoading() {
     if (elements.loadingSpinner) {
       elements.loadingSpinner.classList.remove('d-none');
@@ -42,11 +28,6 @@
     }
   }
 
-  /**
-   * Loading state elrejtése
-   * - Spinner elrejtése
-   * - Kontrollok újra engedélyezése
-   */
   function hideLoading() {
     if (elements.loadingSpinner) {
       elements.loadingSpinner.classList.add('d-none');
@@ -59,10 +40,6 @@
     }
   }
 
-  /**
-   * Hibaüzenet megjelenítése
-   * @param {string} message - Felhasználóbarát hibaüzenet
-   */
   function showError(message) {
     if (elements.errorMessage) {
       elements.errorMessage.textContent = message;
@@ -70,22 +47,11 @@
     }
   }
 
-  /**
-   * Hibaüzenet elrejtése
-   */
   function hideError() {
     if (elements.errorMessage) {
       elements.errorMessage.classList.add('d-none');
     }
   }
-
-  /**
-   * Inicializálás
-   * - Chart.js library ellenőrzés
-   * - DOM elemek referálása
-   * - JSON adatok betöltése (corvinus-scholarship.json)
-   * - Event listener-ek regisztrálása
-   */
   async function init() {
     if (initialized) return;
     initialized = true;
@@ -152,32 +118,17 @@
       showError(userMessage);
     }
   }
-
-  /**
-   * Képzési szint váltás kezelése (alapképzés ↔ mesterképzés)
-   * @param {Event} event - Radio button change event
-   */
   function handleLevelChange(event) {
     const selectedLevel = event.target.value;
     updateCourseList(selectedLevel);
 
-    // Meglévő chart törlése (új szint → új szakok)
+    // Meglévő chart törlése (új szint új szakok)
     if (currentChart) {
       currentChart.destroy();
       currentChart = null;
     }
     elements.infoBox.classList.add('d-none');
   }
-
-  /**
-   * Szaklista frissítése a kiválasztott képzési szint alapján
-   * @param {string} level - "alapképzés" vagy "mesterképzés"
-   *
-   * Működés:
-   * 1. Összegyűjti az összes szakot az adott szintről (duplikátumok kiszűrése Map-pel)
-   * 2. ABC sorrendbe rendezi (magyar locale)
-   * 3. Feltölti a dropdown-t
-   */
   function updateCourseList(level) {
     // Map használata: szak név alapján deduplikálás
     const courses = new Map();
@@ -209,15 +160,6 @@
     });
   }
 
-  /**
-   * Szakválasztás kezelése
-   * @param {Event} event - Select change event
-   *
-   * Amikor a felhasználó kiválaszt egy szakot:
-   * 1. Összegyűjti az adatokat 2020-2024 periódusokból
-   * 2. Chart.js oszlopdiagramot generál
-   * 3. Smooth UX: requestAnimationFrame + loading state
-   */
   function handleCourseChange(event) {
     const courseName = event.target.value;
 
@@ -246,17 +188,6 @@
     });
   }
 
-  /**
-   * Chart adatok előkészítése
-   * @param {string} courseName - Szak neve (pl. "gazdálkodási és menedzsment")
-   * @param {string} level - Képzési szint
-   * @returns {Object} { labels: ["2020/21", "2021/22", ...], values: [80, 85, ...] }
-   *
-   * Működés:
-   * - Végigmegy az összes perióduson (2020-2024)
-   * - Megkeresi az adott szakot minden évben
-   * - Kiszedi az ösztöndíjas helyek arányát (scholarship_ratio)
-   */
   function prepareChartData(courseName, level) {
     const periods = [];
     const scholarshipRatios = [];
@@ -267,7 +198,7 @@
       );
 
       if (course) {
-        // Periódus formázás: "2020/2021/1" → "2020/21"
+        // Periódus formázás: "2020/2021/1"  "2020/21"
         const periodLabel = period.period.split('/').slice(0, 2).join('/');
         periods.push(periodLabel);
         scholarshipRatios.push(course.scholarship_ratio);
@@ -280,17 +211,6 @@
     };
   }
 
-  /**
-   * Chart.js oszlopdiagram megjelenítése
-   * @param {Object} data - Chart adatok (labels, values)
-   * @param {string} courseName - Szak neve (chart title)
-   *
-   * Konfigurálás:
-   * - Bar chart (oszlopdiagram)
-   * - Corvinus brand color (#d6394c)
-   * - Responsive + tooltipek
-   * - Y tengely: 0-100% skála
-   */
   function renderChart(data, courseName) {
     // Meglévő chart törlése (destroy() memória felszabadítás)
     if (currentChart) {
@@ -361,17 +281,6 @@
     });
   }
 
-  /**
-   * Event listener-ek inicializálása
-   *
-   * Lazy loading: chart csak akkor inicializálódik amikor:
-   * 1. Tab 4 (Eszközök) aktiválódik ÉS
-   * 2. Statisztikák sub-tab aktív
-   *
-   * Előnyök:
-   * - Gyorsabb oldalbetöltés (nem töltődik azonnal a Chart.js)
-   * - Jobb performance (csak amikor szükséges)
-   */
   document.addEventListener('DOMContentLoaded', function() {
     const tabLinks = document.querySelectorAll('[data-bs-toggle="tab"]');
 
