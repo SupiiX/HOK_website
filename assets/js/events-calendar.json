@@ -30,12 +30,6 @@
       "name": "Adminisztratív",
       "nameEn": "Administrative",
       "color": "#ffc107"
-    },
-    {
-      "id": "egyeb",
-      "name": "Egyéb",
-      "nameEn": "Other",
-      "color": "#6f42c1"
     }
   ],
   "events": [

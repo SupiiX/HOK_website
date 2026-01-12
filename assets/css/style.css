@@ -1733,10 +1733,23 @@ section {
   padding-left: 0;
 }
 
+/* Egybefüggő függőleges vonal a teljes timeline mentén */
+.events-timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 23px;
+  top: 8px;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(to bottom, #d6394c 0%, #28a745 30%, #007bff 65%, #ffc107 100%);
+  border-radius: 3px;
+  opacity: 0.25;
+}
+
 /* Egyedi timeline esemény */
 .timeline-event {
   display: flex;
-  margin-bottom: 40px;
+  margin-bottom: 35px;
   position: relative;
 }
 
@@ -1744,56 +1757,72 @@ section {
   margin-bottom: 0;
 }
 
-/* Bal oldali marker (kör + vonal) */
+/* Bal oldali marker (csak kör, vonal a konténeren van) */
 .timeline-marker {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-right: 20px;
+  margin-right: 25px;
   min-width: 30px;
+  z-index: 2;
 }
 
 /* Kör (○ vagy ●) */
 .timeline-circle-empty,
 .timeline-circle-filled {
-  width: 16px;
-  height: 16px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
-  border: 3px solid;
+  border: 4px solid;
   flex-shrink: 0;
-  z-index: 2;
+  z-index: 3;
   background: white;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.timeline-circle-empty:hover {
+  transform: scale(1.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
 }
 
 .timeline-circle-filled {
   /* Teli kör - következő esemény */
-  border-width: 8px;
+  width: 24px;
+  height: 24px;
+  border-width: 6px;
+  box-shadow: 0 4px 16px rgba(214, 57, 76, 0.4);
+  animation: pulse 2s ease-in-out infinite;
 }
 
-/* Függőleges vonal */
-.timeline-line {
-  width: 3px;
-  flex: 1;
-  min-height: 40px;
-  margin-top: 4px;
-  border-radius: 2px;
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 4px 16px rgba(214, 57, 76, 0.4);
+  }
+  50% {
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(214, 57, 76, 0.6);
+  }
 }
 
 /* Jobb oldali tartalom */
 .timeline-content {
   flex: 1;
-  padding: 10px 20px;
+  padding: 15px 20px;
   background: white;
-  border-radius: 8px;
+  border-radius: 10px;
   border-left: 4px solid #e0e0e0;
   transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 .timeline-content:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transform: translateX(5px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  transform: translateX(8px);
+  border-left-color: currentColor;
 }
 
 /* Dátum és cím */
@@ -1870,6 +1899,11 @@ section {
     font-size: 13px;
   }
 
+  /* Mobil timeline vonal pozíció */
+  .events-timeline-container::before {
+    left: 17px;
+  }
+
   .timeline-marker {
     margin-right: 15px;
     min-width: 24px;
@@ -1877,17 +1911,15 @@ section {
 
   .timeline-circle-empty,
   .timeline-circle-filled {
-    width: 12px;
-    height: 12px;
-    border-width: 2px;
+    width: 14px;
+    height: 14px;
+    border-width: 3px;
   }
 
   .timeline-circle-filled {
-    border-width: 6px;
-  }
-
-  .timeline-line {
-    width: 2px;
+    width: 18px;
+    height: 18px;
+    border-width: 5px;
   }
 
   .timeline-content {

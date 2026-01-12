@@ -129,7 +129,6 @@
         <div class="timeline-event" data-category="${event.category}" data-status="${status}">
           <div class="timeline-marker">
             <div class="timeline-circle ${circleClass}" style="border-color: ${categoryColor}; background-color: ${isNext ? categoryColor : 'transparent'};"></div>
-            ${index < filteredEvents.length - 1 ? `<div class="timeline-line" style="background-color: ${categoryColor};"></div>` : ''}
           </div>
           <div class="timeline-content">
             <div class="event-date-title">
