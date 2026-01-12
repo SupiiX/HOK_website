@@ -50,10 +50,10 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Scholarships</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Scholarship datas</a></li>
-              <li><a href="#">Public tender</a></li>
-              <li><a href="#">Calculator</a></li>
-
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Performance-based</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Social</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Public Affairs</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Calculator & Tools</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Useful links</span> <i
@@ -207,147 +207,1207 @@
         <ul class="nav nav-tabs row d-flex">
           <li class="nav-item col-3" data-aos="zoom-in">
             <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
-              <i class="ri-gps-line"></i>
-              <h4 class="d-none d-lg-block">Scholarship data</h4>
+              <i class="ri-trophy-line"></i>
+              <h4 class="d-none d-lg-block">Performance-based</h4>
             </a>
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="100">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-              <i class="ri-body-scan-line"></i>
-              <h4 class="d-none d-lg-block">Public tender</h4>
+              <i class="ri-hand-heart-line"></i>
+              <h4 class="d-none d-lg-block">Social</h4>
             </a>
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
-              <i class="ri-sun-line"></i>
-              <h4 class="d-none d-lg-block">Scholarship calculator</h4>
+              <i class="ri-community-line"></i>
+              <h4 class="d-none d-lg-block">Public Affairs</h4>
             </a>
           </li>
           <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
-              <i class="ri-store-line"></i>
-              <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
+              <i class="ri-tools-line"></i>
+              <h4 class="d-none d-lg-block">Tools</h4>
             </a>
           </li>
         </ul>
 
         <div class="tab-content" data-aos="fade-up">
+          <!-- TAB 1: Performance-based scholarships -->
           <div class="tab-pane active show" id="tab-1">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Faculty averages</h3>
-                <p class="fst-italic">
-                  On this page, we have collected the most important information about study performance indicators.
-                </p>
-                <div class="wrap">
-                  <div class="holder">
-                    <div class="bar cf" data-percent="4.93"><span class="label">BSc 1</span></div>
-                    <div class="bar cf" data-percent="4.21"><span class="label light">BSc 2</span></div>
-                    <div class="bar cf" data-percent="4.50"><span class="label">BSc 3</span></div>
-                    <div class="bar cf" data-percent="3.92"><span class="label light">Bsc 4</span></div>
-                    <div class="bar cf" data-percent="4.87"><span class="label">BSc 5</span></div>
-                    <div class="bar cf" data-percent="3.95"><span class="label light">BSc 6</span></div>
-                    <div class="bar cf" data-percent="4.56"><span class="label">BSc 7</span></div>
-                    
+            <div class="row g-4 py-4">
+              <div class="col-12">
+                <!-- Sub-toggle -->
+                <div class="scholarship-sub-toggle-wrapper mb-4">
+                  <input type="radio" name="performance-type" id="performance-tanulmany" value="tanulmany" checked>
+                  <input type="radio" name="performance-type" id="performance-corvinus" value="corvinus">
+                  <label for="performance-tanulmany" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
+                    <span>Academic Scholarship</span>
+                  </label>
+                  <label for="performance-corvinus" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
+                    <span>Corvinus Scholarship</span>
+                  </label>
+                  <div class="scholarship-sub-toggle-slider"></div>
+                </div>
+
+                <!-- Academic scholarship content -->
+                <div id="tanulmany-content" class="scholarship-content-card">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-book-line"></i> Academic Scholarship</h3>
+                      <p class="lead">
+                        Academic scholarship is financial support for students who achieve excellent academic results.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Active full-time student status</li>
+                          <li>Minimum of 23 credits completed in courses included in the scholarship average</li>
+                          <li>Minimum GPA of 3.80</li>
+                          <li>Not having exceeded the eligibility period assigned to the program duration</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calculator-line"></i> How it is calculated:</h5>
+                        <p>
+                          The scholarship amount is determined based on ranking, which is calculated from the academic average and completed credits.
+                          Average calculation: <code>Σ(credit × grade) / total credits</code>
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/#accordion-item-1486"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img/features-1.png" alt="Academic scholarship" class="img-fluid rounded-3">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Corvinus scholarship content -->
+                <div id="corvinus-content" class="scholarship-content-card d-none">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-award-line"></i> Corvinus Scholarship</h3>
+                      <p class="lead">
+                        The Corvinus scholarship recognizes students who achieve the most outstanding academic results.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Participation in full-time studies</li>
+                          <li>Exceptional academic results (typically the best students of the program)</li>
+                          <li>Automatic award based on program ranking</li>
+                          <li>Additional specific requirements may vary by program</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-information-line"></i> Important information:</h5>
+                        <p>
+                          The number and proportion of Corvinus scholarship places vary by program. Scholarship recipients
+                          are automatically placed at the top of the ranking based on their academic performance.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                        <button id="corvinus-chart-nav-btn" class="btn btn-outline-primary">
+                          <i class="ri-bar-chart-box-line"></i> Corvinus scholarship statistics
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img/features-1.png" alt="Corvinus scholarship" class="img-fluid rounded-3">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+          <!-- TAB 2: Social scholarships -->
+          <div class="tab-pane" id="tab-2">
+            <div class="row g-4 py-4">
+              <div class="col-12">
+                <!-- Sub-toggle -->
+                <div class="scholarship-sub-toggle-wrapper mb-4" style="max-width: 600px;">
+                  <input type="radio" name="social-type" id="social-rendszeres" value="rendszeres" checked>
+                  <input type="radio" name="social-type" id="social-rendkivuli" value="rendkivuli">
+                  <input type="radio" name="social-type" id="social-kollegiumi" value="kollegiumi">
+                  <label for="social-rendszeres" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-left">
+                    <span>Regular</span>
+                  </label>
+                  <label for="social-rendkivuli" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-middle">
+                    <span>Extraordinary</span>
+                  </label>
+                  <label for="social-kollegiumi" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-right">
+                    <span>Dormitory</span>
+                  </label>
+                  <div class="scholarship-sub-toggle-slider-triple"></div>
+                </div>
+
+                <!-- Regular social content -->
+                <div id="rendszeres-content" class="scholarship-content-card">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-hand-heart-line"></i> Regular Social Scholarship</h3>
+                      <p class="lead">
+                        Regular social scholarship supports students in difficult financial situations.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Active student status</li>
+                          <li>Proof of social need</li>
+                          <li>Submission of income and property statement</li>
+                          <li>Not having exceeded the eligibility period assigned to the program duration</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calendar-line"></i> Application:</h5>
+                        <p>
+                          Applications for regular social scholarship can be submitted each semester by the specified deadlines.
+                          Required documents must be submitted through the student portal.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/szocialis-alapu-osztondijak/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img/features-2.png" alt="Regular social" class="img-fluid rounded-3">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Extraordinary social content -->
+                <div id="rendkivuli-content" class="scholarship-content-card d-none">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-alert-line"></i> Extraordinary Social Scholarship</h3>
+                      <p class="lead">
+                        Extraordinary social scholarship provides assistance in unexpected, exceptional life situations.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Unexpected, exceptional life situation (e.g., death of family member, serious illness, natural disaster)</li>
+                          <li>Active student status</li>
+                          <li>Documentation of the extraordinary event</li>
+                          <li>Justification in the application</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calendar-line"></i> Application:</h5>
+                        <p>
+                          Applications for extraordinary social scholarship can be submitted at any time after the event occurs.
+                          Applications are evaluated on a case-by-case basis.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/szocialis-alapu-osztondijak/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img/features-2.png" alt="Extraordinary social" class="img-fluid rounded-3">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Dormitory social content -->
+                <div id="kollegiumi-content" class="scholarship-content-card d-none">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-home-heart-line"></i> Dormitory Social Scholarship</h3>
+                      <p class="lead">
+                        Dormitory social scholarship supports students living in dormitories who are in financial need.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Dormitory accommodation</li>
+                          <li>Proof of social need</li>
+                          <li>Submission of income and property statement</li>
+                          <li>Active student status</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calendar-line"></i> Application:</h5>
+                        <p>
+                          Applications for dormitory social scholarship can be submitted during the dormitory admission period or each semester.
+                          The scholarship amount is reflected as a reduction in dormitory fees.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/szocialis-alapu-osztondijak/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img/features-2.png" alt="Dormitory social" class="img-fluid rounded-3">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Public Affairs scholarship -->
+          <div class="tab-pane" id="tab-3">
+            <div class="row g-4 py-4">
+              <div class="col-12">
+                <div class="scholarship-content-card">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-community-line"></i> Public Affairs Scholarship</h3>
+                      <p class="lead">
+                        Public affairs scholarship recognizes and supports students who actively participate in university public life.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Active student status</li>
+                          <li>Regular, active participation in university public life (Student Union, residential college work, university organizations, etc.)</li>
+                          <li>Proof of minimum monthly time commitment</li>
+                          <li>Documentation of public affairs activities</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-file-list-line"></i> Application process:</h5>
+                        <p>
+                          Applications for public affairs scholarship can be submitted each semester. The application must detail the public affairs activities,
+                          work performed, and time commitment. Applications are evaluated by a committee.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-information-line"></i> Important information:</h5>
+                        <p>
+                          The purpose of the public affairs scholarship is to recognize active participation in building the university community.
+                          The scholarship amount may vary depending on the quantity and quality of work performed.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                          <i class="ri-file-edit-line"></i> Application form
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img/features-3.png" alt="Public affairs scholarship" class="img-fluid rounded-3">
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-1.png" alt="" class="img-fluid">
-              </div>
             </div>
           </div>
-          <div class="tab-pane" id="tab-2">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
-                  </li>
-                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a.
-                    Ipsum neque dolor voluptate nisi sed.</li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                    aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla
-                    pariatur.</li>
-                </ul>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-2.png" alt="" class="img-fluid">
-              </div>
-            </div>
+
+          <style>
+            .subject-row {
+              border: 1px solid rgba(0, 0, 0, .08);
+              border-radius: .75rem;
+              padding: .75rem;
+              background: #fff;
+            }
+
+            .subject-row .form-label {
+              font-weight: 600;
+            }
+
+            .subject-row .remove-btn {
+              visibility: hidden;
+            }
+
+            .subject-row:hover .remove-btn {
+              visibility: visible;
+            }
+
+            /* Corvinus Toggle Switch - Modern 3D Design */
+            .corvinus-toggle-wrapper {
+              position: relative;
+              width: 100%;
+              max-width: 400px;
+              margin: 0 auto;
+              height: 60px;
+              background: linear-gradient(145deg, #e6e6e6, #ffffff);
+              border-radius: 50px;
+              box-shadow:
+                8px 8px 16px rgba(0, 0, 0, 0.15),
+                -8px -8px 16px rgba(255, 255, 255, 0.7),
+                inset 0px 0px 0px rgba(0, 0, 0, 0);
+              padding: 5px;
+              display: flex;
+              align-items: center;
+              transition: all 0.3s ease;
+            }
+
+            .corvinus-toggle-wrapper input[type="radio"] {
+              display: none;
+            }
+
+            .corvinus-toggle-label {
+              flex: 1;
+              text-align: center;
+              position: relative;
+              z-index: 2;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              font-weight: 600;
+              font-size: 15px;
+              padding: 15px 10px;
+              color: #666;
+              user-select: none;
+            }
+
+            .corvinus-toggle-label span {
+              display: inline-block;
+              transition: all 0.3s ease;
+            }
+
+            .corvinus-toggle-slider {
+              position: absolute;
+              top: 5px;
+              left: 5px;
+              width: calc(50% - 5px);
+              height: calc(100% - 10px);
+              background: linear-gradient(145deg, #d6394c, #ff4d63);
+              border-radius: 50px;
+              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              box-shadow:
+                4px 4px 12px rgba(214, 57, 76, 0.4),
+                -2px -2px 8px rgba(255, 77, 99, 0.2),
+                inset 2px 2px 4px rgba(255, 255, 255, 0.3),
+                inset -2px -2px 4px rgba(0, 0, 0, 0.2);
+              z-index: 1;
+            }
+
+            #corvinus-level-alap:checked ~ .corvinus-toggle-slider {
+              left: 5px;
+            }
+
+            #corvinus-level-mester:checked ~ .corvinus-toggle-slider {
+              left: calc(50% + 0px);
+            }
+
+            #corvinus-level-alap:checked ~ .corvinus-toggle-left {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            #corvinus-level-mester:checked ~ .corvinus-toggle-right {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
+            }
+
+            .corvinus-toggle-label:active {
+              transform: scale(0.98);
+            }
+
+            /* Chart card styling */
+            .corvinus-chart-card {
+              border: none;
+              border-radius: 15px;
+              overflow: hidden;
+              background: #ffffff;
+            }
+
+            /* Mobile responsiveness */
+            @media (max-width: 768px) {
+              .corvinus-toggle-wrapper {
+                height: 55px;
+                max-width: 100%;
+              }
+
+              .corvinus-toggle-label {
+                font-size: 13px;
+                padding: 12px 8px;
+              }
+
+              .corvinus-chart-card .card-body {
+                padding: 1rem !important;
+              }
+
+              #tab-4 h3 {
+                font-size: 1.5rem;
+                text-align: center;
+              }
+
+              #tab-4 .text-muted {
+                font-size: 0.9rem;
+                text-align: center;
+              }
+            }
+
+            @media (max-width: 480px) {
+              .corvinus-toggle-wrapper {
+                height: 50px;
+              }
+
+              .corvinus-toggle-label {
+                font-size: 12px;
+                padding: 10px 5px;
+              }
+
+              .corvinus-toggle-label span {
+                display: inline-block;
+                max-width: 100%;
+              }
+            }
+
+            /* Form select styling for consistency */
+            #corvinus-course-select {
+              border-radius: 10px;
+              border: 2px solid #e6e6e6;
+              padding: 12px 16px;
+              font-size: 15px;
+              transition: all 0.3s ease;
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            #corvinus-course-select:focus {
+              border-color: #d6394c;
+              box-shadow: 0 4px 12px rgba(214, 57, 76, 0.15);
+              outline: none;
+            }
+
+            /* Alert info styling */
+            #corvinus-info {
+              border-radius: 10px;
+              border-left: 4px solid #d6394c;
+              background: linear-gradient(145deg, #fff5f6, #ffffff);
+              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+            }
+
+            /* Sub-toggle for scholarship tabs (smaller version) */
+            .scholarship-sub-toggle-wrapper {
+              position: relative;
+              width: 100%;
+              max-width: 450px;
+              margin: 0 auto;
+              height: 50px;
+              background: linear-gradient(145deg, #f0f0f0, #ffffff);
+              border-radius: 40px;
+              box-shadow:
+                6px 6px 12px rgba(0, 0, 0, 0.1),
+                -6px -6px 12px rgba(255, 255, 255, 0.7);
+              padding: 4px;
+              display: flex;
+              align-items: center;
+              transition: all 0.3s ease;
+            }
+
+            .scholarship-sub-toggle-wrapper input[type="radio"] {
+              display: none;
+            }
+
+            .scholarship-sub-toggle-label {
+              flex: 1;
+              text-align: center;
+              position: relative;
+              z-index: 2;
+              cursor: pointer;
+              transition: all 0.3s ease;
+              font-weight: 600;
+              font-size: 14px;
+              padding: 12px 8px;
+              color: #777;
+              user-select: none;
+            }
+
+            .scholarship-sub-toggle-label span {
+              display: inline-block;
+              transition: all 0.3s ease;
+            }
+
+            .scholarship-sub-toggle-slider {
+              position: absolute;
+              top: 4px;
+              left: 4px;
+              width: calc(50% - 4px);
+              height: calc(100% - 8px);
+              background: linear-gradient(145deg, #d6394c, #e84d5f);
+              border-radius: 40px;
+              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              box-shadow:
+                3px 3px 8px rgba(214, 57, 76, 0.3),
+                -2px -2px 6px rgba(255, 77, 99, 0.2);
+              z-index: 1;
+            }
+
+            /* Two-option toggles */
+            #performance-tanulmany:checked ~ .scholarship-sub-toggle-slider,
+            #tools-calculator:checked ~ .scholarship-sub-toggle-slider {
+              left: 4px;
+            }
+
+            #performance-corvinus:checked ~ .scholarship-sub-toggle-slider,
+            #tools-stats:checked ~ .scholarship-sub-toggle-slider {
+              left: calc(50% + 0px);
+            }
+
+            #performance-tanulmany:checked ~ .scholarship-sub-toggle-left,
+            #tools-calculator:checked ~ .scholarship-sub-toggle-left {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            #performance-corvinus:checked ~ .scholarship-sub-toggle-right,
+            #tools-stats:checked ~ .scholarship-sub-toggle-right {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            /* Three-option toggle (for social) */
+            .scholarship-sub-toggle-slider-triple {
+              position: absolute;
+              top: 4px;
+              left: 4px;
+              width: calc(33.333% - 4px);
+              height: calc(100% - 8px);
+              background: linear-gradient(145deg, #d6394c, #e84d5f);
+              border-radius: 40px;
+              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+              box-shadow:
+                3px 3px 8px rgba(214, 57, 76, 0.3),
+                -2px -2px 6px rgba(255, 77, 99, 0.2);
+              z-index: 1;
+            }
+
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-slider-triple {
+              left: 4px;
+            }
+
+            #social-rendkivuli:checked ~ .scholarship-sub-toggle-slider-triple {
+              left: calc(33.333% + 0px);
+            }
+
+            #social-kollegiumi:checked ~ .scholarship-sub-toggle-slider-triple {
+              left: calc(66.666% - 4px);
+            }
+
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-triple-left,
+            #social-rendkivuli:checked ~ .scholarship-sub-toggle-triple-middle,
+            #social-kollegiumi:checked ~ .scholarship-sub-toggle-triple-right {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
+            }
+
+            /* Content cards */
+            .scholarship-content-card,
+            .tool-content-card {
+              background: #ffffff;
+              border-radius: 15px;
+              padding: 2rem;
+              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+              transition: all 0.3s ease;
+            }
+
+            .scholarship-section {
+              margin: 1.5rem 0;
+            }
+
+            .scholarship-section h5 {
+              color: #d6394c;
+              font-weight: 600;
+              margin-bottom: 1rem;
+            }
+
+            .scholarship-list {
+              list-style: none;
+              padding-left: 0;
+            }
+
+            .scholarship-list li {
+              padding: 0.5rem 0;
+              padding-left: 1.5rem;
+              position: relative;
+            }
+
+            .scholarship-list li:before {
+              content: "✓";
+              position: absolute;
+              left: 0;
+              color: #d6394c;
+              font-weight: bold;
+            }
+
+            .scholarship-actions .btn {
+              margin-right: 0.5rem;
+              margin-bottom: 0.5rem;
+            }
+
+            /* Mobile responsiveness for sub-toggles */
+            @media (max-width: 768px) {
+              .scholarship-sub-toggle-wrapper {
+                height: 45px;
+                max-width: 100%;
+              }
+
+              .scholarship-sub-toggle-label {
+                font-size: 12px;
+                padding: 10px 6px;
+              }
+
+              .scholarship-content-card,
+              .tool-content-card {
+                padding: 1.5rem;
+              }
+
+              .scholarship-actions .btn {
+                width: 100%;
+                margin-right: 0;
+              }
+            }
+
+            @media (max-width: 480px) {
+              .scholarship-sub-toggle-wrapper {
+                height: 42px;
+              }
+
+              .scholarship-sub-toggle-label {
+                font-size: 11px;
+                padding: 8px 4px;
+              }
+
+              .scholarship-content-card,
+              .tool-content-card {
+                padding: 1rem;
+              }
+            }
+          </style>
+
+          <script>
+            // Scholarship calculator
+            (function () {
+              let initialized = false;
+
+              function createSubjectRow(subjectsEl, values = {}) {
+                const row = document.createElement('div');
+                row.className = 'subject-row';
+                row.innerHTML = `
+        <div class="row g-3 align-items-end">
+          <div class="col-12 col-md-6">
+            <label class="form-label">Subject name</label>
+            <input type="text" class="form-control subject-name" placeholder="e.g. Statistics II" value="${values.name ?? ''}">
           </div>
-          <div class="tab-pane" id="tab-3">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
-                  </li>
-                  <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores dolores quos qui a.
-                    Ipsum neque dolor voluptate nisi sed.</li>
-                </ul>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
-                </p>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-3.png" alt="" class="img-fluid">
-              </div>
-            </div>
+          <div class="col-6 col-md-3">
+            <label class="form-label">Credits</label>
+            <input type="number" class="form-control subject-credit" min="1" step="1" placeholder="e.g. 4" value="${values.credit ?? ''}">
           </div>
+          <div class="col-6 col-md-2">
+            <label class="form-label">Grade (1–5)</label>
+            <input type="number" class="form-control subject-grade" min="1" max="5" step="1" placeholder="e.g. 5" value="${values.grade ?? ''}">
+          </div>
+          <div class="col-12 col-md-1 text-end">
+            <button type="button" class="btn btn-outline-danger btn-sm remove-btn" title="Remove subject">&times;</button>
+          </div>
+        </div>
+      `;
+                row.querySelector('.remove-btn').addEventListener('click', () => {
+                  row.remove();
+                  if (!subjectsEl.querySelector('.subject-row')) {
+                    createSubjectRow(subjectsEl, { name: '', credit: '', grade: '' });
+                  }
+                });
+                subjectsEl.appendChild(row);
+              }
+
+              function initCalculatorOnce() {
+                if (initialized) return;
+                initialized = true;
+
+                const calculatorPane = document.getElementById('calculator-content');
+                if (!calculatorPane) {
+                  console.error('Calculator pane not found');
+                  return;
+                }
+
+                const subjectsEl = calculatorPane.querySelector('#oszto-subjects');
+                const addBtn = calculatorPane.querySelector('#oszto-add');
+                const calcBtn = calculatorPane.querySelector('#oszto-calc');
+                const alertEl = calculatorPane.querySelector('#oszto-alert');
+                const resultEl = calculatorPane.querySelector('#oszto-result');
+
+                if (!subjectsEl || !addBtn || !calcBtn || !alertEl || !resultEl) {
+                  console.error('Calculator elements not found');
+                  return;
+                }
+
+                // Initial row (empty template)
+                createSubjectRow(subjectsEl);
+
+                // Add subject
+                addBtn.addEventListener('click', () => createSubjectRow(subjectsEl));
+
+                // Calculate
+                calcBtn.addEventListener('click', () => {
+                  alertEl.classList.add('d-none');
+                  const rows = subjectsEl.querySelectorAll('.subject-row');
+                  if (rows.length === 0) {
+                    alertEl.textContent = 'Add at least one subject.';
+                    alertEl.classList.remove('d-none');
+                    resultEl.textContent = '–';
+                    return;
+                  }
+
+                  let sum = 0;
+                  for (const row of rows) {
+                    const credit = Number(row.querySelector('.subject-credit').value);
+                    const grade = Number(row.querySelector('.subject-grade').value);
+
+                    const validCredit = Number.isFinite(credit) && credit > 0;
+                    const validGrade = Number.isFinite(grade) && grade >= 1 && grade <= 5;
+
+                    if (!validCredit || !validGrade) {
+                      alertEl.textContent = 'Not all fields are filled in or within valid range.';
+                      alertEl.classList.remove('d-none');
+                      resultEl.textContent = '–';
+                      return;
+                    }
+                    sum += credit * grade;
+                  }
+
+                  const avg = sum / 30;
+                  resultEl.textContent = avg.toFixed(2).replace('.', ',');
+                });
+              }
+
+              // Bootstrap tab event – when switching to tab 4
+              document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
+                tab.addEventListener('shown.bs.tab', (e) => {
+                  if (e.target.getAttribute('href') === '#tab-4') {
+                    // Check if calculator sub-tab is active
+                    const calcRadio = document.getElementById('tools-calculator');
+                    if (calcRadio && calcRadio.checked) {
+                      initCalculatorOnce();
+                    }
+                  }
+                });
+              });
+
+              // Watch for tools sub-tab changes
+              document.addEventListener('DOMContentLoaded', () => {
+                const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
+                toolsRadios.forEach(radio => {
+                  radio.addEventListener('change', function() {
+                    if (this.value === 'calculator' && !initialized) {
+                      setTimeout(() => {
+                        initCalculatorOnce();
+                      }, 50);
+                    }
+                  });
+                });
+              });
+            })();
+          </script>
+
+          <script>
+            /**
+             * Sub-tab switching logic
+             *
+             * Each of the 4 main tabs in the scholarship section has 2-3 sub-tabs with custom toggle switches.
+             * This script handles sub-tab switching (by toggling d-none class).
+             *
+             * Structure:
+             * - Tab 1 (Performance-based): Academic / Corvinus
+             * - Tab 2 (Social): Regular / Extraordinary / Dormitory
+             * - Tab 3 (Public Affairs): No sub-tabs
+             * - Tab 4 (Tools): Calculator / Statistics
+             */
+            document.addEventListener('DOMContentLoaded', function() {
+              /**
+               * Tab 1: Performance-based scholarship
+               * - Academic: General academic scholarship
+               * - Corvinus: Corvinus scholarship (separate regulations, varies by program)
+               */
+              const performanceRadios = document.querySelectorAll('input[name="performance-type"]');
+              const tanulmanyContent = document.getElementById('tanulmany-content');
+              const corvinusContent = document.getElementById('corvinus-content');
+
+              if (performanceRadios.length > 0) {
+                performanceRadios.forEach(radio => {
+                  radio.addEventListener('change', function() {
+                    if (this.value === 'tanulmany') {
+                      tanulmanyContent.classList.remove('d-none');
+                      corvinusContent.classList.add('d-none');
+                    } else if (this.value === 'corvinus') {
+                      tanulmanyContent.classList.add('d-none');
+                      corvinusContent.classList.remove('d-none');
+                    }
+                  });
+                });
+              }
+
+              /**
+               * Tab 2: Social scholarship
+               * - Regular: Monthly regular social support
+               * - Extraordinary: One-time extraordinary aid
+               * - Dormitory: Support for dormitory accommodation
+               *
+               * 3-option toggle: first hide all content, then show selected one
+               */
+              const socialRadios = document.querySelectorAll('input[name="social-type"]');
+              const rendszeresContent = document.getElementById('rendszeres-content');
+              const rendkivuliContent = document.getElementById('rendkivuli-content');
+              const kollegiumiContent = document.getElementById('kollegiumi-content');
+
+              if (socialRadios.length > 0) {
+                socialRadios.forEach(radio => {
+                  radio.addEventListener('change', function() {
+                    // Hide all
+                    rendszeresContent.classList.add('d-none');
+                    rendkivuliContent.classList.add('d-none');
+                    kollegiumiContent.classList.add('d-none');
+
+                    // Show selected
+                    if (this.value === 'rendszeres') {
+                      rendszeresContent.classList.remove('d-none');
+                    } else if (this.value === 'rendkivuli') {
+                      rendkivuliContent.classList.remove('d-none');
+                    } else if (this.value === 'kollegiumi') {
+                      kollegiumiContent.classList.remove('d-none');
+                    }
+                  });
+                });
+              }
+
+              /**
+               * Tab 4: Tools
+               * - Calculator: Scholarship average calculator (30 credit weighted average)
+               * - Statistics: Corvinus scholarship chart + group averages
+               */
+              const toolsRadios = document.querySelectorAll('input[name="tools-type"]');
+              const calculatorContent = document.getElementById('calculator-content');
+              const statsContent = document.getElementById('stats-content');
+
+              if (toolsRadios.length > 0 && calculatorContent && statsContent) {
+                toolsRadios.forEach(radio => {
+                  radio.addEventListener('change', function() {
+                    if (this.value === 'calculator') {
+                      calculatorContent.classList.remove('d-none');
+                      statsContent.classList.add('d-none');
+                    } else if (this.value === 'stats') {
+                      calculatorContent.classList.add('d-none');
+                      statsContent.classList.remove('d-none');
+                    }
+                  });
+                });
+              }
+            });
+
+            /**
+             * Navigation to Corvinus scholarship chart
+             *
+             * Usage: Called by button in Tab 1 (Corvinus scholarship info card)
+             * Function:
+             * 1. Activate Tab 4 (Tools)
+             * 2. Activate Statistics sub-tab
+             * 3. Initialize chart (if not already done)
+             * 4. Smooth scroll to chart section
+             *
+             * requestAnimationFrame: smooth UX, operations run after DOM update
+             */
+            function navigateToCorvinusChart() {
+              // Activate Tab 4 using Bootstrap Tab API
+              const tab4Link = document.querySelector('a[href="#tab-4"]');
+              const tab4 = new bootstrap.Tab(tab4Link);
+              tab4.show();
+
+              // Sub-tab switch: Statistics
+              requestAnimationFrame(() => {
+                const statsRadio = document.getElementById('tools-stats');
+                if (statsRadio) {
+                  statsRadio.checked = true;
+                  statsRadio.dispatchEvent(new Event('change')); // Trigger sub-tab switch
+
+                  // Chart initialization and scroll
+                  requestAnimationFrame(() => {
+                    // Initialize Corvinus chart (corvinus-scholarship.js)
+                    if (window.initCorvinusChart) {
+                      window.initCorvinusChart();
+                    }
+
+                    // Smooth scroll to chart section (small delay for tab animation)
+                    setTimeout(() => {
+                      const corvinusSection = document.getElementById('corvinus-chart-section');
+                      if (corvinusSection) {
+                        corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      }
+                    }, 100);
+                  });
+                }
+              });
+            }
+
+            /**
+             * Navigation to scholarship tabs (header menu dropdown)
+             *
+             * @param {string} tabId - Tab ID (e.g. "tab-1", "tab-2", ...)
+             *
+             * Usage: Header menu "Scholarships" dropdown items
+             * - Performance-based → tab-1
+             * - Social → tab-2
+             * - Public Affairs → tab-3
+             * - Calculator & Tools → tab-4
+             *
+             * Function:
+             * 1. Smooth scroll to scholarship section
+             * 2. Activate selected tab
+             */
+            function navigateToScholarshipTab(tabId) {
+              // Scroll to scholarship section
+              const scholarshipSection = document.getElementById('osztondij');
+              if (scholarshipSection) {
+                scholarshipSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              }
+
+              // Activate tab (requestAnimationFrame: smooth UX)
+              requestAnimationFrame(() => {
+                const tabLink = document.querySelector('a[href="#' + tabId + '"]');
+                if (tabLink) {
+                  const tab = new bootstrap.Tab(tabLink);
+                  tab.show();
+                }
+              });
+            }
+
+            /**
+             * Event listener registration (modern method, not inline onclick)
+             *
+             * UX best practices:
+             * - Use addEventListener instead of inline onclick
+             * - Better maintainability
+             * - Easier testability
+             */
+            document.addEventListener('DOMContentLoaded', function() {
+              /**
+               * Header menu navigation
+               * Elements: .scholarship-nav-link (with data-tab attribute)
+               */
+              const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
+              scholarshipNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  const tabId = this.getAttribute('data-tab');
+                  if (tabId) {
+                    navigateToScholarshipTab(tabId);
+                  }
+                });
+              });
+
+              /**
+               * Corvinus chart navigation button
+               * Element: #corvinus-chart-nav-btn (Tab 1, Corvinus info card)
+               */
+              const corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
+              if (corvinusChartNavBtn) {
+                corvinusChartNavBtn.addEventListener('click', function(e) {
+                  e.preventDefault();
+                  navigateToCorvinusChart();
+                });
+              }
+            });
+          </script>
+
+
+          <!-- Scholarship calculator end -->
+
+          <!-- TAB 4: Tools -->
           <div class="tab-pane" id="tab-4">
-            <div class="row">
-              <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
-                <p>
-                  Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                  voluptate
-                  velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                  sunt in
-                  culpa qui officia deserunt mollit anim id est laborum
-                </p>
-                <p class="fst-italic">
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-                  dolore
-                  magna aliqua.
-                </p>
-                <ul>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-                  <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in voluptate velit.
-                  </li>
-                  <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis
-                    aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla
-                    pariatur.</li>
-                </ul>
-              </div>
-              <div class="col-lg-6 order-1 order-lg-2 text-center">
-                <img src="assets/img/features-4.png" alt="" class="img-fluid">
+            <div class="row g-4 py-4">
+              <div class="col-12">
+                <!-- Sub-toggle -->
+                <div class="scholarship-sub-toggle-wrapper mb-4">
+                  <input type="radio" name="tools-type" id="tools-calculator" value="calculator" checked>
+                  <input type="radio" name="tools-type" id="tools-stats" value="stats">
+                  <label for="tools-calculator" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
+                    <span>Calculator</span>
+                  </label>
+                  <label for="tools-stats" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
+                    <span>Statistics</span>
+                  </label>
+                  <div class="scholarship-sub-toggle-slider"></div>
+                </div>
+
+                <!-- Calculator content -->
+                <div id="calculator-content" class="tool-content-card">
+                  <div class="row g-4 align-items-center">
+                    <!-- LEFT: Calculator -->
+                    <div class="col-lg-6 col-md-12">
+                      <h3 class="mb-3"><i class="ri-calculator-line"></i> Scholarship Calculator</h3>
+                      <p class="text-muted mb-4">
+                        Enter subjects, credit values and grades. <br> Average calculation:
+                        <code>Σ(credit × grade) / 30</code>
+                      </p>
+
+                      <div id="oszto-alert" class="alert alert-danger d-none" role="alert">
+                        Not all fields are filled in or within valid range.
+                      </div>
+
+                      <div id="oszto-subjects" class="vstack gap-3"></div>
+
+                      <div class="d-flex gap-2 mt-3">
+                        <button id="oszto-add" type="button" class="btn btn-outline-primary">
+                          + Add Subject
+                        </button>
+                        <button id="oszto-calc" type="button" class="btn btn-primary ms-auto">
+                          Calculate
+                        </button>
+                      </div>
+
+                      <div class="mt-4">
+                        <h5 class="mb-1">Scholarship average:</h5>
+                        <div id="oszto-result" class="fs-4 fw-bold">–</div>
+                      </div>
+                    </div>
+
+                    <!-- RIGHT: Image -->
+                    <div class="col-lg-6 col-md-12 text-center">
+                      <img src="assets/img/features-3.png" alt="Scholarship" class="img-fluid rounded-3 shadow-sm">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Statistics content -->
+                <div id="stats-content" class="tool-content-card d-none">
+                  <!-- Group averages -->
+                  <div class="mb-5">
+                    <div class="row">
+                      <div class="col-lg-6 col-md-12 order-2 order-lg-1 mt-3 mt-lg-0">
+                        <h3><i class="ri-bar-chart-grouped-line"></i> Group Averages</h3>
+                        <p class="fst-italic">
+                          On this page, we have collected the most important information about academic performance indicators.
+                        </p>
+                        <div class="wrap">
+                          <div class="holder">
+                            <div class="bar cf" data-percent="4.93"><span class="label">BSc 1</span></div>
+                            <div class="bar cf" data-percent="4.21"><span class="label light">BSc 2</span></div>
+                            <div class="bar cf" data-percent="4.50"><span class="label">BSc 3</span></div>
+                            <div class="bar cf" data-percent="3.92"><span class="label light">Bsc 4</span></div>
+                            <div class="bar cf" data-percent="4.87"><span class="label">BSc 5</span></div>
+                            <div class="bar cf" data-percent="3.95"><span class="label light">BSc 6</span></div>
+                            <div class="bar cf" data-percent="4.56"><span class="label">BSc 7</span></div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-lg-6 col-md-12 order-1 order-lg-2 text-center">
+                        <img src="assets/img/features-1.png" alt="" class="img-fluid rounded-3">
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Corvinus scholarship chart -->
+                  <div id="corvinus-chart-section" class="mt-5">
+                    <hr class="my-5">
+
+                    <!-- Loading spinner -->
+                    <div id="corvinus-loading" class="text-center py-5 d-none">
+                      <div class="spinner-border text-primary" role="status" style="width: 3rem; height: 3rem;">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                      <p class="text-muted mt-3">Loading data...</p>
+                    </div>
+
+                    <!-- Error message -->
+                    <div id="corvinus-error" class="alert alert-danger d-none" role="alert">
+                      <i class="ri-error-warning-line"></i> <strong>Error:</strong> <span></span>
+                    </div>
+
+                    <div class="row g-4 align-items-start">
+                      <!-- LEFT: Controls -->
+                      <div class="col-lg-5 col-md-12 mb-4 mb-lg-0">
+                        <h3 class="mb-3"><i class="ri-line-chart-line"></i> Corvinus Scholarship Places Ratio</h3>
+                        <p class="text-muted mb-4">
+                          Select the degree level and program to see the trends in scholarship place ratios between 2020-2024.
+                        </p>
+
+                        <!-- Degree level selector - Modern Toggle -->
+                        <div class="mb-4">
+                          <label class="form-label fw-bold mb-3 d-block text-center">Degree Level</label>
+                          <div class="corvinus-toggle-wrapper">
+                            <input type="radio" name="corvinus-level" id="corvinus-level-alap" value="alapképzés" checked>
+                            <input type="radio" name="corvinus-level" id="corvinus-level-mester" value="mesterképzés">
+                            <label for="corvinus-level-alap" class="corvinus-toggle-label corvinus-toggle-left">
+                              <span>Bachelor's</span>
+                            </label>
+                            <label for="corvinus-level-mester" class="corvinus-toggle-label corvinus-toggle-right">
+                              <span>Master's</span>
+                            </label>
+                            <div class="corvinus-toggle-slider"></div>
+                          </div>
+                        </div>
+
+                        <!-- Program selector -->
+                        <div class="mb-4">
+                          <label for="corvinus-course-select" class="form-label fw-bold">Program</label>
+                          <select id="corvinus-course-select" class="form-select form-select-lg">
+                            <option value="">-- Select program --</option>
+                          </select>
+                        </div>
+
+                        <!-- Info box -->
+                        <div id="corvinus-info" class="alert alert-info d-none" role="alert">
+                          <strong>Data source:</strong> Corvinus scholarship places ratio (2020-2024)
+                        </div>
+                      </div>
+
+                      <!-- RIGHT: Chart -->
+                      <div class="col-lg-7 col-md-12">
+                        <div class="card shadow-sm corvinus-chart-card">
+                          <div class="card-body p-3 p-md-4">
+                            <canvas id="corvinus-chart"></canvas>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
               </div>
             </div>
           </div>
+          <!-- /TAB 4 -->
         </div>
 
       </div>
@@ -359,13 +1419,13 @@
 
         <div class="row" data-aos="zoom-out">
           <div class="col-lg-9 text-center text-lg-start">
-            <h3>When are you eligible for scholarship?</h3>
-            <p> Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
-              Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
-              laborum.</p>
+            <h3>When are you eligible for academic scholarship?</h3>
+            <p> If you are a full-time student with active student status and have not exceeded the eligibility period assigned to your program duration.
+              The basic requirement is to complete at least 23 credits in the previous active semester from courses included in the scholarship average,
+              and your academic average must reach 3.80.</p>
           </div>
           <div class="col-lg-3 cta-btn-container text-center">
-            <a class="cta-btn align-middle" href="#">Learn more</a>
+            <a class="cta-btn align-middle" href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/#accordion-item-1486" target="_blank">Learn more</a>
           </div>
         </div>
 
