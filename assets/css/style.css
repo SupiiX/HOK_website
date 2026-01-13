@@ -1682,49 +1682,95 @@ section {
 .events-filter-container {
   display: flex;
   flex-wrap: wrap;
-  gap: 15px;
-  margin-bottom: 30px;
-  padding: 20px;
-  background: #f8f9fa;
-  border-radius: 8px;
+  gap: 12px;
+  margin-bottom: 35px;
+  padding: 0;
+  background: transparent;
+  justify-content: center;
 }
 
 .event-filter-label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  padding: 8px 12px;
+  padding: 12px 20px;
   background: white;
-  border-radius: 6px;
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #e0e0e0;
   user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
 }
 
+/* Hover effect - csak ha nincs checked */
 .event-filter-label:hover {
-  border-color: #d6394c;
   transform: translateY(-2px);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: #c0c0c0;
 }
 
+/* Checkbox elrejtése */
 .event-filter-checkbox {
-  cursor: pointer;
-  width: 18px;
-  height: 18px;
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
 }
 
+/* Checked állapot - színes háttér */
+.event-filter-checkbox:checked + .filter-color-indicator {
+  transform: scale(1.2);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked) {
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked) .filter-name {
+  color: white;
+  font-weight: 700;
+}
+
+/* Kategória-specifikus színek checked állapotban */
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="tanulmanyi"]) {
+  background: linear-gradient(135deg, #d6394c 0%, #c02a3d 100%);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="bulik"]) {
+  background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="sport"]) {
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="adminisztrativ"]) {
+  background: linear-gradient(135deg, #ffc107 0%, #e0a800 100%);
+}
+
+/* Színes kör indikátor */
 .filter-color-indicator {
-  width: 16px;
-  height: 16px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   display: inline-block;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
 }
 
+/* Név */
 .filter-name {
   font-weight: 600;
   color: #333;
   font-size: 14px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
 }
 
 /* Timeline konténer */
@@ -2062,12 +2108,22 @@ section {
 
   .events-filter-container {
     gap: 8px;
-    padding: 12px;
+    padding: 0;
+    justify-content: center;
   }
 
   .event-filter-label {
-    padding: 5px 8px;
-    font-size: 12px;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .filter-color-indicator {
+    width: 16px;
+    height: 16px;
+  }
+
+  .filter-name {
+    font-size: 13px;
   }
 
   .timeline-circle-empty,
