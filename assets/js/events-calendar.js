@@ -130,7 +130,7 @@
           <div class="timeline-marker">
             <div class="timeline-circle ${circleClass}" style="border-color: ${categoryColor}; background-color: ${isNext ? categoryColor : 'transparent'};"></div>
           </div>
-          <div class="timeline-content">
+          <div class="timeline-content" style="color: ${categoryColor};">
             <div class="event-date-title">
               ${linkStart}
               <span class="event-date">${dateDisplay}</span>

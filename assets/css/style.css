@@ -1735,7 +1735,7 @@ section {
   margin: 0 auto;
 }
 
-/* Központi függőleges vonal pontokkal */
+/* Központi függőleges vonal - egyszínű szürke */
 .events-timeline-container::before {
   content: '';
   position: absolute;
@@ -1743,19 +1743,10 @@ section {
   top: 0;
   bottom: 0;
   width: 4px;
-  background: linear-gradient(to bottom,
-    #d6394c 0%,
-    #d6394c 25%,
-    #28a745 25%,
-    #28a745 50%,
-    #007bff 50%,
-    #007bff 75%,
-    #ffc107 75%,
-    #ffc107 100%
-  );
+  background: #d0d0d0;
   transform: translateX(-50%);
   border-radius: 4px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
 }
 
 /* Pontozott effekt a vonalon */
@@ -1769,9 +1760,9 @@ section {
   background-image: repeating-linear-gradient(
     to bottom,
     transparent 0px,
-    transparent 8px,
-    rgba(255, 255, 255, 0.3) 8px,
-    rgba(255, 255, 255, 0.3) 12px
+    transparent 10px,
+    rgba(255, 255, 255, 0.4) 10px,
+    rgba(255, 255, 255, 0.4) 14px
   );
   transform: translateX(-50%);
   pointer-events: none;
@@ -1957,7 +1948,7 @@ section {
 /* Link stílus */
 .event-link {
   text-decoration: none;
-  color: inherit;
+  color: #333;
   display: flex;
   align-items: baseline;
   flex-wrap: wrap;
@@ -1973,8 +1964,10 @@ section {
   justify-content: flex-start;
 }
 
-.event-link:hover {
-  color: #d6394c;
+.event-link:hover .event-date,
+.event-link:hover .event-title-text {
+  color: currentColor;
+  opacity: 0.8;
 }
 
 /* Leírás */
