@@ -226,8 +226,8 @@
         datasets: [{
           label: 'Ösztöndíjas helyek aránya (%)',
           data: data.values,  // [80, 85, 90, ...]
-          backgroundColor: 'rgba(214, 57, 76, 0.6)',  // Corvinus red (transzparens)
-          borderColor: 'rgba(214, 57, 76, 1)',        // Corvinus red (solid)
+          backgroundColor: 'rgba(9, 173, 134, 0.6)',  // Türkiz (transzparens)
+          borderColor: 'rgba(9, 173, 134, 1)',        // Türkiz (solid)
           borderWidth: 2,
           borderRadius: 5,  // Lekerekített oszlopok
         }]
