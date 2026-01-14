@@ -1242,10 +1242,29 @@
                     <!-- BAL: Kalkulátor -->
                     <div class="col-lg-6 col-md-12">
                       <h3 class="mb-3"><i class="ri-calculator-line"></i> Ösztöndíj-kalkulátor</h3>
-                      <p class="text-muted mb-4">
-                        Add meg a tárgyakat, a kreditértéket és az érdemjegyet. <br> Az átlag számítása:
-                        <code>Σ(kredit × jegy) / 30</code>
+                      <p class="text-muted mb-3">
+                        Add meg a tárgyakat, típusukat, a kreditértéket és az érdemjegyet.
                       </p>
+                      <div class="mb-4 p-3 bg-light rounded">
+                        <strong>Az átlag számítása:</strong>
+                        <div class="mt-2" style="font-size: 0.95em;">
+                          <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 8px;">
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">KÖTELEZŐ TÁRGYAK (K)</small>
+                              <span class="fw-bold">(1,2 × kredit × jegy)</span>
+                            </span>
+                            <span class="fw-bold">+</span>
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">SZABADON VÁLASZTHATÓ (V)</small>
+                              <span class="fw-bold">(kredit × jegy)</span>
+                            </span>
+                          </div>
+                          <div class="text-center mt-2">
+                            <hr style="border-top: 2px solid #333; width: 100%; margin: 8px 0;">
+                            <span class="fw-bold">Összes FELVETT kredit</span>
+                          </div>
+                        </div>
+                      </div>
 
                       <div id="oszto-alert" class="alert alert-danger d-none" role="alert">
                         Nincs minden mező kitöltve vagy érvényes tartományban.

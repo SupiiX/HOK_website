@@ -1301,10 +1301,29 @@
                     <!-- LEFT: Calculator -->
                     <div class="col-lg-6 col-md-12">
                       <h3 class="mb-3"><i class="ri-calculator-line"></i> Scholarship Calculator</h3>
-                      <p class="text-muted mb-4">
-                        Enter subjects, credit values and grades. <br> Average calculation:
-                        <code>Σ(credit × grade) / 30</code>
+                      <p class="text-muted mb-3">
+                        Enter subjects, their type, credit values and grades.
                       </p>
+                      <div class="mb-4 p-3 bg-light rounded">
+                        <strong>Average calculation:</strong>
+                        <div class="mt-2" style="font-size: 0.95em;">
+                          <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 8px;">
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">REQUIRED SUBJECTS (K)</small>
+                              <span class="fw-bold">(1.2 × credit × grade)</span>
+                            </span>
+                            <span class="fw-bold">+</span>
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">ELECTIVE SUBJECTS (V)</small>
+                              <span class="fw-bold">(credit × grade)</span>
+                            </span>
+                          </div>
+                          <div class="text-center mt-2">
+                            <hr style="border-top: 2px solid #333; width: 100%; margin: 8px 0;">
+                            <span class="fw-bold">Total CREDITS entered</span>
+                          </div>
+                        </div>
+                      </div>
 
                       <div id="oszto-alert" class="alert alert-danger d-none" role="alert">
                         Not all fields are filled in or within valid range.
