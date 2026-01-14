@@ -76,7 +76,7 @@
     hideError();
 
     try {
-      const response = await fetch('assets/js/corvinus-scholarship.json');
+      const response = await fetch('assets/data/corvinus-scholarship.json');
 
       // HTTP response validáció (404, 500, stb.)
       if (!response.ok) {

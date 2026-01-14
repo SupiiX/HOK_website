@@ -18,7 +18,7 @@
   // JSON betöltése
   async function loadEventsData() {
     try {
-      const response = await fetch('assets/js/events-calendar.json');
+      const response = await fetch('assets/data/events-calendar.json');
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
