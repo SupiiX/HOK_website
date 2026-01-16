@@ -1788,30 +1788,10 @@ section {
   left: 50%;
   top: 0;
   bottom: 0;
-  width: 4px;
-  background: #d0d0d0;
+  width: 3px;
+  background: #c0c0c0;
   transform: translateX(-50%);
-  border-radius: 4px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.08);
-}
-
-/* Pontozott effekt a vonalon */
-.events-timeline-container::after {
-  content: '';
-  position: absolute;
-  left: 50%;
-  top: 0;
-  bottom: 0;
-  width: 4px;
-  background-image: repeating-linear-gradient(
-    to bottom,
-    transparent 0px,
-    transparent 10px,
-    rgba(255, 255, 255, 0.4) 10px,
-    rgba(255, 255, 255, 0.4) 14px
-  );
-  transform: translateX(-50%);
-  pointer-events: none;
+  border-radius: 2px;
 }
 
 /* Egyedi timeline esemény */
@@ -2056,8 +2036,7 @@ section {
   }
 
   /* Mobilon baloldalra kerül a vonal */
-  .events-timeline-container::before,
-  .events-timeline-container::after {
+  .events-timeline-container::before {
     left: 30px;
   }
 
