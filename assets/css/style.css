@@ -275,6 +275,18 @@ h6 {
   .navbar ul {
     display: none;
   }
+
+  .language_toggle {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .language_toggle {
+    font-size: 13px;
+    margin-right: 15px;
+  }
 }
 
 .navbar-mobile {
@@ -1883,6 +1895,9 @@ section {
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
   border: 2px solid transparent;
   position: relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
 }
 
 /* Baloldali box (páratlan) */
@@ -2138,5 +2153,43 @@ section {
 
   .event-meta {
     font-size: 12px;
+  }
+}
+
+/* Extra kis képernyők (320-480px) */
+@media (max-width: 480px) {
+  .events-filter-container {
+    gap: 6px;
+  }
+
+  .event-filter-label {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .filter-color-indicator {
+    width: 14px;
+    height: 14px;
+  }
+
+  .filter-name {
+    font-size: 12px;
+  }
+
+  .events-calendar-section h3 {
+    font-size: 20px;
+  }
+
+  .timeline-content {
+    padding: 12px 15px;
+  }
+
+  .event-date {
+    font-size: 13px;
+  }
+
+  .event-title-text {
+    font-size: 14px;
   }
 }
