@@ -117,8 +117,8 @@
         dateDisplay += ' - ' + formatDate(event.endDate);
       }
 
-      // Kör típusa: teli (●) ha következő (nagyobb), különben normál teli kör
-      const circleClass = isNext ? 'timeline-circle-filled' : 'timeline-circle-filled';
+      // Kör típusa: teli (●) ha következő (nagyobb + pulzál), különben normál teli kör
+      const circleClass = isNext ? 'timeline-circle-filled' : 'timeline-circle-normal';
 
       // Link
       const hasLink = event.link && event.link.trim() !== '';

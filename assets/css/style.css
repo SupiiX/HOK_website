@@ -1756,15 +1756,15 @@ section {
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="bulik"]) {
-  background: linear-gradient(135deg, #C17767 0%, #a86153 100%);
+  background: linear-gradient(135deg, #D97D6F 0%, #c56659 100%);
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="sport"]) {
-  background: linear-gradient(135deg, #6B8E9F 0%, #5a7889 100%);
+  background: linear-gradient(135deg, #6B9FBF 0%, #5a88a8 100%);
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="adminisztrativ"]) {
-  background: linear-gradient(135deg, #8B7D5B 0%, #736849 100%);
+  background: linear-gradient(135deg, #A89968 0%, #8f8155 100%);
 }
 
 /* Színes kör indikátor */
@@ -1842,34 +1842,34 @@ section {
   justify-content: center;
 }
 
-/* Kör (○ vagy ●) */
-.timeline-circle-empty,
+/* Kör alapértelmezett stílusok */
+.timeline-circle-normal,
 .timeline-circle-filled {
   width: 20px;
   height: 20px;
   border-radius: 50%;
   border: 4px solid;
-  background: white;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9),
               0 4px 12px rgba(0, 0, 0, 0.15);
   cursor: pointer;
 }
 
-.timeline-circle-empty:hover {
-  transform: scale(1.3);
+/* Normál teli kör - hover effekt */
+.timeline-circle-normal:hover {
+  transform: scale(1.2);
   box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9),
               0 6px 20px rgba(0, 0, 0, 0.25);
 }
 
+/* Következő esemény köre - nagyobb + pulzál */
 .timeline-circle-filled {
-  /* Teli kör - következő esemény */
   width: 28px;
   height: 28px;
   border-width: 5px;
   box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9),
-              0 6px 24px rgba(214, 57, 76, 0.5),
-              0 0 30px rgba(214, 57, 76, 0.3);
+              0 6px 24px rgba(0, 0, 0, 0.3),
+              0 0 30px rgba(0, 0, 0, 0.2);
   animation: pulse-glow 2s ease-in-out infinite;
 }
 
@@ -1877,14 +1877,14 @@ section {
   0%, 100% {
     transform: scale(1);
     box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9),
-                0 6px 24px rgba(214, 57, 76, 0.5),
-                0 0 30px rgba(214, 57, 76, 0.3);
+                0 6px 24px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(0, 0, 0, 0.2);
   }
   50% {
     transform: scale(1.15);
     box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.9),
-                0 8px 32px rgba(214, 57, 76, 0.7),
-                0 0 45px rgba(214, 57, 76, 0.5);
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 45px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -2123,7 +2123,7 @@ section {
     font-size: 13px;
   }
 
-  .timeline-circle-empty,
+  .timeline-circle-normal,
   .timeline-circle-filled {
     width: 16px;
     height: 16px;
