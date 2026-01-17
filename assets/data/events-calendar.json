@@ -17,19 +17,19 @@
       "id": "bulik",
       "name": "Bulik/Szórakozás",
       "nameEn": "Parties/Entertainment",
-      "color": "#28a745"
+      "color": "#C17767"
     },
     {
       "id": "sport",
       "name": "Sport",
       "nameEn": "Sports",
-      "color": "#007bff"
+      "color": "#6B8E9F"
     },
     {
       "id": "adminisztrativ",
       "name": "Adminisztratív",
       "nameEn": "Administrative",
-      "color": "#ffc107"
+      "color": "#8B7D5B"
     }
   ],
   "events": [

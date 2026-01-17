@@ -117,8 +117,8 @@
         dateDisplay += ' - ' + formatDate(event.endDate);
       }
 
-      // Kör típusa: teli (●) ha következő, különben üres (○)
-      const circleClass = isNext ? 'timeline-circle-filled' : 'timeline-circle-empty';
+      // Kör típusa: teli (●) ha következő (nagyobb), különben normál teli kör
+      const circleClass = isNext ? 'timeline-circle-filled' : 'timeline-circle-filled';
 
       // Link
       const hasLink = event.link && event.link.trim() !== '';
@@ -128,7 +128,7 @@
       html += `
         <div class="timeline-event" data-category="${event.category}" data-status="${status}">
           <div class="timeline-marker">
-            <div class="timeline-circle ${circleClass}" style="border-color: ${categoryColor}; background-color: ${isNext ? categoryColor : 'transparent'};"></div>
+            <div class="timeline-circle ${circleClass}" style="border-color: ${categoryColor}; background-color: ${categoryColor};"></div>
           </div>
           <div class="timeline-content" style="color: ${categoryColor};">
             <div class="event-date-title">
