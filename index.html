@@ -274,7 +274,7 @@
                         <h5><i class="ri-calculator-line"></i> Hogyan számítódik ki:</h5>
                         <p>
                           Az ösztöndíj összege a rangsorolás alapján kerül meghatározásra, amely a tanulmányi átlag és a teljesített kreditek alapján történik.
-                          Az átlag számítása: <code>Σ(kredit × jegy) / összes kredit</code>
+                          Az átlag számítása: <code>[(1,2 × kötelező tárgy kredite × jegye) + (választható tárgy kredite × jegye)] / összes felvett kredit</code>
                         </p>
                       </div>
 
@@ -392,6 +392,11 @@
                            target="_blank"
                            class="btn btn-primary">
                           <i class="ri-external-link-line"></i> Részletek a szabályzatban
+                        </a>
+                        <a href="#"
+                           target="_blank"
+                           class="btn btn-outline-primary ms-2">
+                          <i class="ri-book-open-line"></i> Szoc kisokos
                         </a>
                       </div>
                     </div>
@@ -613,12 +618,12 @@
               left: 5px;
               width: calc(50% - 5px);
               height: calc(100% - 10px);
-              background: linear-gradient(145deg, #d6394c, #ff4d63);
+              background: linear-gradient(145deg, #BF8F55, #d4a875);
               border-radius: 50px;
               transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
               box-shadow:
-                4px 4px 12px rgba(214, 57, 76, 0.4),
-                -2px -2px 8px rgba(255, 77, 99, 0.2),
+                4px 4px 12px rgba(191, 143, 85, 0.4),
+                -2px -2px 8px rgba(212, 168, 117, 0.2),
                 inset 2px 2px 4px rgba(255, 255, 255, 0.3),
                 inset -2px -2px 4px rgba(0, 0, 0, 0.2);
               z-index: 1;
@@ -708,16 +713,16 @@
             }
 
             #corvinus-course-select:focus {
-              border-color: #d6394c;
-              box-shadow: 0 4px 12px rgba(214, 57, 76, 0.15);
+              border-color: #BF8F55;
+              box-shadow: 0 4px 12px rgba(191, 143, 85, 0.15);
               outline: none;
             }
 
             /* Alert info styling */
             #corvinus-info {
               border-radius: 10px;
-              border-left: 4px solid #d6394c;
-              background: linear-gradient(145deg, #fff5f6, #ffffff);
+              border-left: 4px solid #BF8F55;
+              background: linear-gradient(145deg, #fffbf5, #ffffff);
               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             }
 
@@ -768,12 +773,12 @@
               left: 4px;
               width: calc(50% - 4px);
               height: calc(100% - 8px);
-              background: linear-gradient(145deg, #d6394c, #e84d5f);
+              background: linear-gradient(145deg, #BF8F55, #d4a875);
               border-radius: 40px;
               transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
               box-shadow:
-                3px 3px 8px rgba(214, 57, 76, 0.3),
-                -2px -2px 6px rgba(255, 77, 99, 0.2);
+                3px 3px 8px rgba(191, 143, 85, 0.3),
+                -2px -2px 6px rgba(212, 168, 117, 0.2);
               z-index: 1;
             }
 
@@ -807,12 +812,12 @@
               left: 4px;
               width: calc(33.333% - 4px);
               height: calc(100% - 8px);
-              background: linear-gradient(145deg, #d6394c, #e84d5f);
+              background: linear-gradient(145deg, #BF8F55, #d4a875);
               border-radius: 40px;
               transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
               box-shadow:
-                3px 3px 8px rgba(214, 57, 76, 0.3),
-                -2px -2px 6px rgba(255, 77, 99, 0.2);
+                3px 3px 8px rgba(191, 143, 85, 0.3),
+                -2px -2px 6px rgba(212, 168, 117, 0.2);
               z-index: 1;
             }
 
@@ -850,7 +855,7 @@
             }
 
             .scholarship-section h5 {
-              color: #d6394c;
+              color: #BF8F55;
               font-weight: 600;
               margin-bottom: 1rem;
             }
@@ -870,7 +875,7 @@
               content: "✓";
               position: absolute;
               left: 0;
-              color: #d6394c;
+              color: #BF8F55;
               font-weight: bold;
             }
 
@@ -929,15 +934,22 @@
                 row.className = 'subject-row';
                 row.innerHTML = `
         <div class="row g-3 align-items-end">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-4">
             <label class="form-label">Tárgy neve</label>
             <input type="text" class="form-control subject-name" placeholder="pl. Statisztika II" value="${values.name ?? ''}">
           </div>
-          <div class="col-6 col-md-3">
+          <div class="col-4 col-md-2">
+            <label class="form-label">Típus</label>
+            <select class="form-select subject-type">
+              <option value="kotelezo" ${values.type === 'kotelezo' ? 'selected' : ''}>Kötelező</option>
+              <option value="valaszthato" ${values.type === 'valaszthato' ? 'selected' : ''}>Választható</option>
+            </select>
+          </div>
+          <div class="col-4 col-md-2">
             <label class="form-label">Kredit</label>
             <input type="number" class="form-control subject-credit" min="1" step="1" placeholder="pl. 4" value="${values.credit ?? ''}">
           </div>
-          <div class="col-6 col-md-2">
+          <div class="col-4 col-md-2">
             <label class="form-label">Jegy (1–5)</label>
             <input type="number" class="form-control subject-grade" min="1" max="5" step="1" placeholder="pl. 5" value="${values.grade ?? ''}">
           </div>
@@ -993,8 +1005,11 @@
                     return;
                   }
 
-                  let sum = 0;
+                  let weightedSum = 0;
+                  let totalCredits = 0;
+
                   for (const row of rows) {
+                    const type = row.querySelector('.subject-type').value;
                     const credit = Number(row.querySelector('.subject-credit').value);
                     const grade = Number(row.querySelector('.subject-grade').value);
 
@@ -1007,10 +1022,25 @@
                       resultEl.textContent = '–';
                       return;
                     }
-                    sum += credit * grade;
+
+                    // Képlet: Kötelező tárgyak súlyozva 1.2-vel
+                    if (type === 'kotelezo') {
+                      weightedSum += 1.2 * credit * grade;
+                    } else {
+                      weightedSum += credit * grade;
+                    }
+
+                    totalCredits += credit;
                   }
 
-                  const avg = sum / 30;
+                  if (totalCredits === 0) {
+                    alertEl.textContent = 'Az összes kredit nem lehet nulla.';
+                    alertEl.classList.remove('d-none');
+                    resultEl.textContent = '–';
+                    return;
+                  }
+
+                  const avg = weightedSum / totalCredits;
                   resultEl.textContent = avg.toFixed(2).replace('.', ',');
                 });
               }
@@ -1217,10 +1247,29 @@
                     <!-- BAL: Kalkulátor -->
                     <div class="col-lg-6 col-md-12">
                       <h3 class="mb-3"><i class="ri-calculator-line"></i> Ösztöndíj-kalkulátor</h3>
-                      <p class="text-muted mb-4">
-                        Add meg a tárgyakat, a kreditértéket és az érdemjegyet. <br> Az átlag számítása:
-                        <code>Σ(kredit × jegy) / 30</code>
+                      <p class="text-muted mb-3">
+                        Add meg a tárgyakat, típusukat, a kreditértéket és az érdemjegyet.
                       </p>
+                      <div class="mb-4 p-3 bg-light rounded">
+                        <strong>Az átlag számítása:</strong>
+                        <div class="mt-2" style="font-size: 0.95em;">
+                          <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 8px;">
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">KÖTELEZŐ TÁRGYAK (K)</small>
+                              <span class="fw-bold">(1,2 × kredit × jegy)</span>
+                            </span>
+                            <span class="fw-bold">+</span>
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">SZABADON VÁLASZTHATÓ (V)</small>
+                              <span class="fw-bold">(kredit × jegy)</span>
+                            </span>
+                          </div>
+                          <div class="text-center mt-2">
+                            <hr style="border-top: 2px solid #333; width: 100%; margin: 8px 0;">
+                            <span class="fw-bold">Összes FELVETT kredit</span>
+                          </div>
+                        </div>
+                      </div>
 
                       <div id="oszto-alert" class="alert alert-danger d-none" role="alert">
                         Nincs minden mező kitöltve vagy érvényes tartományban.
@@ -1385,7 +1434,7 @@
         <div class="row">
           <div class="col-lg-4 col-md-6">
             <div class="icon-box" data-aos="zoom-in-left">
-              <div class="icon"><i class="bi bi-briefcase" style="color: #d6394c;"></i></div>
+              <div class="icon"><i class="bi bi-briefcase" style="color: #BF8F55;"></i></div>
               <h4 class="title scrollto"><a href="#teruletek">Területeink</a></h4>
               <p class="description">Tudj meg mindent a HÖK területeiről, mivel foglalkoznak, kik a vezetőik és
                 elérhetőségeket is találhatsz</p>
@@ -1419,7 +1468,7 @@
 
           <div class="col-lg-4 col-md-6 mt-5">
             <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="400">
-              <div class="icon"><i class="bi bi-globe" style="color: #d6394c;"></i></div>
+              <div class="icon"><i class="bi bi-globe" style="color: #BF8F55;"></i></div>
               <h4 class="title"><a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/informatikai-szolgaltatasok/microsoft-365/" target="_blank">Office 365 regisztráció</a></h4>
               <p class="description">At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis
                 praesentium voluptatum deleniti atque</p>
@@ -1444,6 +1493,25 @@
 
         <div class="section-title" data-aos="zoom-out">
           <h2>Hallgatói Élet</h2>
+        </div>
+
+        <!-- ======= Eseménynaptár Timeline ======= -->
+        <div class="events-calendar-section" data-aos="fade-up">
+          <h3>Közelgő események és határidők</h3>
+
+          <!-- Szűrők -->
+          <div id="events-filter-container" class="events-filter-container">
+            <!-- JavaScript tölti fel dinamikusan -->
+          </div>
+
+          <!-- Timeline -->
+          <div id="events-timeline-container" class="events-timeline-container">
+            <!-- JavaScript tölti fel dinamikusan -->
+          </div>
+        </div>
+
+        <!-- ======= Rendezvények Galéria ======= -->
+        <div class="section-title" data-aos="zoom-out" style="margin-top: 60px;">
           <p>Rendezvényeink</p>
         </div>
 
@@ -2199,6 +2267,7 @@
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
   <script src="assets/js/corvinus-scholarship.js"></script>
+  <script src="assets/js/events-calendar.js"></script>
 
 </body>
 

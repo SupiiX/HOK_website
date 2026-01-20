@@ -1,0 +1,154 @@
+{
+  "semester": {
+    "id": "2025-tavasz",
+    "name": "2025 Tavaszi félév",
+    "nameEn": "2025 Spring Semester",
+    "startDate": "2025-02-01",
+    "endDate": "2025-06-30"
+  },
+  "categories": [
+    {
+      "id": "tanulmanyi",
+      "name": "Tanulmányi",
+      "nameEn": "Academic",
+      "color": "#BF8F55"
+    },
+    {
+      "id": "bulik",
+      "name": "Bulik/Szórakozás",
+      "nameEn": "Parties/Entertainment",
+      "color": "#D97D6F"
+    },
+    {
+      "id": "sport",
+      "name": "Sport",
+      "nameEn": "Sports",
+      "color": "#6B9FBF"
+    },
+    {
+      "id": "adminisztrativ",
+      "name": "Adminisztratív",
+      "nameEn": "Administrative",
+      "color": "#A89968"
+    }
+  ],
+  "events": [
+    {
+      "id": 1,
+      "title": "Tanévnyitó rendezvény",
+      "titleEn": "Academic Year Opening Event",
+      "date": "2025-02-03",
+      "endDate": null,
+      "category": "bulik",
+      "description": "Tavaszi félév ünnepélyes megnyitója",
+      "descriptionEn": "Ceremonial opening of the spring semester",
+      "location": "Corvinus Aula",
+      "locationEn": "Corvinus Aula",
+      "link": null
+    },
+    {
+      "id": 2,
+      "title": "Ösztöndíj pályázat beadási határidő",
+      "titleEn": "Scholarship application deadline",
+      "date": "2026-03-15",
+      "endDate": null,
+      "category": "tanulmanyi",
+      "description": "Corvinus teljesítmény ösztöndíj pályázat leadási határideje",
+      "descriptionEn": "Corvinus performance scholarship application deadline",
+      "location": "Online",
+      "locationEn": "Online",
+      "link": "#osztondij"
+    },
+    {
+      "id": 3,
+      "title": "Corvinus Farsang",
+      "titleEn": "Corvinus Carnival",
+      "date": "2026-03-20",
+      "endDate": null,
+      "category": "bulik",
+      "description": "Hagyományos farsangi buli jelmezekkel",
+      "descriptionEn": "Traditional carnival party with costumes",
+      "location": "DOJO boutique club",
+      "locationEn": "DOJO boutique club",
+      "link": null
+    },
+    {
+      "id": 4,
+      "title": "Sporthét",
+      "titleEn": "Sports Week",
+      "date": "2026-04-13",
+      "endDate": "2026-04-17",
+      "category": "sport",
+      "description": "Corvinus hagyományos sportrendezvénye",
+      "descriptionEn": "Corvinus traditional sports event",
+      "location": "Corvinus sportlétesítmények",
+      "locationEn": "Corvinus sports facilities",
+      "link": null
+    },
+    {
+      "id": 5,
+      "title": "Tárgylevétel határidő",
+      "titleEn": "Course drop deadline",
+      "date": "2026-04-30",
+      "endDate": null,
+      "category": "adminisztrativ",
+      "description": "Utolsó nap a félév végi tárgylevételre",
+      "descriptionEn": "Last day for end-of-semester course withdrawal",
+      "location": "Neptun",
+      "locationEn": "Neptun",
+      "link": null
+    },
+    {
+      "id": 6,
+      "title": "Majális",
+      "titleEn": "May Festival",
+      "date": "2026-05-01",
+      "endDate": null,
+      "category": "bulik",
+      "description": "Hagyományos majálisi ünnepség és szórakozás",
+      "descriptionEn": "Traditional May Day celebration and entertainment",
+      "location": "Corvinus park",
+      "locationEn": "Corvinus park",
+      "link": null
+    },
+    {
+      "id": 7,
+      "title": "Vizsgaidőszak kezdete",
+      "titleEn": "Exam period starts",
+      "date": "2026-05-25",
+      "endDate": null,
+      "category": "tanulmanyi",
+      "description": "Tavaszi félév vizsgaidőszakának kezdete",
+      "descriptionEn": "Start of spring semester exam period",
+      "location": "Corvinus",
+      "locationEn": "Corvinus",
+      "link": null
+    },
+    {
+      "id": 8,
+      "title": "Ballagás",
+      "titleEn": "Graduation Ceremony",
+      "date": "2026-06-20",
+      "endDate": null,
+      "category": "adminisztrativ",
+      "description": "Végzős hallgatók ballagási ünnepsége",
+      "descriptionEn": "Graduation ceremony for graduating students",
+      "location": "Corvinus Aula",
+      "locationEn": "Corvinus Aula",
+      "link": null
+    },
+    {
+      "id": 9,
+      "title": "Vizsgaidőszak vége",
+      "titleEn": "Exam period ends",
+      "date": "2026-06-30",
+      "endDate": null,
+      "category": "tanulmanyi",
+      "description": "Tavaszi félév vizsgaidőszakának vége",
+      "descriptionEn": "End of spring semester exam period",
+      "location": "Corvinus",
+      "locationEn": "Corvinus",
+      "link": null
+    }
+  ]
+}

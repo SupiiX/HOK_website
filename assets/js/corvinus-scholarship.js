@@ -76,7 +76,7 @@
     hideError();
 
     try {
-      const response = await fetch('assets/js/corvinus-scholarship.json');
+      const response = await fetch('assets/data/corvinus-scholarship.json');
 
       // HTTP response validáció (404, 500, stb.)
       if (!response.ok) {
@@ -226,8 +226,8 @@
         datasets: [{
           label: 'Ösztöndíjas helyek aránya (%)',
           data: data.values,  // [80, 85, 90, ...]
-          backgroundColor: 'rgba(214, 57, 76, 0.6)',  // Corvinus red (transzparens)
-          borderColor: 'rgba(214, 57, 76, 1)',        // Corvinus red (solid)
+          backgroundColor: 'rgba(191, 143, 85, 0.6)',  // Bronz (transzparens)
+          borderColor: 'rgba(191, 143, 85, 1)',        // Bronz (solid)
           borderWidth: 2,
           borderRadius: 5,  // Lekerekített oszlopok
         }]

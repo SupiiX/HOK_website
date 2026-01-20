@@ -27,7 +27,7 @@ a {
 }
 
 a:hover {
-  color: #d6394c;
+  color: #BF8F55;
   text-decoration: none;
 }
 .active_lang{
@@ -55,7 +55,7 @@ h6 {
   right: 15px;
   bottom: 15px;
   z-index: 996;
-  background: #d6394c;
+  background: #BF8F55;
   width: 40px;
   height: 40px;
   border-radius: 50px;
@@ -69,7 +69,7 @@ h6 {
 }
 
 .back-to-top:hover {
-  background: #f6adad;
+  background: #55282e;
   color: #fff;
 }
 
@@ -275,6 +275,18 @@ h6 {
   .navbar ul {
     display: none;
   }
+
+  .language_toggle {
+    font-size: 14px;
+    margin-right: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .language_toggle {
+    font-size: 13px;
+    margin-right: 15px;
+  }
 }
 
 .navbar-mobile {
@@ -425,13 +437,16 @@ h6 {
   margin: 10px;
   color: #fff;
   animation-delay: 0.8s;
-  border: 2px solid #f6adad;
+  border: 2px solid #BF8F55;
+  background: transparent;
 }
 
 #hero .btn-get-started:hover {
-  background: #f6adad;
+  background: #BF8F55;
   color: #fff;
   text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(191, 143, 85, 0.3);
 }
 
 @media (min-width: 1024px) {
@@ -582,7 +597,7 @@ section {
   left: 0;
   top: 2px;
   font-size: 20px;
-  color: #d6394c;
+  color: #BF8F55;
   line-height: 1;
 }
 
@@ -690,7 +705,7 @@ section {
 .features .tab-pane ul i {
   font-size: 20px;
   padding-right: 4px;
-  color: #d6394c;
+  color: #BF8F55;
 }
 
 .features .tab-pane p:last-child {
@@ -709,7 +724,7 @@ section {
 
 
 .bar {
-  background: #d6394c;
+  background: #BF8F55;
   width: 0;
   margin: 0.25em 0;
   color: #fff;
@@ -844,7 +859,7 @@ section {
 }
 
 .services .title a:hover {
-  color: #d6394c;
+  color: #BF8F55;
 }
 
 .services .description {
@@ -899,7 +914,7 @@ section {
 
 .portfolio #portfolio-flters li:hover,
 .portfolio #portfolio-flters li.filter-active {
-  color: #d6394c;
+  color: #BF8F55;
 }
 
 .portfolio #portfolio-flters li.filter-active::before,
@@ -1302,7 +1317,7 @@ section {
 }
 
 .faq .faq-list .collapsed:hover {
-  color: #d6394c;
+  color: #BF8F55;
 }
 
 .faq .faq-list .collapsed .icon-show {
@@ -1659,4 +1674,525 @@ section {
 
 #footer .credits {
   font-size: 13px;
+}
+
+/*--------------------------------------------------------------
+# Events Calendar Timeline
+--------------------------------------------------------------*/
+
+/* Események szekció */
+.events-calendar-section {
+  margin-bottom: 60px;
+}
+
+.events-calendar-section h3 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #552832;
+  margin-bottom: 20px;
+  font-family: "Argentum Sans Bold", sans-serif;
+}
+
+/* Szűrők */
+.events-filter-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 35px;
+  padding: 0;
+  background: transparent;
+  justify-content: center;
+}
+
+.event-filter-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  padding: 12px 20px;
+  background: white;
+  border-radius: 50px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid #e0e0e0;
+  user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect - csak ha nincs checked */
+.event-filter-label:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
+  border-color: #c0c0c0;
+}
+
+/* Checkbox elrejtése */
+.event-filter-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Checked állapot - színes háttér */
+.event-filter-checkbox:checked + .filter-color-indicator {
+  transform: scale(1.2);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked) {
+  border-color: transparent;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-1px);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked) .filter-name {
+  color: white;
+  font-weight: 700;
+}
+
+/* Kategória-specifikus színek checked állapotban */
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="tanulmanyi"]) {
+  background: linear-gradient(135deg, #BF8F55 0%, #a07842 100%);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="bulik"]) {
+  background: linear-gradient(135deg, #D97D6F 0%, #c56659 100%);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="sport"]) {
+  background: linear-gradient(135deg, #6B9FBF 0%, #5a88a8 100%);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):has([value="adminisztrativ"]) {
+  background: linear-gradient(135deg, #A89968 0%, #8f8155 100%);
+}
+
+/* Színes kör indikátor */
+.filter-color-indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  border: 2px solid white;
+}
+
+/* Név */
+.filter-name {
+  font-weight: 600;
+  color: #333;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  letter-spacing: 0.3px;
+}
+
+/* Timeline konténer */
+.events-timeline-container {
+  position: relative;
+  padding: 40px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Központi függőleges vonal - egyszínű szürke */
+.events-timeline-container::before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #c0c0c0;
+  transform: translateX(-50%);
+  border-radius: 2px;
+}
+
+/* Egyedi timeline esemény */
+.timeline-event {
+  position: relative;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.timeline-event:last-child {
+  margin-bottom: 0;
+}
+
+/* Váltakozó oldal: balra páratlan, jobbra páros */
+.timeline-event:nth-child(odd) {
+  flex-direction: row;
+}
+
+.timeline-event:nth-child(even) {
+  flex-direction: row-reverse;
+}
+
+/* Középső marker (kör a vonalon) */
+.timeline-marker {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Kör alapértelmezett stílusok */
+.timeline-circle-normal,
+.timeline-circle-filled {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 4px solid;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.9),
+              0 4px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+/* Normál teli kör - hover effekt */
+.timeline-circle-normal:hover {
+  transform: scale(1.2);
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9),
+              0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+/* Következő esemény köre - nagyobb + pulzál */
+.timeline-circle-filled {
+  width: 28px;
+  height: 28px;
+  border-width: 5px;
+  box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9),
+              0 6px 24px rgba(0, 0, 0, 0.3),
+              0 0 30px rgba(0, 0, 0, 0.2);
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+@keyframes pulse-glow {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 6px rgba(255, 255, 255, 0.9),
+                0 6px 24px rgba(0, 0, 0, 0.3),
+                0 0 30px rgba(0, 0, 0, 0.2);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 0 8px rgba(255, 255, 255, 0.9),
+                0 8px 32px rgba(0, 0, 0, 0.4),
+                0 0 45px rgba(0, 0, 0, 0.3);
+  }
+}
+
+/* Tartalom boxok - félszélességűek */
+.timeline-content {
+  width: calc(50% - 60px);
+  padding: 20px 25px;
+  background: white;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  position: relative;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+}
+
+/* Baloldali box (páratlan) */
+.timeline-event:nth-child(odd) .timeline-content {
+  margin-right: auto;
+  text-align: right;
+  border-right: 4px solid currentColor;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+}
+
+/* Jobboldali box (páros) */
+.timeline-event:nth-child(even) .timeline-content {
+  margin-left: auto;
+  text-align: left;
+  border-left: 4px solid currentColor;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+}
+
+/* Kis háromszög mutató a box-ból a körhöz */
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border: 10px solid transparent;
+}
+
+.timeline-event:nth-child(odd) .timeline-content::before {
+  right: -20px;
+  border-left-color: currentColor;
+}
+
+.timeline-event:nth-child(even) .timeline-content::before {
+  left: -20px;
+  border-right-color: currentColor;
+}
+
+/* Hover effekt */
+.timeline-content:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  border-color: currentColor;
+}
+
+.timeline-event:nth-child(odd) .timeline-content:hover {
+  transform: scale(1.03) translateX(-5px);
+}
+
+.timeline-event:nth-child(even) .timeline-content:hover {
+  transform: scale(1.03) translateX(5px);
+}
+
+/* Dátum és cím */
+.event-date-title {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.timeline-event:nth-child(odd) .event-date-title {
+  justify-content: flex-end;
+}
+
+.timeline-event:nth-child(even) .event-date-title {
+  justify-content: flex-start;
+}
+
+.event-date {
+  font-weight: 700;
+  color: #552832;
+  font-size: 15px;
+  font-family: "Argentum Sans Bold", sans-serif;
+  letter-spacing: 0.3px;
+}
+
+.event-title-text {
+  font-weight: 700;
+  color: #333;
+  font-size: 17px;
+  line-height: 1.4;
+}
+
+/* Link stílus */
+.event-link {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  transition: color 0.3s ease;
+}
+
+.timeline-event:nth-child(odd) .event-link {
+  justify-content: flex-end;
+}
+
+.timeline-event:nth-child(even) .event-link {
+  justify-content: flex-start;
+}
+
+.event-link:hover .event-date,
+.event-link:hover .event-title-text {
+  color: currentColor;
+  opacity: 0.8;
+}
+
+/* Leírás */
+.event-description {
+  color: #666;
+  font-size: 14px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+/* Meta információk */
+.event-meta {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  margin-top: 8px;
+}
+
+.timeline-event:nth-child(odd) .event-meta {
+  justify-content: flex-end;
+}
+
+.timeline-event:nth-child(even) .event-meta {
+  justify-content: flex-start;
+}
+
+.event-location {
+  color: #888;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .events-timeline-container {
+    padding: 20px 10px;
+  }
+
+  /* Mobilon baloldalra kerül a vonal */
+  .events-timeline-container::before {
+    left: 30px;
+  }
+
+  /* Minden box jobbra a vonalon */
+  .timeline-event:nth-child(odd),
+  .timeline-event:nth-child(even) {
+    flex-direction: row;
+  }
+
+  .timeline-marker {
+    left: 30px;
+  }
+
+  .timeline-content {
+    width: calc(100% - 80px);
+    margin-left: auto !important;
+    margin-right: 0 !important;
+    text-align: left !important;
+    border-left: 4px solid currentColor !important;
+    border-right: none !important;
+    border-top-left-radius: 4px !important;
+    border-bottom-left-radius: 4px !important;
+  }
+
+  .timeline-content::before {
+    left: -20px !important;
+    right: auto !important;
+    border-right-color: currentColor !important;
+    border-left-color: transparent !important;
+  }
+
+  .event-date-title,
+  .event-link,
+  .event-meta {
+    justify-content: flex-start !important;
+  }
+
+  .timeline-event:nth-child(odd) .timeline-content:hover,
+  .timeline-event:nth-child(even) .timeline-content:hover {
+    transform: scale(1.02) translateX(5px);
+  }
+}
+
+@media (max-width: 768px) {
+  .events-calendar-section h3 {
+    font-size: 22px;
+  }
+
+  .events-filter-container {
+    gap: 8px;
+    padding: 0;
+    justify-content: center;
+  }
+
+  .event-filter-label {
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+
+  .filter-color-indicator {
+    width: 16px;
+    height: 16px;
+  }
+
+  .filter-name {
+    font-size: 13px;
+  }
+
+  .timeline-circle-normal,
+  .timeline-circle-filled {
+    width: 16px;
+    height: 16px;
+    border-width: 3px;
+    box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.9),
+                0 3px 8px rgba(0, 0, 0, 0.15);
+  }
+
+  .timeline-circle-filled {
+    width: 22px;
+    height: 22px;
+    border-width: 4px;
+  }
+
+  .timeline-content {
+    padding: 15px 18px;
+  }
+
+  .event-date {
+    font-size: 14px;
+  }
+
+  .event-title-text {
+    font-size: 15px;
+  }
+
+  .event-description {
+    font-size: 13px;
+  }
+
+  .event-meta {
+    font-size: 12px;
+  }
+}
+
+/* Extra kis képernyők (320-480px) */
+@media (max-width: 480px) {
+  .events-filter-container {
+    gap: 6px;
+  }
+
+  .event-filter-label {
+    padding: 8px 12px;
+    font-size: 12px;
+    white-space: nowrap;
+  }
+
+  .filter-color-indicator {
+    width: 14px;
+    height: 14px;
+  }
+
+  .filter-name {
+    font-size: 12px;
+  }
+
+  .events-calendar-section h3 {
+    font-size: 20px;
+  }
+
+  .timeline-content {
+    padding: 12px 15px;
+  }
+
+  .event-date {
+    font-size: 13px;
+  }
+
+  .event-title-text {
+    font-size: 14px;
+  }
 }

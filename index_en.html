@@ -272,7 +272,7 @@
                         <h5><i class="ri-calculator-line"></i> How it is calculated:</h5>
                         <p>
                           The scholarship amount is determined based on ranking, which is calculated from the academic average and completed credits.
-                          Average calculation: <code>Σ(credit × grade) / total credits</code>
+                          Average calculation: <code>[(1.2 × required subject credit × grade) + (elective subject credit × grade)] / total credits enrolled</code>
                         </p>
                       </div>
 
@@ -390,6 +390,11 @@
                            target="_blank"
                            class="btn btn-primary">
                           <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                        <a href="#"
+                           target="_blank"
+                           class="btn btn-outline-primary ms-2">
+                          <i class="ri-book-open-line"></i> Social Guide
                         </a>
                       </div>
                     </div>
@@ -611,12 +616,12 @@
               left: 5px;
               width: calc(50% - 5px);
               height: calc(100% - 10px);
-              background: linear-gradient(145deg, #d6394c, #ff4d63);
+              background: linear-gradient(145deg, #BF8F55, #d4a875);
               border-radius: 50px;
               transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
               box-shadow:
-                4px 4px 12px rgba(214, 57, 76, 0.4),
-                -2px -2px 8px rgba(255, 77, 99, 0.2),
+                4px 4px 12px rgba(191, 143, 85, 0.4),
+                -2px -2px 8px rgba(212, 168, 117, 0.2),
                 inset 2px 2px 4px rgba(255, 255, 255, 0.3),
                 inset -2px -2px 4px rgba(0, 0, 0, 0.2);
               z-index: 1;
@@ -706,16 +711,16 @@
             }
 
             #corvinus-course-select:focus {
-              border-color: #d6394c;
-              box-shadow: 0 4px 12px rgba(214, 57, 76, 0.15);
+              border-color: #BF8F55;
+              box-shadow: 0 4px 12px rgba(191, 143, 85, 0.15);
               outline: none;
             }
 
             /* Alert info styling */
             #corvinus-info {
               border-radius: 10px;
-              border-left: 4px solid #d6394c;
-              background: linear-gradient(145deg, #fff5f6, #ffffff);
+              border-left: 4px solid #BF8F55;
+              background: linear-gradient(145deg, #fffbf5, #ffffff);
               box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             }
 
@@ -766,12 +771,12 @@
               left: 4px;
               width: calc(50% - 4px);
               height: calc(100% - 8px);
-              background: linear-gradient(145deg, #d6394c, #e84d5f);
+              background: linear-gradient(145deg, #BF8F55, #d4a875);
               border-radius: 40px;
               transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
               box-shadow:
-                3px 3px 8px rgba(214, 57, 76, 0.3),
-                -2px -2px 6px rgba(255, 77, 99, 0.2);
+                3px 3px 8px rgba(191, 143, 85, 0.3),
+                -2px -2px 6px rgba(212, 168, 117, 0.2);
               z-index: 1;
             }
 
@@ -805,12 +810,12 @@
               left: 4px;
               width: calc(33.333% - 4px);
               height: calc(100% - 8px);
-              background: linear-gradient(145deg, #d6394c, #e84d5f);
+              background: linear-gradient(145deg, #BF8F55, #d4a875);
               border-radius: 40px;
               transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
               box-shadow:
-                3px 3px 8px rgba(214, 57, 76, 0.3),
-                -2px -2px 6px rgba(255, 77, 99, 0.2);
+                3px 3px 8px rgba(191, 143, 85, 0.3),
+                -2px -2px 6px rgba(212, 168, 117, 0.2);
               z-index: 1;
             }
 
@@ -848,7 +853,7 @@
             }
 
             .scholarship-section h5 {
-              color: #d6394c;
+              color: #BF8F55;
               font-weight: 600;
               margin-bottom: 1rem;
             }
@@ -868,7 +873,7 @@
               content: "✓";
               position: absolute;
               left: 0;
-              color: #d6394c;
+              color: #BF8F55;
               font-weight: bold;
             }
 
@@ -927,15 +932,22 @@
                 row.className = 'subject-row';
                 row.innerHTML = `
         <div class="row g-3 align-items-end">
-          <div class="col-12 col-md-6">
+          <div class="col-12 col-md-4">
             <label class="form-label">Subject name</label>
             <input type="text" class="form-control subject-name" placeholder="e.g. Statistics II" value="${values.name ?? ''}">
           </div>
-          <div class="col-6 col-md-3">
+          <div class="col-4 col-md-2">
+            <label class="form-label">Type</label>
+            <select class="form-select subject-type">
+              <option value="kotelezo" ${values.type === 'kotelezo' ? 'selected' : ''}>Required</option>
+              <option value="valaszthato" ${values.type === 'valaszthato' ? 'selected' : ''}>Elective</option>
+            </select>
+          </div>
+          <div class="col-4 col-md-2">
             <label class="form-label">Credits</label>
             <input type="number" class="form-control subject-credit" min="1" step="1" placeholder="e.g. 4" value="${values.credit ?? ''}">
           </div>
-          <div class="col-6 col-md-2">
+          <div class="col-4 col-md-2">
             <label class="form-label">Grade (1–5)</label>
             <input type="number" class="form-control subject-grade" min="1" max="5" step="1" placeholder="e.g. 5" value="${values.grade ?? ''}">
           </div>
@@ -991,8 +1003,11 @@
                     return;
                   }
 
-                  let sum = 0;
+                  let weightedSum = 0;
+                  let totalCredits = 0;
+
                   for (const row of rows) {
+                    const type = row.querySelector('.subject-type').value;
                     const credit = Number(row.querySelector('.subject-credit').value);
                     const grade = Number(row.querySelector('.subject-grade').value);
 
@@ -1005,10 +1020,25 @@
                       resultEl.textContent = '–';
                       return;
                     }
-                    sum += credit * grade;
+
+                    // Formula: Required subjects weighted by 1.2
+                    if (type === 'kotelezo') {
+                      weightedSum += 1.2 * credit * grade;
+                    } else {
+                      weightedSum += credit * grade;
+                    }
+
+                    totalCredits += credit;
                   }
 
-                  const avg = sum / 30;
+                  if (totalCredits === 0) {
+                    alertEl.textContent = 'Total credits cannot be zero.';
+                    alertEl.classList.remove('d-none');
+                    resultEl.textContent = '–';
+                    return;
+                  }
+
+                  const avg = weightedSum / totalCredits;
                   resultEl.textContent = avg.toFixed(2).replace('.', ',');
                 });
               }
@@ -1276,10 +1306,29 @@
                     <!-- LEFT: Calculator -->
                     <div class="col-lg-6 col-md-12">
                       <h3 class="mb-3"><i class="ri-calculator-line"></i> Scholarship Calculator</h3>
-                      <p class="text-muted mb-4">
-                        Enter subjects, credit values and grades. <br> Average calculation:
-                        <code>Σ(credit × grade) / 30</code>
+                      <p class="text-muted mb-3">
+                        Enter subjects, their type, credit values and grades.
                       </p>
+                      <div class="mb-4 p-3 bg-light rounded">
+                        <strong>Average calculation:</strong>
+                        <div class="mt-2" style="font-size: 0.95em;">
+                          <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 8px;">
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">REQUIRED SUBJECTS (K)</small>
+                              <span class="fw-bold">(1.2 × credit × grade)</span>
+                            </span>
+                            <span class="fw-bold">+</span>
+                            <span style="text-align: center;">
+                              <small class="d-block text-muted" style="font-size: 0.85em;">ELECTIVE SUBJECTS (V)</small>
+                              <span class="fw-bold">(credit × grade)</span>
+                            </span>
+                          </div>
+                          <div class="text-center mt-2">
+                            <hr style="border-top: 2px solid #333; width: 100%; margin: 8px 0;">
+                            <span class="fw-bold">Total CREDITS entered</span>
+                          </div>
+                        </div>
+                      </div>
 
                       <div id="oszto-alert" class="alert alert-danger d-none" role="alert">
                         Not all fields are filled in or within valid range.
@@ -1503,6 +1552,25 @@
 
         <div class="section-title" data-aos="zoom-out">
           <h2>Student life</h2>
+        </div>
+
+        <!-- ======= Events Calendar Timeline ======= -->
+        <div class="events-calendar-section" data-aos="fade-up">
+          <h3>Upcoming events and deadlines</h3>
+
+          <!-- Filters -->
+          <div id="events-filter-container" class="events-filter-container">
+            <!-- Filled dynamically by JavaScript -->
+          </div>
+
+          <!-- Timeline -->
+          <div id="events-timeline-container" class="events-timeline-container">
+            <!-- Filled dynamically by JavaScript -->
+          </div>
+        </div>
+
+        <!-- ======= Events Gallery ======= -->
+        <div class="section-title" data-aos="zoom-out" style="margin-top: 60px;">
           <p>Our events</p>
         </div>
 
@@ -1984,6 +2052,7 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/events-calendar.js"></script>
 
 </body>
 
