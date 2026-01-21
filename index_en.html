@@ -51,10 +51,11 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Scholarships</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Performance-based</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Social</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Public Affairs</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Calculator & Tools</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Corvinus Scholarship</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Performance-based</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Social</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Public Affairs</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-5">Calculator & Statistics</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Useful links</span> <i
@@ -239,66 +240,11 @@
         </ul>
 
         <div class="tab-content" data-aos="fade-up">
-          <!-- TAB 1: Performance-based scholarships -->
+          <!-- TAB 1: Corvinus Scholarship -->
           <div class="tab-pane active show" id="tab-1">
             <div class="row g-4 py-4">
               <div class="col-12">
-                <!-- Sub-toggle -->
-                <div class="scholarship-sub-toggle-wrapper mb-4">
-                  <input type="radio" name="performance-type" id="performance-tanulmany" value="tanulmany" checked>
-                  <input type="radio" name="performance-type" id="performance-corvinus" value="corvinus">
-                  <label for="performance-tanulmany" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
-                    <span>Academic Scholarship</span>
-                  </label>
-                  <label for="performance-corvinus" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
-                    <span>Corvinus Scholarship</span>
-                  </label>
-                  <div class="scholarship-sub-toggle-slider"></div>
-                </div>
-
-                <!-- Academic scholarship content -->
-                <div id="tanulmany-content" class="scholarship-content-card">
-                  <div class="row">
-                    <div class="col-lg-8 col-md-12">
-                      <h3><i class="ri-book-line"></i> Academic Scholarship</h3>
-                      <p class="lead">
-                        Academic scholarship is financial support for students who achieve excellent academic results.
-                      </p>
-
-                      <div class="scholarship-section">
-                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
-                        <ul class="scholarship-list">
-                          <li>Active full-time student status</li>
-                          <li>Minimum of 23 credits completed in courses included in the scholarship average</li>
-                          <li>Minimum GPA of 3.80</li>
-                          <li>Not having exceeded the eligibility period assigned to the program duration</li>
-                        </ul>
-                      </div>
-
-                      <div class="scholarship-section">
-                        <h5><i class="ri-calculator-line"></i> How it is calculated:</h5>
-                        <p>
-                          The scholarship amount is determined based on ranking, which is calculated from the academic average and completed credits.
-                          Average calculation: <code>[(1.2 × required subject credit × grade) + (elective subject credit × grade)] / total credits enrolled</code>
-                        </p>
-                      </div>
-
-                      <div class="scholarship-actions mt-4">
-                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/#accordion-item-1486"
-                           target="_blank"
-                           class="btn btn-primary">
-                          <i class="ri-external-link-line"></i> Details in regulations
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img-optimized/features-1.png" alt="Academic scholarship" class="img-fluid rounded-3">
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Corvinus scholarship content -->
-                <div id="corvinus-content" class="scholarship-content-card d-none">
+                <div class="scholarship-content-card">
                   <div class="row">
                     <div class="col-lg-8 col-md-12">
                       <h3><i class="ri-award-line"></i> Corvinus Scholarship</h3>
@@ -344,25 +290,136 @@
               </div>
             </div>
           </div>
-          <!-- TAB 2: Social scholarships -->
+
+          <!-- TAB 2: Performance-based scholarships -->
           <div class="tab-pane" id="tab-2">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <!-- Sub-toggle -->
-                <div class="scholarship-sub-toggle-wrapper mb-4" style="max-width: 600px;">
+                <div class="scholarship-sub-toggle-wrapper mb-4">
+                  <input type="radio" name="performance-type" id="performance-tanulmany" value="tanulmany" checked>
+                  <input type="radio" name="performance-type" id="performance-tudomanyos" value="tudomanyos">
+                  <label for="performance-tanulmany" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
+                    <span>Academic Scholarship</span>
+                  </label>
+                  <label for="performance-tudomanyos" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
+                    <span>Scientific Scholarship</span>
+                  </label>
+                  <div class="scholarship-sub-toggle-slider"></div>
+                </div>
+
+                <!-- Academic scholarship content -->
+                <div id="tanulmany-content" class="scholarship-content-card">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-book-line"></i> Academic Scholarship</h3>
+                      <p class="lead">
+                        Academic scholarship is financial support for students who achieve excellent academic results.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Active full-time student status</li>
+                          <li>Minimum of 23 credits completed in courses included in the scholarship average</li>
+                          <li>Minimum GPA of 3.80</li>
+                          <li>Not having exceeded the eligibility period assigned to the program duration</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calculator-line"></i> How it is calculated:</h5>
+                        <p>
+                          The scholarship amount is determined based on ranking, which is calculated from the academic average and completed credits.
+                          Average calculation: <code>[(1.2 × required subject credit × grade) + (elective subject credit × grade)] / total credits enrolled</code>
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/#accordion-item-1486"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img-optimized/features-1.png" alt="Academic scholarship" class="img-fluid rounded-3" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Scientific scholarship content -->
+                <div id="tudomanyos-content" class="scholarship-content-card d-none">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-flask-line"></i> Scientific Scholarship</h3>
+                      <p class="lead">
+                        The scientific scholarship supports students who excel in research and academic activities.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
+                        <ul class="scholarship-list">
+                          <li>Active student status</li>
+                          <li>Proof of scientific activity (TDK paper, publication, research project)</li>
+                          <li>Supervisor's supporting statement</li>
+                          <li>Commitment to continue research work</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calendar-line"></i> Application:</h5>
+                        <p>
+                          Applications can be submitted each semester. Required documents include a research plan,
+                          supervisor's recommendation, and presentation of previous scientific achievements.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-information-line"></i> Important information:</h5>
+                        <p>
+                          The scholarship aims to support and encourage student research activities.
+                          Participation in TDK competitions, publications, and active involvement in research projects are particularly advantageous.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Details in regulations
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                          <i class="ri-file-edit-line"></i> Application form
+                        </a>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img-optimized/features-4.png" alt="Scientific scholarship" class="img-fluid rounded-3" loading="lazy">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 3: Social scholarships -->
+          <div class="tab-pane" id="tab-3">
+            <div class="row g-4 py-4">
+              <div class="col-12">
+                <!-- Sub-toggle -->
+                <div class="scholarship-sub-toggle-wrapper mb-4">
                   <input type="radio" name="social-type" id="social-rendszeres" value="rendszeres" checked>
                   <input type="radio" name="social-type" id="social-rendkivuli" value="rendkivuli">
-                  <input type="radio" name="social-type" id="social-kollegiumi" value="kollegiumi">
-                  <label for="social-rendszeres" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-left">
-                    <span>Regular</span>
+                  <label for="social-rendszeres" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
+                    <span>Regular Social</span>
                   </label>
-                  <label for="social-rendkivuli" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-middle">
-                    <span>Extraordinary</span>
+                  <label for="social-rendkivuli" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
+                    <span>Emergency Social</span>
                   </label>
-                  <label for="social-kollegiumi" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-right">
-                    <span>Dormitory</span>
-                  </label>
-                  <div class="scholarship-sub-toggle-slider-triple"></div>
+                  <div class="scholarship-sub-toggle-slider"></div>
                 </div>
 
                 <!-- Regular social content -->
@@ -452,53 +509,12 @@
                   </div>
                 </div>
 
-                <!-- Dormitory social content -->
-                <div id="kollegiumi-content" class="scholarship-content-card d-none">
-                  <div class="row">
-                    <div class="col-lg-8 col-md-12">
-                      <h3><i class="ri-home-heart-line"></i> Dormitory Social Scholarship</h3>
-                      <p class="lead">
-                        Dormitory social scholarship supports students living in dormitories who are in financial need.
-                      </p>
-
-                      <div class="scholarship-section">
-                        <h5><i class="ri-checkbox-circle-line"></i> Requirements:</h5>
-                        <ul class="scholarship-list">
-                          <li>Dormitory accommodation</li>
-                          <li>Proof of social need</li>
-                          <li>Submission of income and property statement</li>
-                          <li>Active student status</li>
-                        </ul>
-                      </div>
-
-                      <div class="scholarship-section">
-                        <h5><i class="ri-calendar-line"></i> Application:</h5>
-                        <p>
-                          Applications for dormitory social scholarship can be submitted during the dormitory admission period or each semester.
-                          The scholarship amount is reflected as a reduction in dormitory fees.
-                        </p>
-                      </div>
-
-                      <div class="scholarship-actions mt-4">
-                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/szocialis-alapu-osztondijak/"
-                           target="_blank"
-                           class="btn btn-primary">
-                          <i class="ri-external-link-line"></i> Details in regulations
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img-optimized/features-2.png" alt="Dormitory social" class="img-fluid rounded-3">
-                    </div>
-                  </div>
-                </div>
-
               </div>
             </div>
           </div>
 
-          <!-- TAB 3: Public Affairs scholarship -->
-          <div class="tab-pane" id="tab-3">
+          <!-- TAB 4: Public Affairs scholarship -->
+          <div class="tab-pane" id="tab-4">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <div class="scholarship-content-card">
@@ -793,7 +809,7 @@
               left: 4px;
             }
 
-            #performance-corvinus:checked ~ .scholarship-sub-toggle-slider,
+            #performance-tudomanyos:checked ~ .scholarship-sub-toggle-slider,
             #tools-stats:checked ~ .scholarship-sub-toggle-slider {
               left: calc(50% + 0px);
             }
@@ -804,43 +820,27 @@
               text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            #performance-corvinus:checked ~ .scholarship-sub-toggle-right,
+            #performance-tudomanyos:checked ~ .scholarship-sub-toggle-right,
             #tools-stats:checked ~ .scholarship-sub-toggle-right {
               color: #ffffff;
               text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            /* Three-option toggle (for social) */
-            .scholarship-sub-toggle-slider-triple {
-              position: absolute;
-              top: 4px;
-              left: 4px;
-              width: calc(33.333% - 4px);
-              height: calc(100% - 8px);
-              background: linear-gradient(145deg, #BF8F55, #d4a875);
-              border-radius: 40px;
-              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-              box-shadow:
-                3px 3px 8px rgba(191, 143, 85, 0.3),
-                -2px -2px 6px rgba(212, 168, 117, 0.2);
-              z-index: 1;
-            }
-
-            #social-rendszeres:checked ~ .scholarship-sub-toggle-slider-triple {
+            /* Social toggle (2-option, same as performance) */
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-slider {
               left: 4px;
             }
 
-            #social-rendkivuli:checked ~ .scholarship-sub-toggle-slider-triple {
-              left: calc(33.333% + 0px);
+            #social-rendkivuli:checked ~ .scholarship-sub-toggle-slider {
+              left: calc(50% + 0px);
             }
 
-            #social-kollegiumi:checked ~ .scholarship-sub-toggle-slider-triple {
-              left: calc(66.666% - 4px);
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-left {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            #social-rendszeres:checked ~ .scholarship-sub-toggle-triple-left,
-            #social-rendkivuli:checked ~ .scholarship-sub-toggle-triple-middle,
-            #social-kollegiumi:checked ~ .scholarship-sub-toggle-triple-right {
+            #social-rendkivuli:checked ~ .scholarship-sub-toggle-right {
               color: #ffffff;
               text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
@@ -1100,17 +1100,17 @@
                */
               const performanceRadios = document.querySelectorAll('input[name="performance-type"]');
               const tanulmanyContent = document.getElementById('tanulmany-content');
-              const corvinusContent = document.getElementById('corvinus-content');
+              const tudomanyosContent = document.getElementById('tudomanyos-content');
 
               if (performanceRadios.length > 0) {
                 performanceRadios.forEach(radio => {
                   radio.addEventListener('change', function() {
                     if (this.value === 'tanulmany') {
                       tanulmanyContent.classList.remove('d-none');
-                      corvinusContent.classList.add('d-none');
-                    } else if (this.value === 'corvinus') {
+                      tudomanyosContent.classList.add('d-none');
+                    } else if (this.value === 'tudomanyos') {
                       tanulmanyContent.classList.add('d-none');
-                      corvinusContent.classList.remove('d-none');
+                      tudomanyosContent.classList.remove('d-none');
                     }
                   });
                 });
@@ -1127,7 +1127,6 @@
               const socialRadios = document.querySelectorAll('input[name="social-type"]');
               const rendszeresContent = document.getElementById('rendszeres-content');
               const rendkivuliContent = document.getElementById('rendkivuli-content');
-              const kollegiumiContent = document.getElementById('kollegiumi-content');
 
               if (socialRadios.length > 0) {
                 socialRadios.forEach(radio => {
@@ -1135,15 +1134,12 @@
                     // Hide all
                     rendszeresContent.classList.add('d-none');
                     rendkivuliContent.classList.add('d-none');
-                    kollegiumiContent.classList.add('d-none');
 
                     // Show selected
                     if (this.value === 'rendszeres') {
                       rendszeresContent.classList.remove('d-none');
                     } else if (this.value === 'rendkivuli') {
                       rendkivuliContent.classList.remove('d-none');
-                    } else if (this.value === 'kollegiumi') {
-                      kollegiumiContent.classList.remove('d-none');
                     }
                   });
                 });
@@ -1290,8 +1286,8 @@
 
           <!-- Scholarship calculator end -->
 
-          <!-- TAB 4: Tools -->
-          <div class="tab-pane" id="tab-4">
+          <!-- TAB 5: Calculator & Statistics -->
+          <div class="tab-pane" id="tab-5">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <!-- Sub-toggle -->
