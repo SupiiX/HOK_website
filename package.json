@@ -1,0 +1,18 @@
+{
+  "name": "corvinus-hok-website",
+  "version": "1.0.0",
+  "description": "Corvinus University Student Council Website",
+  "private": true,
+  "scripts": {
+    "optimize:images": "node scripts/optimize-images.js",
+    "build:css": "cleancss -o assets/css/style.min.css assets/css/style.css",
+    "build:js": "terser assets/js/main.js -o assets/js/main.min.js -c -m",
+    "build": "npm run optimize:images && npm run build:css && npm run build:js",
+    "serve": "npx http-server -p 8080"
+  },
+  "devDependencies": {
+    "sharp": "^0.33.2",
+    "clean-css-cli": "^5.6.3",
+    "terser": "^5.27.0"
+  }
+}

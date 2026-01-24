@@ -10,8 +10,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/fav.png" rel="icon">
-  <link href="assets/img/apple.png" rel="apple-touch-icon">
+  <link href="assets/img-optimized/fav.png" rel="icon">
+  <link href="assets/img-optimized/apple.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link
@@ -26,11 +26,10 @@
   <link href="assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
   <link href="assets/vendor/remixicon/remixicon.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="assets/css/style.css" rel="stylesheet">
-  <!-- Swiper CSS -->
+  <link href="assets/css/style.min.css" rel="stylesheet">
+  <!-- Swiper CSS (CDN) -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 
 </head>
@@ -41,7 +40,7 @@
   <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
     <div class="container d-flex align-items-center justify-content-between">
       <div class="logo">
-        <a href="index.html"><img src="assets/img/Corvomadar-removebg-preview.png" alt="" class="img-fluid"></a>
+        <a href="index.html"><img src="assets/img-optimized/Corvomadar-removebg-preview.png" alt="" class="img-fluid"></a>
       </div>
       <div class="logo">
         <h1><a class="Corvo" href="index.html">CORVINUS HÖK</a></h1>
@@ -53,10 +52,11 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Ösztöndíjak</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Teljesítményalapú</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Szociális</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Közéleti</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Kalkulátor & Eszközök</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Corvinus ösztöndíj</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Teljesítményalapú</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Szociális</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Közéleti</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-5">Kalkulátor & Statisztikák</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Hasznos</span> <i
@@ -206,47 +206,404 @@
           <p>Ösztöndíj információk</p>
         </div>
 
-        <ul class="nav nav-tabs row d-flex">
-          <li class="nav-item col-3" data-aos="zoom-in">
+        <ul class="nav nav-tabs row d-flex scholarship-tabs-premium">
+          <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in">
             <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
-              <i class="ri-trophy-line"></i>
-              <h4 class="d-none d-lg-block">Teljesítményalapú</h4>
+              <i class="ri-award-line"></i>
+              <h4 class="d-none d-lg-block">Corvinus</h4>
             </a>
           </li>
-          <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="100">
+          <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="50">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+              <i class="ri-trophy-line"></i>
+              <h4 class="d-none d-lg-block">Teljesítmény</h4>
+            </a>
+          </li>
+          <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
               <i class="ri-hand-heart-line"></i>
               <h4 class="d-none d-lg-block">Szociális</h4>
             </a>
           </li>
-          <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+          <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="150">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
               <i class="ri-community-line"></i>
               <h4 class="d-none d-lg-block">Közéleti</h4>
             </a>
           </li>
-          <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+          <li class="nav-item col-lg-2 col-md-4 col-6 offset-md-2 offset-lg-0" data-aos="zoom-in" data-aos-delay="200">
+            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
               <i class="ri-tools-line"></i>
-              <h4 class="d-none d-lg-block">Eszközök</h4>
+              <h4 class="d-none d-lg-block">Kalkulátor</h4>
             </a>
           </li>
         </ul>
 
+        <style>
+          /* Modern Responsive Scholarship Tabs - Stable Design */
+          .scholarship-tabs-premium {
+            margin-bottom: 30px;
+            gap: 10px;
+            padding: 0;
+          }
+
+          .scholarship-tabs-premium .nav-item {
+            padding: 0;
+            margin-bottom: 10px;
+          }
+
+          /* Base tab styling - Clean card design with brand colors */
+          .scholarship-tabs-premium .nav-link {
+            border: 2px solid #e8e8e8 !important;
+            border-radius: 16px;
+            padding: 20px 12px;
+            transition: all 0.3s ease;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            color: #55282e;
+            font-weight: 600;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+          }
+
+          /* Icon styling - Gold accent from palette */
+          .scholarship-tabs-premium .nav-link i {
+            font-size: 36px;
+            padding: 0;
+            margin-bottom: 6px;
+            color: #b8915d;
+            transition: all 0.3s ease;
+          }
+
+          /* Text styling - Clean sans-serif */
+          .scholarship-tabs-premium .nav-link h4 {
+            font-size: 13px;
+            margin: 0;
+            color: #55282e;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: all 0.3s ease;
+            text-align: center;
+            line-height: 1.2;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+          }
+
+          /* Hover state - NO translateY, only border and shadow */
+          .scholarship-tabs-premium .nav-link:hover {
+            border-color: #c8aa81 !important;
+            box-shadow: 0 4px 12px rgba(184, 145, 93, 0.2);
+            background: #ffffff;
+          }
+
+          .scholarship-tabs-premium .nav-link:hover i {
+            color: #c8aa81;
+            transform: scale(1.08);
+          }
+
+          /* Active state - Brand burgundy with gold accents */
+          .scholarship-tabs-premium .nav-link.active,
+          .scholarship-tabs-premium .nav-link.show {
+            background: linear-gradient(135deg, #55282e 0%, #751101 100%);
+            border-color: #b8915d !important;
+            box-shadow:
+              0 4px 16px rgba(85, 40, 46, 0.3),
+              0 0 0 3px rgba(184, 145, 93, 0.2);
+            color: #ffffff;
+          }
+
+          .scholarship-tabs-premium .nav-link.active i,
+          .scholarship-tabs-premium .nav-link.show i {
+            color: #c8aa81;
+            transform: scale(1.1);
+          }
+
+          .scholarship-tabs-premium .nav-link.active h4,
+          .scholarship-tabs-premium .nav-link.show h4 {
+            color: #ffffff;
+          }
+
+          /* Desktop - Large screens (1200px+) */
+          @media (min-width: 1200px) {
+            .scholarship-tabs-premium .nav-link {
+              padding: 24px 16px;
+              height: 110px;
+              border-radius: 18px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 40px;
+              margin-bottom: 8px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 14px;
+            }
+          }
+
+          /* Desktop - Normal (992px - 1199px) */
+          @media (min-width: 992px) and (max-width: 1199px) {
+            .scholarship-tabs-premium .nav-link {
+              padding: 20px 12px;
+              height: 105px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 38px;
+              margin-bottom: 7px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 13px;
+            }
+          }
+
+          /* Tablet - iPad & similar (768px - 991px) */
+          @media (min-width: 768px) and (max-width: 991px) {
+            .scholarship-tabs-premium {
+              gap: 12px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              margin-bottom: 12px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 18px 10px;
+              height: 95px;
+              border-radius: 16px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 36px;
+              margin-bottom: 6px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 12px;
+            }
+          }
+
+          /* Large Mobile - Landscape & Large Phones (576px - 767px) */
+          @media (min-width: 576px) and (max-width: 767px) {
+            .scholarship-tabs-premium {
+              gap: 10px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              margin-bottom: 10px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 16px 10px;
+              height: 90px;
+              border-radius: 14px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 34px;
+              margin-bottom: 5px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 11.5px;
+            }
+          }
+
+          /* Mobile - Portrait Phones (0 - 575px) */
+          @media (max-width: 575px) {
+            .scholarship-tabs-premium {
+              gap: 8px;
+              margin-bottom: 20px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              padding: 0;
+              margin-bottom: 8px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 14px 8px;
+              height: 85px;
+              border-radius: 14px;
+              border-width: 2px !important;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 30px;
+              margin-bottom: 4px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 11px;
+              letter-spacing: 0.2px;
+            }
+          }
+
+          /* Extra Small Mobile (0 - 374px) */
+          @media (max-width: 374px) {
+            .scholarship-tabs-premium .nav-link {
+              padding: 12px 6px;
+              height: 80px;
+              border-radius: 12px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 28px;
+              margin-bottom: 3px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 10.5px;
+            }
+          }
+
+          /* Smooth tab content transitions - NO layout shift */
+          .tab-content {
+            position: relative;
+          }
+
+          .tab-content .tab-pane {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+          }
+
+          .tab-content .tab-pane.active {
+            display: block;
+            opacity: 1;
+          }
+        </style>
+
+        <script>
+          /**
+           * Smooth Tab Switching - NO vibration, NO layout shift
+           */
+          (function() {
+            'use strict';
+
+            document.addEventListener('DOMContentLoaded', function() {
+              // Get all scholarship tab links
+              const tabLinks = document.querySelectorAll('.scholarship-tabs-premium .nav-link');
+
+              // Manually handle tab switching
+              tabLinks.forEach(function(tabLink) {
+                tabLink.addEventListener('click', function(e) {
+                  e.preventDefault();
+
+                  // Remove active and show classes from all tabs
+                  tabLinks.forEach(function(link) {
+                    link.classList.remove('active', 'show');
+                  });
+
+                  // Add active and show to clicked tab
+                  this.classList.add('active', 'show');
+
+                  // Get the target tab pane
+                  const targetId = this.getAttribute('href');
+                  const targetPane = document.querySelector(targetId);
+
+                  if (targetPane) {
+                    // Hide all tab panes INSTANTLY (no delay)
+                    const allPanes = document.querySelectorAll('.tab-content .tab-pane');
+                    allPanes.forEach(function(pane) {
+                      pane.classList.remove('active', 'show');
+                    });
+
+                    // Show target pane INSTANTLY (CSS handles the smooth opacity transition)
+                    targetPane.classList.add('active', 'show');
+                  }
+                });
+              });
+
+              // Ensure first tab is active on page load
+              const firstTab = document.querySelector('.scholarship-tabs-premium .nav-link:first-child');
+              const firstPane = document.querySelector('.tab-content .tab-pane:first-child');
+
+              if (firstTab && firstPane) {
+                // Remove active from all
+                tabLinks.forEach(link => link.classList.remove('active', 'show'));
+                document.querySelectorAll('.tab-content .tab-pane').forEach(pane => {
+                  pane.classList.remove('active', 'show');
+                });
+
+                // Set first as active
+                firstTab.classList.add('active', 'show');
+                firstPane.classList.add('active', 'show');
+              }
+            });
+          })();
+        </script>
+
         <div class="tab-content" data-aos="fade-up">
-          <!-- TAB 1: Teljesítményalapú ösztöndíjak -->
+          <!-- TAB 1: Corvinus ösztöndíj -->
           <div class="tab-pane active show" id="tab-1">
+            <div class="row g-4 py-4">
+              <div class="col-12">
+                <div class="scholarship-content-card">
+                  <div class="row">
+                    <div class="col-lg-8 col-md-12">
+                      <h3><i class="ri-award-line"></i> Corvinus ösztöndíj</h3>
+                      <p class="lead">
+                        A Corvinus ösztöndíj a legkiválóbb tanulmányi eredményt elért hallgatók elismerésére szolgál.
+                      </p>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-checkbox-circle-line"></i> Feltételek:</h5>
+                        <ul class="scholarship-list">
+                          <li>Nappali tagozatos képzésben való részvétel</li>
+                          <li>Kimagasló tanulmányi eredmény (jellemzően a szak legjobb hallgatói)</li>
+                          <li>A szakon belüli rangsor alapján automatikus odaítélés</li>
+                          <li>További speciális feltételek a szakonként eltérhetnek</li>
+                        </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-information-line"></i> Tudnivalók:</h5>
+                        <p>
+                          A Corvinus ösztöndíjas helyek száma és aránya szakonként változik. Az ösztöndíjban részesülők
+                          automatikusan felkerülnek a rangsor élére a tanulmányi eredményük alapján.
+                        </p>
+                      </div>
+
+                      <div class="scholarship-actions mt-4">
+                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/teljesitmenyalapu-osztondijak/"
+                           target="_blank"
+                           class="btn btn-primary">
+                          <i class="ri-external-link-line"></i> Részletek a szabályzatban
+                        </a>
+                        <button id="corvinus-chart-nav-btn" class="btn btn-outline-primary">
+                          <i class="ri-bar-chart-box-line"></i> Corvinus ösztöndíj statisztikák
+                        </button>
+                      </div>
+                    </div>
+                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
+                      <img src="assets/img-optimized/features-1.png" alt="Corvinus ösztöndíj" class="img-fluid rounded-3">
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+          <!-- TAB 2: Teljesítményalapú ösztöndíjak -->
+          <div class="tab-pane" id="tab-2">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <!-- Sub-toggle -->
                 <div class="scholarship-sub-toggle-wrapper mb-4">
                   <input type="radio" name="performance-type" id="performance-tanulmany" value="tanulmany" checked>
-                  <input type="radio" name="performance-type" id="performance-corvinus" value="corvinus">
+                  <input type="radio" name="performance-type" id="performance-tudomanyos" value="tudomanyos">
                   <label for="performance-tanulmany" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
                     <span>Tanulmányi ösztöndíj</span>
                   </label>
-                  <label for="performance-corvinus" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
-                    <span>Corvinus ösztöndíj</span>
+                  <label for="performance-tudomanyos" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
+                    <span>Tudományos ösztöndíj</span>
                   </label>
                   <div class="scholarship-sub-toggle-slider"></div>
                 </div>
@@ -287,35 +644,43 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img/features-1.png" alt="Tanulmányi ösztöndíj" class="img-fluid rounded-3">
+                      <img src="assets/img-optimized/features-1.png" alt="Tanulmányi ösztöndíj" class="img-fluid rounded-3" loading="lazy">
                     </div>
                   </div>
                 </div>
 
-                <!-- Corvinus ösztöndíj content -->
-                <div id="corvinus-content" class="scholarship-content-card d-none">
+                <!-- Tudományos ösztöndíj content -->
+                <div id="tudomanyos-content" class="scholarship-content-card d-none">
                   <div class="row">
                     <div class="col-lg-8 col-md-12">
-                      <h3><i class="ri-award-line"></i> Corvinus ösztöndíj</h3>
+                      <h3><i class="ri-flask-line"></i> Tudományos ösztöndíj</h3>
                       <p class="lead">
-                        A Corvinus ösztöndíj a legkiválóbb tanulmányi eredményt elért hallgatók elismerésére szolgál.
+                        A tudományos ösztöndíj a kutatási és tudományos tevékenységben kiemelkedő hallgatók támogatására szolgál.
                       </p>
 
                       <div class="scholarship-section">
                         <h5><i class="ri-checkbox-circle-line"></i> Feltételek:</h5>
                         <ul class="scholarship-list">
-                          <li>Nappali tagozatos képzésben való részvétel</li>
-                          <li>Kimagasló tanulmányi eredmény (jellemzően a szak legjobb hallgatói)</li>
-                          <li>A szakon belüli rangsor alapján automatikus odaítélés</li>
-                          <li>További speciális feltételek a szakonként eltérhetnek</li>
+                          <li>Aktív hallgatói jogviszony</li>
+                          <li>Tudományos tevékenység igazolása (TDK dolgozat, publikáció, kutatási projekt)</li>
+                          <li>Témavezető támogató véleménye</li>
+                          <li>Minimum kötelezettségvállalás a kutatási munka folytatására</li>
                         </ul>
+                      </div>
+
+                      <div class="scholarship-section">
+                        <h5><i class="ri-calendar-line"></i> Pályázás:</h5>
+                        <p>
+                          A tudományos ösztöndíjra félévente lehet pályázni. A pályázathoz szükséges a kutatási terv,
+                          témavezető ajánlása és az eddigi tudományos eredmények bemutatása.
+                        </p>
                       </div>
 
                       <div class="scholarship-section">
                         <h5><i class="ri-information-line"></i> Tudnivalók:</h5>
                         <p>
-                          A Corvinus ösztöndíjas helyek száma és aránya szakonként változik. Az ösztöndíjban részesülők
-                          automatikusan felkerülnek a rangsor élére a tanulmányi eredményük alapján.
+                          Az ösztöndíj célja a hallgatói kutatási tevékenység támogatása és ösztönzése.
+                          Különösen előnyt jelent a TDK-n való részvétel, publikációk megjelentetése és kutatási projektekben való aktív részvétel.
                         </p>
                       </div>
 
@@ -325,13 +690,13 @@
                            class="btn btn-primary">
                           <i class="ri-external-link-line"></i> Részletek a szabályzatban
                         </a>
-                        <button id="corvinus-chart-nav-btn" class="btn btn-outline-primary">
-                          <i class="ri-bar-chart-box-line"></i> Corvinus ösztöndíj statisztikák
-                        </button>
+                        <a href="#" class="btn btn-outline-primary">
+                          <i class="ri-file-edit-line"></i> Pályázati űrlap
+                        </a>
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img/features-1.png" alt="Corvinus ösztöndíj" class="img-fluid rounded-3">
+                      <img src="assets/img-optimized/features-4.png" alt="Tudományos ösztöndíj" class="img-fluid rounded-3" loading="lazy">
                     </div>
                   </div>
                 </div>
@@ -339,25 +704,22 @@
               </div>
             </div>
           </div>
-          <!-- TAB 2: Szociális ösztöndíjak -->
-          <div class="tab-pane" id="tab-2">
+
+          <!-- TAB 3: Szociális ösztöndíjak -->
+          <div class="tab-pane" id="tab-3">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <!-- Sub-toggle -->
-                <div class="scholarship-sub-toggle-wrapper mb-4" style="max-width: 600px;">
+                <div class="scholarship-sub-toggle-wrapper mb-4">
                   <input type="radio" name="social-type" id="social-rendszeres" value="rendszeres" checked>
                   <input type="radio" name="social-type" id="social-rendkivuli" value="rendkivuli">
-                  <input type="radio" name="social-type" id="social-kollegiumi" value="kollegiumi">
-                  <label for="social-rendszeres" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-left">
-                    <span>Rendszeres</span>
+                  <label for="social-rendszeres" class="scholarship-sub-toggle-label scholarship-sub-toggle-left">
+                    <span>Rendszeres szociális</span>
                   </label>
-                  <label for="social-rendkivuli" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-middle">
-                    <span>Rendkívüli</span>
+                  <label for="social-rendkivuli" class="scholarship-sub-toggle-label scholarship-sub-toggle-right">
+                    <span>Rendkívüli szociális</span>
                   </label>
-                  <label for="social-kollegiumi" class="scholarship-sub-toggle-label scholarship-sub-toggle-triple-right">
-                    <span>Kollégiumi</span>
-                  </label>
-                  <div class="scholarship-sub-toggle-slider-triple"></div>
+                  <div class="scholarship-sub-toggle-slider"></div>
                 </div>
 
                 <!-- Rendszeres szociális content -->
@@ -401,7 +763,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img/features-2.png" alt="Rendszeres szociális" class="img-fluid rounded-3">
+                      <img src="assets/img-optimized/features-2.png" alt="Rendszeres szociális" class="img-fluid rounded-3">
                     </div>
                   </div>
                 </div>
@@ -442,48 +804,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img/features-2.png" alt="Rendkívüli szociális" class="img-fluid rounded-3">
-                    </div>
-                  </div>
-                </div>
-
-                <!-- Kollégiumi szociális content -->
-                <div id="kollegiumi-content" class="scholarship-content-card d-none">
-                  <div class="row">
-                    <div class="col-lg-8 col-md-12">
-                      <h3><i class="ri-home-heart-line"></i> Kollégiumi szociális ösztöndíj</h3>
-                      <p class="lead">
-                        A kollégiumi szociális ösztöndíj a kollégiumban lakó, szociálisan rászoruló hallgatók támogatására szolgál.
-                      </p>
-
-                      <div class="scholarship-section">
-                        <h5><i class="ri-checkbox-circle-line"></i> Feltételek:</h5>
-                        <ul class="scholarship-list">
-                          <li>Kollégiumi elhelyezés</li>
-                          <li>Szociális rászorultság igazolása</li>
-                          <li>Jövedelmi és vagyoni nyilatkozat benyújtása</li>
-                          <li>Aktív hallgatói jogviszony</li>
-                        </ul>
-                      </div>
-
-                      <div class="scholarship-section">
-                        <h5><i class="ri-calendar-line"></i> Pályázás:</h5>
-                        <p>
-                          A kollégiumi szociális ösztöndíjra a kollégiumi felvételi időszakban vagy félévente lehet pályázni.
-                          Az ösztöndíj összege a kollégiumi díj csökkentésében jelenik meg.
-                        </p>
-                      </div>
-
-                      <div class="scholarship-actions mt-4">
-                        <a href="https://www.uni-corvinus.hu/fooldal/elet-a-corvinuson/osztondij/szocialis-alapu-osztondijak/"
-                           target="_blank"
-                           class="btn btn-primary">
-                          <i class="ri-external-link-line"></i> Részletek a szabályzatban
-                        </a>
-                      </div>
-                    </div>
-                    <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img/features-2.png" alt="Kollégiumi szociális" class="img-fluid rounded-3">
+                      <img src="assets/img-optimized/features-2.png" alt="Rendkívüli szociális" class="img-fluid rounded-3">
                     </div>
                   </div>
                 </div>
@@ -492,8 +813,8 @@
             </div>
           </div>
 
-          <!-- TAB 3: Közéleti ösztöndíj -->
-          <div class="tab-pane" id="tab-3">
+          <!-- TAB 4: Közéleti ösztöndíj -->
+          <div class="tab-pane" id="tab-4">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <div class="scholarship-content-card">
@@ -542,7 +863,7 @@
                       </div>
                     </div>
                     <div class="col-lg-4 col-md-12 text-center d-none d-lg-block">
-                      <img src="assets/img/features-3.png" alt="Közéleti ösztöndíj" class="img-fluid rounded-3">
+                      <img src="assets/img-optimized/features-3.png" alt="Közéleti ösztöndíj" class="img-fluid rounded-3">
                     </div>
                   </div>
                 </div>
@@ -788,7 +1109,7 @@
               left: 4px;
             }
 
-            #performance-corvinus:checked ~ .scholarship-sub-toggle-slider,
+            #performance-tudomanyos:checked ~ .scholarship-sub-toggle-slider,
             #tools-stats:checked ~ .scholarship-sub-toggle-slider {
               left: calc(50% + 0px);
             }
@@ -799,43 +1120,27 @@
               text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            #performance-corvinus:checked ~ .scholarship-sub-toggle-right,
+            #performance-tudomanyos:checked ~ .scholarship-sub-toggle-right,
             #tools-stats:checked ~ .scholarship-sub-toggle-right {
               color: #ffffff;
               text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            /* Three-option toggle (for social) */
-            .scholarship-sub-toggle-slider-triple {
-              position: absolute;
-              top: 4px;
-              left: 4px;
-              width: calc(33.333% - 4px);
-              height: calc(100% - 8px);
-              background: linear-gradient(145deg, #BF8F55, #d4a875);
-              border-radius: 40px;
-              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-              box-shadow:
-                3px 3px 8px rgba(191, 143, 85, 0.3),
-                -2px -2px 6px rgba(212, 168, 117, 0.2);
-              z-index: 1;
-            }
-
-            #social-rendszeres:checked ~ .scholarship-sub-toggle-slider-triple {
+            /* Social toggle (2-option, same as performance) */
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-slider {
               left: 4px;
             }
 
-            #social-rendkivuli:checked ~ .scholarship-sub-toggle-slider-triple {
-              left: calc(33.333% + 0px);
+            #social-rendkivuli:checked ~ .scholarship-sub-toggle-slider {
+              left: calc(50% + 0px);
             }
 
-            #social-kollegiumi:checked ~ .scholarship-sub-toggle-slider-triple {
-              left: calc(66.666% - 4px);
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-left {
+              color: #ffffff;
+              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            #social-rendszeres:checked ~ .scholarship-sub-toggle-triple-left,
-            #social-rendkivuli:checked ~ .scholarship-sub-toggle-triple-middle,
-            #social-kollegiumi:checked ~ .scholarship-sub-toggle-triple-right {
+            #social-rendkivuli:checked ~ .scholarship-sub-toggle-right {
               color: #ffffff;
               text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
@@ -1090,17 +1395,17 @@
                */
               const performanceRadios = document.querySelectorAll('input[name="performance-type"]');
               const tanulmanyContent = document.getElementById('tanulmany-content');
-              const corvinusContent = document.getElementById('corvinus-content');
+              const tudomanyosContent = document.getElementById('tudomanyos-content');
 
               if (performanceRadios.length > 0) {
                 performanceRadios.forEach(radio => {
                   radio.addEventListener('change', function() {
                     if (this.value === 'tanulmany') {
                       tanulmanyContent.classList.remove('d-none');
-                      corvinusContent.classList.add('d-none');
-                    } else if (this.value === 'corvinus') {
+                      tudomanyosContent.classList.add('d-none');
+                    } else if (this.value === 'tudomanyos') {
                       tanulmanyContent.classList.add('d-none');
-                      corvinusContent.classList.remove('d-none');
+                      tudomanyosContent.classList.remove('d-none');
                     }
                   });
                 });
@@ -1109,7 +1414,6 @@
               const socialRadios = document.querySelectorAll('input[name="social-type"]');
               const rendszeresContent = document.getElementById('rendszeres-content');
               const rendkivuliContent = document.getElementById('rendkivuli-content');
-              const kollegiumiContent = document.getElementById('kollegiumi-content');
 
               if (socialRadios.length > 0) {
                 socialRadios.forEach(radio => {
@@ -1117,15 +1421,12 @@
                     // Összes elrejtése
                     rendszeresContent.classList.add('d-none');
                     rendkivuliContent.classList.add('d-none');
-                    kollegiumiContent.classList.add('d-none');
 
                     // Kiválasztott megjelenítése
                     if (this.value === 'rendszeres') {
                       rendszeresContent.classList.remove('d-none');
                     } else if (this.value === 'rendkivuli') {
                       rendkivuliContent.classList.remove('d-none');
-                    } else if (this.value === 'kollegiumi') {
-                      kollegiumiContent.classList.remove('d-none');
                     }
                   });
                 });
@@ -1165,7 +1466,7 @@
 
                   // Chart inicializálás és scroll
                   requestAnimationFrame(() => {
-                    // Corvinus chart inicializálása (corvinus-scholarship.js)
+                    // Corvinus chart inicializálása (corvinus-scholarship.min.js)
                     if (window.initCorvinusChart) {
                       window.initCorvinusChart();
                     }
@@ -1224,8 +1525,8 @@
 
           <!-- Ösztöndíj kalkulátor vége -->
 
-          <!-- TAB 4: Eszközök -->
-          <div class="tab-pane" id="tab-4">
+          <!-- TAB 5: Kalkulátor & Statisztikák -->
+          <div class="tab-pane" id="tab-5">
             <div class="row g-4 py-4">
               <div class="col-12">
                 <!-- Sub-toggle -->
@@ -1294,7 +1595,7 @@
 
                     <!-- JOBB: Kép -->
                     <div class="col-lg-6 col-md-12 text-center">
-                      <img src="assets/img/features-3.png" alt="Ösztöndíj" class="img-fluid rounded-3 shadow-sm">
+                      <img src="assets/img-optimized/features-3.png" alt="Ösztöndíj" class="img-fluid rounded-3 shadow-sm">
                     </div>
                   </div>
                 </div>
@@ -1322,7 +1623,7 @@
                         </div>
                       </div>
                       <div class="col-lg-6 col-md-12 order-1 order-lg-2 text-center">
-                        <img src="assets/img/features-1.png" alt="" class="img-fluid rounded-3">
+                        <img src="assets/img-optimized/features-1.png" alt="" class="img-fluid rounded-3">
                       </div>
                     </div>
                   </div>
@@ -1525,22 +1826,22 @@
         <div class="row portfolio-container" data-aos="fade-up">
 
           <div class="col-lg-4 col-md-6 portfolio-item bulik">
-            <div class="portfolio-img"><img src="assets/img/bulik/dojo_season_op.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/bulik/dojo_season_op.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Corvinus Szemeszternyitó</h4>
               <p>2025.09.18 - DOJO boutique club</p>
-              <a href="assets/img/bulik/dojo_season_op.jpg" data-gallery="portfolioGallery"
+              <a href="assets/img-optimized/bulik/dojo_season_op.jpg" data-gallery="portfolioGallery"
                 class="portfolio-lightbox preview-link" title="Dojo Season Opening"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item bulik">
-            <div class="portfolio-img"><img src="assets/img/bulik/dojo_season_op2.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/bulik/dojo_season_op2.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Corvinus Szemeszternyitó</h4>
               <p>2025.09.18 - DOJO boutique club</p>
-              <a href="assets/img/bulik/dojo_season_op2.jpg" data-gallery="portfolioGallery"
+              <a href="assets/img-optimized/bulik/dojo_season_op2.jpg" data-gallery="portfolioGallery"
                 class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
@@ -1577,9 +1878,9 @@
 
           <div class="col-lg-4 col-md-6 portfolio-item bulik">
             <div class="portfolio-img video-box">
-              <video poster="assets/img/bulik/dojo_after_movie-1-thumb.jpg" preload="metadata" playsinline muted
+              <video poster="assets/img-optimized/bulik/dojo_after_movie-1-thumb.jpg" preload="metadata" playsinline muted
                 controls>
-                <source src="assets/img/bulik/dojo_after_movie-1-vertical.mp4" type="video/mp4">
+                <source src="assets/img-optimized/bulik/dojo_after_movie-1-vertical.mp4" type="video/mp4">
                 A böngésződ nem támogatja a videó lejátszást.
               </video>
             </div>
@@ -1608,11 +1909,11 @@
           </script>
 
           <div class="col-lg-4 col-md-6 portfolio-item bulik">
-            <div class="portfolio-img"><img src="assets/img/bulik/dojo_egy.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/bulik/dojo_egy.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Közgáz & Friends</h4>
               <p>2024.09.25 - DOJO boutique club</p>
-              <a href="assets/img/bulik/dojo_egy.jpg" data-gallery="portfolioGallery"
+              <a href="assets/img-optimized/bulik/dojo_egy.jpg" data-gallery="portfolioGallery"
                 class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
@@ -1620,11 +1921,11 @@
 
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="assets/img/bulik/onedance.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/bulik/onedance.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Corvinus Szemeszternyitó</h4>
               <p>2024.09.12 - Ötkert</p>
-              <a href="assets/img/bulik/onedance.jpg" data-gallery="portfolioGallery"
+              <a href="assets/img-optimized/bulik/onedance.jpg" data-gallery="portfolioGallery"
                 class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
@@ -1633,11 +1934,11 @@
 
 
           <div class="col-lg-4 col-md-6 portfolio-item bulik">
-            <div class="portfolio-img"><img src="assets/img/bulik/dojo_membersonly.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/bulik/dojo_membersonly.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Közgáz & Friends - Members Only</h4>
               <p>2025.02.19 - DOJO boutique club</p>
-              <a href="assets/img/bulik/dojo_membersonly.jpg" data-gallery="portfolioGallery"
+              <a href="assets/img-optimized/bulik/dojo_membersonly.jpg" data-gallery="portfolioGallery"
                 class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
@@ -1645,33 +1946,33 @@
 
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="assets/img/8.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/8.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Corvinus Gólyapart</h4>
               <p>Lorem</p>
-              <a href="assets/img/8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+              <a href="assets/img-optimized/8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
                 title="Card 1"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-            <div class="portfolio-img"><img src="assets/img/9.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/9.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Corvinus Tavaszi Bál</h4>
               <p>Lorem</p>
-              <a href="assets/img/9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+              <a href="assets/img-optimized/9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
                 title="Card 3"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <div class="portfolio-img"><img src="assets/img/3.jpg" class="img-fluid" alt=""></div>
+            <div class="portfolio-img"><img src="assets/img-optimized/3.jpg" class="img-fluid" alt=""></div>
             <div class="portfolio-info">
               <h4>Lorem</h4>
               <p>Lorem</p>
-              <a href="assets/img/3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
+              <a href="assets/img-optimized/3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link"
                 title="Web 3"><i class="bx bx-plus"></i></a>
               <a href="#" class="details-link" title="Részletek"><i class="bx bx-link"></i></a>
             </div>
@@ -1811,7 +2112,7 @@
             <div class="swiper-slide">
               <div class="member" data-aos="fade-up">
                 <div class="member-img">
-                  <img src="assets/img/team/team-1.jpg" class="img-fluid" alt="">
+                  <img src="assets/img-optimized/team/team-1.jpg" class="img-fluid" alt="">
                   <div class="social">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -1830,7 +2131,7 @@
             <div class="swiper-slide">
               <div class="member" data-aos="fade-up" data-aos-delay="100">
                 <div class="member-img">
-                  <img src="assets/img/team/team-2.jpg" class="img-fluid" alt="">
+                  <img src="assets/img-optimized/team/team-2.jpg" class="img-fluid" alt="">
                   <div class="social">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -1849,7 +2150,7 @@
             <div class="swiper-slide">
               <div class="member" data-aos="fade-up" data-aos-delay="200">
                 <div class="member-img">
-                  <img src="assets/img/team/team-3.jpg" class="img-fluid" alt="">
+                  <img src="assets/img-optimized/team/team-3.jpg" class="img-fluid" alt="">
                   <div class="social">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -1868,7 +2169,7 @@
             <div class="swiper-slide">
               <div class="member" data-aos="fade-up" data-aos-delay="300">
                 <div class="member-img">
-                  <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                  <img src="assets/img-optimized/team/team-4.jpg" class="img-fluid" alt="">
                   <div class="social">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -1887,7 +2188,7 @@
             <div class="swiper-slide">
               <div class="member" data-aos="fade-up" data-aos-delay="300">
                 <div class="member-img">
-                  <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                  <img src="assets/img-optimized/team/team-4.jpg" class="img-fluid" alt="">
                   <div class="social">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -1907,7 +2208,7 @@
             <div class="swiper-slide">
               <div class="member" data-aos="fade-up" data-aos-delay="300">
                 <div class="member-img">
-                  <img src="assets/img/team/team-4.jpg" class="img-fluid" alt="">
+                  <img src="assets/img-optimized/team/team-4.jpg" class="img-fluid" alt="">
                   <div class="social">
                     <a href="#"><i class="bi bi-twitter"></i></a>
                     <a href="#"><i class="bi bi-facebook"></i></a>
@@ -1984,7 +2285,7 @@
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/demo.svg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/demo.svg" alt="" class="img-fluid_kolesz">
           </div>
         </div>
 
@@ -1995,7 +2296,7 @@
 
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/demo.svg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/demo.svg" alt="" class="img-fluid_kolesz">
           </div>
           <div class="col-lg-6">
             <p>
@@ -2025,7 +2326,7 @@
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/teruletek/Kom.jpg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/teruletek/Kom.jpg" alt="" class="img-fluid_kolesz">
           </div>
         </div>
 
@@ -2036,7 +2337,7 @@
 
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/teruletek/Nemzi.jpg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/teruletek/Nemzi.jpg" alt="" class="img-fluid_kolesz">
           </div>
           <div class="col-lg-6">
             <p>
@@ -2067,7 +2368,7 @@
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/teruletek/Rendi.jpg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/teruletek/Rendi.jpg" alt="" class="img-fluid_kolesz">
           </div>
         </div>
 
@@ -2078,7 +2379,7 @@
 
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/demo.svg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/demo.svg" alt="" class="img-fluid_kolesz">
           </div>
           <div class="col-lg-6">
             <p>
@@ -2109,7 +2410,7 @@
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/demo.svg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/demo.svg" alt="" class="img-fluid_kolesz">
           </div>
         </div>
 
@@ -2129,7 +2430,7 @@
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/teruletek/Gazdi.jpg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/teruletek/Gazdi.jpg" alt="" class="img-fluid_kolesz">
           </div>
         </div>
 
@@ -2140,7 +2441,7 @@
 
         <div class="row content" data-aos="fade-up">
           <div class="col-lg-6 pt-4 pt-lg-0">
-            <img src="assets/img/teruletek/HSZB.jpg" alt="" class="img-fluid_kolesz">
+            <img src="assets/img-optimized/teruletek/HSZB.jpg" alt="" class="img-fluid_kolesz">
           </div>
           <div class="col-lg-6">
             <p>
@@ -2258,16 +2559,15 @@
   <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
 
 
   <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/corvinus-scholarship.js"></script>
-  <script src="assets/js/events-calendar.js"></script>
+  <script src="assets/js/main.min.js"></script>
+  <script src="assets/js/corvinus-scholarship.min.js"></script>
+  <script src="assets/js/events-calendar.min.js"></script>
 
 </body>
 
