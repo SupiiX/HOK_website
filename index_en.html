@@ -240,150 +240,104 @@
         </ul>
 
         <style>
-          /* Premium Scholarship Tabs - Luxury Design */
+          /* Modern Responsive Scholarship Tabs - Stable Design */
           .scholarship-tabs-premium {
-            margin-bottom: 35px;
-            gap: 12px;
+            margin-bottom: 30px;
+            gap: 10px;
+            padding: 0;
           }
 
           .scholarship-tabs-premium .nav-item {
-            padding: 0 6px;
-            margin-bottom: 12px;
+            padding: 0;
+            margin-bottom: 10px;
           }
 
-          /* Base tab styling - Elegant card design */
+          /* Base tab styling - Clean card design with brand colors */
           .scholarship-tabs-premium .nav-link {
-            border: none !important;
-            border-radius: 20px;
-            padding: 18px 12px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
-            box-shadow:
-              0 3px 12px rgba(85, 40, 46, 0.08),
-              0 1px 4px rgba(191, 143, 85, 0.12);
+            border: 2px solid #e8e8e8 !important;
+            border-radius: 16px;
+            padding: 20px 12px;
+            transition: all 0.3s ease;
+            background: #ffffff;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
             position: relative;
-            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 90px;
+            height: 100px;
             color: #55282e;
             font-weight: 600;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
           }
 
-          /* Subtle gradient overlay */
-          .scholarship-tabs-premium .nav-link::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(191, 143, 85, 0.04) 0%, rgba(191, 143, 85, 0.08) 100%);
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            border-radius: 20px;
-          }
-
-          .scholarship-tabs-premium .nav-link:hover::before {
-            opacity: 1;
-          }
-
-          /* Icon styling - Bronze accent */
+          /* Icon styling - Gold accent from palette */
           .scholarship-tabs-premium .nav-link i {
             font-size: 36px;
             padding: 0;
-            margin-bottom: 8px;
-            color: #BF8F55;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 6px;
+            color: #b8915d;
+            transition: all 0.3s ease;
           }
 
-          /* Text styling - Clean typography */
+          /* Text styling - Clean sans-serif */
           .scholarship-tabs-premium .nav-link h4 {
             font-size: 13px;
             margin: 0;
             color: #55282e;
             font-weight: 600;
             letter-spacing: 0.3px;
-            transition: color 0.3s ease;
+            transition: all 0.3s ease;
             text-align: center;
-            line-height: 1.3;
+            line-height: 1.2;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
           }
 
-          /* Hover state - Elegant lift */
+          /* Hover state - NO translateY, only border and shadow */
           .scholarship-tabs-premium .nav-link:hover {
-            transform: translateY(-4px);
-            box-shadow:
-              0 10px 25px rgba(191, 143, 85, 0.2),
-              0 5px 12px rgba(85, 40, 46, 0.12);
-            background: linear-gradient(135deg, #ffffff 0%, #fffbf7 100%);
+            border-color: #c8aa81 !important;
+            box-shadow: 0 4px 12px rgba(184, 145, 93, 0.2);
+            background: #ffffff;
           }
 
           .scholarship-tabs-premium .nav-link:hover i {
-            transform: scale(1.12);
-            color: #D4A875;
+            color: #c8aa81;
+            transform: scale(1.08);
           }
 
-          /* Active state - Premium gold gradient */
+          /* Active state - Brand burgundy with gold accents */
           .scholarship-tabs-premium .nav-link.active,
           .scholarship-tabs-premium .nav-link.show {
-            background: linear-gradient(135deg, #BF8F55 0%, #D4A875 50%, #BF8F55 100%);
-            background-size: 200% 100%;
+            background: linear-gradient(135deg, #55282e 0%, #751101 100%);
+            border-color: #b8915d !important;
             box-shadow:
-              0 12px 30px rgba(191, 143, 85, 0.35),
-              0 6px 15px rgba(85, 40, 46, 0.2),
-              inset 0 1px 0 rgba(255, 255, 255, 0.3),
-              inset 0 -1px 0 rgba(0, 0, 0, 0.1);
-            transform: translateY(-5px);
+              0 4px 16px rgba(85, 40, 46, 0.3),
+              0 0 0 3px rgba(184, 145, 93, 0.2);
             color: #ffffff;
-            animation: shimmer 3s infinite;
-          }
-
-          @keyframes shimmer {
-            0%, 100% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-          }
-
-          .scholarship-tabs-premium .nav-link.active::before,
-          .scholarship-tabs-premium .nav-link.show::before {
-            opacity: 0;
           }
 
           .scholarship-tabs-premium .nav-link.active i,
           .scholarship-tabs-premium .nav-link.show i {
-            color: #ffffff;
-            transform: scale(1.18);
-            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+            color: #c8aa81;
+            transform: scale(1.1);
           }
 
           .scholarship-tabs-premium .nav-link.active h4,
           .scholarship-tabs-premium .nav-link.show h4 {
             color: #ffffff;
-            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
           }
 
-          /* Active glow effect */
-          .scholarship-tabs-premium .nav-link.active::after,
-          .scholarship-tabs-premium .nav-link.show::after {
-            content: '';
-            position: absolute;
-            inset: -3px;
-            background: linear-gradient(135deg, #BF8F55, #D4A875);
-            border-radius: 23px;
-            z-index: -1;
-            opacity: 0.5;
-            filter: blur(10px);
-          }
-
-          /* Desktop - Large screens */
-          @media (min-width: 992px) {
+          /* Desktop - Large screens (1200px+) */
+          @media (min-width: 1200px) {
             .scholarship-tabs-premium .nav-link {
-              padding: 22px 14px;
-              min-height: 105px;
-              border-radius: 22px;
+              padding: 24px 16px;
+              height: 110px;
+              border-radius: 18px;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 42px;
-              margin-bottom: 10px;
+              font-size: 40px;
+              margin-bottom: 8px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
@@ -391,17 +345,42 @@
             }
           }
 
-          /* Tablet */
-          @media (min-width: 768px) and (max-width: 991px) {
+          /* Desktop - Normal (992px - 1199px) */
+          @media (min-width: 992px) and (max-width: 1199px) {
             .scholarship-tabs-premium .nav-link {
-              padding: 16px 10px;
-              min-height: 88px;
-              border-radius: 18px;
+              padding: 20px 12px;
+              height: 105px;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 34px;
+              font-size: 38px;
               margin-bottom: 7px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 13px;
+            }
+          }
+
+          /* Tablet - iPad & similar (768px - 991px) */
+          @media (min-width: 768px) and (max-width: 991px) {
+            .scholarship-tabs-premium {
+              gap: 12px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              margin-bottom: 12px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 18px 10px;
+              height: 95px;
+              border-radius: 16px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 36px;
+              margin-bottom: 6px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
@@ -409,21 +388,49 @@
             }
           }
 
-          /* Mobile */
-          @media (max-width: 767px) {
+          /* Large Mobile - Landscape & Large Phones (576px - 767px) */
+          @media (min-width: 576px) and (max-width: 767px) {
             .scholarship-tabs-premium {
-              gap: 8px;
+              gap: 10px;
             }
 
             .scholarship-tabs-premium .nav-item {
-              padding: 0 4px;
+              margin-bottom: 10px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 16px 10px;
+              height: 90px;
+              border-radius: 14px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 34px;
+              margin-bottom: 5px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 11.5px;
+            }
+          }
+
+          /* Mobile - Portrait Phones (0 - 575px) */
+          @media (max-width: 575px) {
+            .scholarship-tabs-premium {
+              gap: 8px;
+              margin-bottom: 20px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              padding: 0;
               margin-bottom: 8px;
             }
 
             .scholarship-tabs-premium .nav-link {
               padding: 14px 8px;
-              min-height: 78px;
-              border-radius: 16px;
+              height: 85px;
+              border-radius: 14px;
+              border-width: 2px !important;
             }
 
             .scholarship-tabs-premium .nav-link i {
@@ -431,134 +438,27 @@
               margin-bottom: 4px;
             }
 
-            .scholarship-tabs-premium .nav-link:hover {
-              transform: translateY(-2px);
-            }
-
-            .scholarship-tabs-premium .nav-link.active,
-            .scholarship-tabs-premium .nav-link.show {
-              transform: translateY(-3px);
-            }
-          }
-
-          /* Extra small mobile */
-          @media (max-width: 375px) {
-            .scholarship-tabs-premium .nav-link {
-              padding: 12px 6px;
-              min-height: 72px;
-              border-radius: 14px;
-            }
-
-            .scholarship-tabs-premium .nav-link i {
-              font-size: 27px;
-            }
-
             .scholarship-tabs-premium .nav-link h4 {
               font-size: 11px;
-            }
-          }
-
-          /* Enhanced iPad/Tablet (768px - 1024px) - Premium Layout */
-          @media (min-width: 768px) and (max-width: 1024px) {
-            .scholarship-tabs-premium {
-              margin-bottom: 30px;
-              gap: 14px;
-            }
-
-            .scholarship-tabs-premium .nav-item {
-              padding: 0 7px;
-              margin-bottom: 14px;
-            }
-
-            .scholarship-tabs-premium .nav-link {
-              padding: 20px 12px;
-              min-height: 95px;
-              border-radius: 20px;
-            }
-
-            .scholarship-tabs-premium .nav-link i {
-              font-size: 38px;
-              margin-bottom: 8px;
-            }
-
-            .scholarship-tabs-premium .nav-link h4 {
-              font-size: 13px;
-              letter-spacing: 0.4px;
-            }
-
-            .scholarship-tabs-premium .nav-link:hover {
-              transform: translateY(-3px);
-            }
-
-            .scholarship-tabs-premium .nav-link.active,
-            .scholarship-tabs-premium .nav-link.show {
-              transform: translateY(-4px);
-            }
-          }
-
-          /* Enhanced Mobile Portrait (320px - 767px) - Beautiful Compact Design */
-          @media (max-width: 767px) {
-            .scholarship-tabs-premium {
-              gap: 10px;
-              margin-bottom: 25px;
-            }
-
-            .scholarship-tabs-premium .nav-item {
-              padding: 0 5px;
-              margin-bottom: 10px;
-            }
-
-            .scholarship-tabs-premium .nav-link {
-              padding: 16px 10px;
-              min-height: 82px;
-              border-radius: 18px;
-              box-shadow:
-                0 2px 10px rgba(85, 40, 46, 0.1),
-                0 1px 3px rgba(191, 143, 85, 0.15);
-            }
-
-            .scholarship-tabs-premium .nav-link i {
-              font-size: 32px;
-              margin-bottom: 5px;
-            }
-
-            .scholarship-tabs-premium .nav-link h4 {
-              font-size: 11.5px;
               letter-spacing: 0.2px;
-              line-height: 1.2;
-            }
-
-            .scholarship-tabs-premium .nav-link:hover {
-              transform: translateY(-2px);
-              box-shadow:
-                0 6px 18px rgba(191, 143, 85, 0.18),
-                0 3px 8px rgba(85, 40, 46, 0.12);
-            }
-
-            .scholarship-tabs-premium .nav-link.active,
-            .scholarship-tabs-premium .nav-link.show {
-              transform: translateY(-3px);
-              box-shadow:
-                0 10px 22px rgba(191, 143, 85, 0.32),
-                0 5px 12px rgba(85, 40, 46, 0.18),
-                inset 0 1px 0 rgba(255, 255, 255, 0.3);
             }
           }
 
-          /* Enhanced landscape phones / Small tablets */
-          @media (min-width: 576px) and (max-width: 767px) {
+          /* Extra Small Mobile (0 - 374px) */
+          @media (max-width: 374px) {
             .scholarship-tabs-premium .nav-link {
-              padding: 18px 12px;
-              min-height: 88px;
+              padding: 12px 6px;
+              height: 80px;
+              border-radius: 12px;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 34px;
-              margin-bottom: 6px;
+              font-size: 28px;
+              margin-bottom: 3px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
-              font-size: 12px;
+              font-size: 10.5px;
             }
           }
         </style>
