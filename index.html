@@ -206,7 +206,7 @@
           <p>Ösztöndíj információk</p>
         </div>
 
-        <ul class="nav nav-tabs row d-flex scholarship-tabs-custom">
+        <ul class="nav nav-tabs row d-flex scholarship-tabs-premium">
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in">
             <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
               <i class="ri-award-line"></i>
@@ -240,75 +240,221 @@
         </ul>
 
         <style>
-          /* Ösztöndíj tab egyedi stílusok */
-          .scholarship-tabs-custom .nav-link {
-            padding: 12px 8px;
-            min-height: 80px;
+          /* Premium Scholarship Tabs - Luxury Design */
+          .scholarship-tabs-premium {
+            margin-bottom: 35px;
+            gap: 12px;
           }
 
-          .scholarship-tabs-custom .nav-link h4 {
-            font-size: 14px;
-            margin-top: 8px;
-            line-height: 1.2;
+          .scholarship-tabs-premium .nav-item {
+            padding: 0 6px;
+            margin-bottom: 12px;
           }
 
-          .scholarship-tabs-custom .nav-link i {
-            font-size: 32px;
-            padding-right: 0;
+          /* Base tab styling - Elegant card design */
+          .scholarship-tabs-premium .nav-link {
+            border: none !important;
+            border-radius: 20px;
+            padding: 18px 12px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            background: linear-gradient(135deg, #ffffff 0%, #fafafa 100%);
+            box-shadow:
+              0 3px 12px rgba(85, 40, 46, 0.08),
+              0 1px 4px rgba(191, 143, 85, 0.12);
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90px;
+            color: #55282e;
+            font-weight: 600;
           }
 
-          /* Desktop - nagyobb ikonok és szöveg */
+          /* Subtle gradient overlay */
+          .scholarship-tabs-premium .nav-link::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(191, 143, 85, 0.04) 0%, rgba(191, 143, 85, 0.08) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            border-radius: 20px;
+          }
+
+          .scholarship-tabs-premium .nav-link:hover::before {
+            opacity: 1;
+          }
+
+          /* Icon styling - Bronze accent */
+          .scholarship-tabs-premium .nav-link i {
+            font-size: 36px;
+            padding: 0;
+            margin-bottom: 8px;
+            color: #BF8F55;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          }
+
+          /* Text styling - Clean typography */
+          .scholarship-tabs-premium .nav-link h4 {
+            font-size: 13px;
+            margin: 0;
+            color: #55282e;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            text-align: center;
+            line-height: 1.3;
+          }
+
+          /* Hover state - Elegant lift */
+          .scholarship-tabs-premium .nav-link:hover {
+            transform: translateY(-4px);
+            box-shadow:
+              0 10px 25px rgba(191, 143, 85, 0.2),
+              0 5px 12px rgba(85, 40, 46, 0.12);
+            background: linear-gradient(135deg, #ffffff 0%, #fffbf7 100%);
+          }
+
+          .scholarship-tabs-premium .nav-link:hover i {
+            transform: scale(1.12);
+            color: #D4A875;
+          }
+
+          /* Active state - Premium gold gradient */
+          .scholarship-tabs-premium .nav-link.active,
+          .scholarship-tabs-premium .nav-link.show {
+            background: linear-gradient(135deg, #BF8F55 0%, #D4A875 50%, #BF8F55 100%);
+            background-size: 200% 100%;
+            box-shadow:
+              0 12px 30px rgba(191, 143, 85, 0.35),
+              0 6px 15px rgba(85, 40, 46, 0.2),
+              inset 0 1px 0 rgba(255, 255, 255, 0.3),
+              inset 0 -1px 0 rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+            color: #ffffff;
+            animation: shimmer 3s infinite;
+          }
+
+          @keyframes shimmer {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+          }
+
+          .scholarship-tabs-premium .nav-link.active::before,
+          .scholarship-tabs-premium .nav-link.show::before {
+            opacity: 0;
+          }
+
+          .scholarship-tabs-premium .nav-link.active i,
+          .scholarship-tabs-premium .nav-link.show i {
+            color: #ffffff;
+            transform: scale(1.18);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+          }
+
+          .scholarship-tabs-premium .nav-link.active h4,
+          .scholarship-tabs-premium .nav-link.show h4 {
+            color: #ffffff;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.2);
+          }
+
+          /* Active glow effect */
+          .scholarship-tabs-premium .nav-link.active::after,
+          .scholarship-tabs-premium .nav-link.show::after {
+            content: '';
+            position: absolute;
+            inset: -3px;
+            background: linear-gradient(135deg, #BF8F55, #D4A875);
+            border-radius: 23px;
+            z-index: -1;
+            opacity: 0.5;
+            filter: blur(10px);
+          }
+
+          /* Desktop - Large screens */
           @media (min-width: 992px) {
-            .scholarship-tabs-custom .nav-link {
-              padding: 15px 10px;
-              flex-direction: column;
+            .scholarship-tabs-premium .nav-link {
+              padding: 22px 14px;
+              min-height: 105px;
+              border-radius: 22px;
             }
 
-            .scholarship-tabs-custom .nav-link i {
-              font-size: 40px;
-              padding-right: 0;
-              margin-bottom: 5px;
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 42px;
+              margin-bottom: 10px;
             }
 
-            .scholarship-tabs-custom .nav-link h4 {
-              font-size: 13px;
-              text-align: center;
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 14px;
             }
           }
 
-          /* Tablet - közepes ikonok */
+          /* Tablet */
           @media (min-width: 768px) and (max-width: 991px) {
-            .scholarship-tabs-custom .nav-link {
-              padding: 15px 5px;
-              min-height: 70px;
+            .scholarship-tabs-premium .nav-link {
+              padding: 16px 10px;
+              min-height: 88px;
+              border-radius: 18px;
             }
 
-            .scholarship-tabs-custom .nav-link i {
-              font-size: 36px;
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 34px;
+              margin-bottom: 7px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 12px;
             }
           }
 
-          /* Mobil - csak ikonok, kicsik */
+          /* Mobile */
           @media (max-width: 767px) {
-            .scholarship-tabs-custom .nav-link {
-              padding: 12px 5px;
-              min-height: 65px;
+            .scholarship-tabs-premium {
+              gap: 8px;
             }
 
-            .scholarship-tabs-custom .nav-link i {
-              font-size: 28px;
+            .scholarship-tabs-premium .nav-item {
+              padding: 0 4px;
+              margin-bottom: 8px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 14px 8px;
+              min-height: 78px;
+              border-radius: 16px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 30px;
+              margin-bottom: 4px;
+            }
+
+            .scholarship-tabs-premium .nav-link:hover {
+              transform: translateY(-2px);
+            }
+
+            .scholarship-tabs-premium .nav-link.active,
+            .scholarship-tabs-premium .nav-link.show {
+              transform: translateY(-3px);
             }
           }
 
-          /* Extra kicsi mobilok */
+          /* Extra small mobile */
           @media (max-width: 375px) {
-            .scholarship-tabs-custom .nav-link {
-              padding: 10px 3px;
-              min-height: 60px;
+            .scholarship-tabs-premium .nav-link {
+              padding: 12px 6px;
+              min-height: 72px;
+              border-radius: 14px;
             }
 
-            .scholarship-tabs-custom .nav-link i {
-              font-size: 24px;
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 27px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 11px;
             }
           }
         </style>
