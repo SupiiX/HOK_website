@@ -461,11 +461,27 @@
               font-size: 10.5px;
             }
           }
+
+          /* Smooth tab content transitions - NO layout shift */
+          .tab-content {
+            position: relative;
+          }
+
+          .tab-content .tab-pane {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.2s ease-in-out;
+          }
+
+          .tab-content .tab-pane.active {
+            display: block;
+            opacity: 1;
+          }
         </style>
 
         <script>
           /**
-           * Fix Bootstrap Tab Switching - Ensure proper active state management
+           * Smooth Tab Switching - NO vibration, NO layout shift
            */
           (function() {
             'use strict';
@@ -474,7 +490,7 @@
               // Get all scholarship tab links
               const tabLinks = document.querySelectorAll('.scholarship-tabs-premium .nav-link');
 
-              // Manually handle tab switching to ensure active state is properly managed
+              // Manually handle tab switching
               tabLinks.forEach(function(tabLink) {
                 tabLink.addEventListener('click', function(e) {
                   e.preventDefault();
@@ -492,21 +508,15 @@
                   const targetPane = document.querySelector(targetId);
 
                   if (targetPane) {
-                    // Hide all tab panes
+                    // Hide all tab panes INSTANTLY (no delay)
                     const allPanes = document.querySelectorAll('.tab-content .tab-pane');
                     allPanes.forEach(function(pane) {
                       pane.classList.remove('active', 'show');
                     });
 
-                    // Show target pane with a slight delay for smooth transition
-                    setTimeout(function() {
-                      targetPane.classList.add('active', 'show');
-                    }, 50);
+                    // Show target pane INSTANTLY (CSS handles the smooth opacity transition)
+                    targetPane.classList.add('active', 'show');
                   }
-
-                  // Trigger Bootstrap's built-in tab shown event
-                  const bsTab = new bootstrap.Tab(tabLink);
-                  // Don't call bsTab.show() as we're handling it manually to avoid conflicts
                 });
               });
 
