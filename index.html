@@ -457,7 +457,177 @@
               font-size: 11px;
             }
           }
+
+          /* Enhanced iPad/Tablet (768px - 1024px) - Premium Layout */
+          @media (min-width: 768px) and (max-width: 1024px) {
+            .scholarship-tabs-premium {
+              margin-bottom: 30px;
+              gap: 14px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              padding: 0 7px;
+              margin-bottom: 14px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 20px 12px;
+              min-height: 95px;
+              border-radius: 20px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 38px;
+              margin-bottom: 8px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 13px;
+              letter-spacing: 0.4px;
+            }
+
+            .scholarship-tabs-premium .nav-link:hover {
+              transform: translateY(-3px);
+            }
+
+            .scholarship-tabs-premium .nav-link.active,
+            .scholarship-tabs-premium .nav-link.show {
+              transform: translateY(-4px);
+            }
+          }
+
+          /* Enhanced Mobile Portrait (320px - 767px) - Beautiful Compact Design */
+          @media (max-width: 767px) {
+            .scholarship-tabs-premium {
+              gap: 10px;
+              margin-bottom: 25px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              padding: 0 5px;
+              margin-bottom: 10px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 16px 10px;
+              min-height: 82px;
+              border-radius: 18px;
+              box-shadow:
+                0 2px 10px rgba(85, 40, 46, 0.1),
+                0 1px 3px rgba(191, 143, 85, 0.15);
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 32px;
+              margin-bottom: 5px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 11.5px;
+              letter-spacing: 0.2px;
+              line-height: 1.2;
+            }
+
+            .scholarship-tabs-premium .nav-link:hover {
+              transform: translateY(-2px);
+              box-shadow:
+                0 6px 18px rgba(191, 143, 85, 0.18),
+                0 3px 8px rgba(85, 40, 46, 0.12);
+            }
+
+            .scholarship-tabs-premium .nav-link.active,
+            .scholarship-tabs-premium .nav-link.show {
+              transform: translateY(-3px);
+              box-shadow:
+                0 10px 22px rgba(191, 143, 85, 0.32),
+                0 5px 12px rgba(85, 40, 46, 0.18),
+                inset 0 1px 0 rgba(255, 255, 255, 0.3);
+            }
+          }
+
+          /* Enhanced landscape phones / Small tablets */
+          @media (min-width: 576px) and (max-width: 767px) {
+            .scholarship-tabs-premium .nav-link {
+              padding: 18px 12px;
+              min-height: 88px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 34px;
+              margin-bottom: 6px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 12px;
+            }
+          }
         </style>
+
+        <script>
+          /**
+           * Fix Bootstrap Tab Switching - Ensure proper active state management
+           */
+          (function() {
+            'use strict';
+
+            document.addEventListener('DOMContentLoaded', function() {
+              // Get all scholarship tab links
+              const tabLinks = document.querySelectorAll('.scholarship-tabs-premium .nav-link');
+
+              // Manually handle tab switching to ensure active state is properly managed
+              tabLinks.forEach(function(tabLink) {
+                tabLink.addEventListener('click', function(e) {
+                  e.preventDefault();
+
+                  // Remove active and show classes from all tabs
+                  tabLinks.forEach(function(link) {
+                    link.classList.remove('active', 'show');
+                  });
+
+                  // Add active and show to clicked tab
+                  this.classList.add('active', 'show');
+
+                  // Get the target tab pane
+                  const targetId = this.getAttribute('href');
+                  const targetPane = document.querySelector(targetId);
+
+                  if (targetPane) {
+                    // Hide all tab panes
+                    const allPanes = document.querySelectorAll('.tab-content .tab-pane');
+                    allPanes.forEach(function(pane) {
+                      pane.classList.remove('active', 'show');
+                    });
+
+                    // Show target pane with a slight delay for smooth transition
+                    setTimeout(function() {
+                      targetPane.classList.add('active', 'show');
+                    }, 50);
+                  }
+
+                  // Trigger Bootstrap's built-in tab shown event
+                  const bsTab = new bootstrap.Tab(tabLink);
+                  // Don't call bsTab.show() as we're handling it manually to avoid conflicts
+                });
+              });
+
+              // Ensure first tab is active on page load
+              const firstTab = document.querySelector('.scholarship-tabs-premium .nav-link:first-child');
+              const firstPane = document.querySelector('.tab-content .tab-pane:first-child');
+
+              if (firstTab && firstPane) {
+                // Remove active from all
+                tabLinks.forEach(link => link.classList.remove('active', 'show'));
+                document.querySelectorAll('.tab-content .tab-pane').forEach(pane => {
+                  pane.classList.remove('active', 'show');
+                });
+
+                // Set first as active
+                firstTab.classList.add('active', 'show');
+                firstPane.classList.add('active', 'show');
+              }
+            });
+          })();
+        </script>
 
         <div class="tab-content" data-aos="fade-up">
           <!-- TAB 1: Corvinus ösztöndíj -->
