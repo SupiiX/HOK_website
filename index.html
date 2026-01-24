@@ -206,17 +206,17 @@
           <p>Ösztöndíj információk</p>
         </div>
 
-        <ul class="nav nav-tabs row d-flex">
+        <ul class="nav nav-tabs row d-flex scholarship-tabs-custom">
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in">
             <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
               <i class="ri-award-line"></i>
-              <h4 class="d-none d-lg-block">Corvinus ösztöndíj</h4>
+              <h4 class="d-none d-lg-block">Corvinus</h4>
             </a>
           </li>
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="50">
             <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
               <i class="ri-trophy-line"></i>
-              <h4 class="d-none d-lg-block">Teljesítményalapú</h4>
+              <h4 class="d-none d-lg-block">Teljesítmény</h4>
             </a>
           </li>
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
@@ -238,6 +238,80 @@
             </a>
           </li>
         </ul>
+
+        <style>
+          /* Ösztöndíj tab egyedi stílusok */
+          .scholarship-tabs-custom .nav-link {
+            padding: 12px 8px;
+            min-height: 80px;
+          }
+
+          .scholarship-tabs-custom .nav-link h4 {
+            font-size: 14px;
+            margin-top: 8px;
+            line-height: 1.2;
+          }
+
+          .scholarship-tabs-custom .nav-link i {
+            font-size: 32px;
+            padding-right: 0;
+          }
+
+          /* Desktop - nagyobb ikonok és szöveg */
+          @media (min-width: 992px) {
+            .scholarship-tabs-custom .nav-link {
+              padding: 15px 10px;
+              flex-direction: column;
+            }
+
+            .scholarship-tabs-custom .nav-link i {
+              font-size: 40px;
+              padding-right: 0;
+              margin-bottom: 5px;
+            }
+
+            .scholarship-tabs-custom .nav-link h4 {
+              font-size: 13px;
+              text-align: center;
+            }
+          }
+
+          /* Tablet - közepes ikonok */
+          @media (min-width: 768px) and (max-width: 991px) {
+            .scholarship-tabs-custom .nav-link {
+              padding: 15px 5px;
+              min-height: 70px;
+            }
+
+            .scholarship-tabs-custom .nav-link i {
+              font-size: 36px;
+            }
+          }
+
+          /* Mobil - csak ikonok, kicsik */
+          @media (max-width: 767px) {
+            .scholarship-tabs-custom .nav-link {
+              padding: 12px 5px;
+              min-height: 65px;
+            }
+
+            .scholarship-tabs-custom .nav-link i {
+              font-size: 28px;
+            }
+          }
+
+          /* Extra kicsi mobilok */
+          @media (max-width: 375px) {
+            .scholarship-tabs-custom .nav-link {
+              padding: 10px 3px;
+              min-height: 60px;
+            }
+
+            .scholarship-tabs-custom .nav-link i {
+              font-size: 24px;
+            }
+          }
+        </style>
 
         <div class="tab-content" data-aos="fade-up">
           <!-- TAB 1: Corvinus ösztöndíj -->
