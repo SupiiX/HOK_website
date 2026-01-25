@@ -375,7 +375,7 @@
           /* Large Mobile - Landscape & Large Phones (576px - 767px) */
           @media (min-width: 576px) and (max-width: 767px) {
             .scholarship-tabs-premium {
-              gap: 8px;
+              gap: 10px;
             }
 
             .scholarship-tabs-premium .nav-link {
@@ -394,43 +394,62 @@
             }
           }
 
-          /* Mobile - Portrait Phones (0 - 575px) */
+          /* Mobile - Portrait Phones (0 - 575px) - 2 column grid */
           @media (max-width: 575px) {
             .scholarship-tabs-premium {
-              gap: 6px;
-              margin-bottom: 20px;
+              display: grid !important;
+              grid-template-columns: 1fr 1fr;
+              gap: 12px;
+              margin-bottom: 24px;
+              padding: 0 4px;
+            }
+
+            .scholarship-tabs-premium .nav-item {
+              width: 100%;
+            }
+
+            /* Last item (5th) centered */
+            .scholarship-tabs-premium .nav-item:last-child {
+              grid-column: 1 / -1;
+              max-width: 50%;
+              justify-self: center;
             }
 
             .scholarship-tabs-premium .nav-link {
-              padding: 12px 6px;
-              height: 75px;
-              border-radius: 6px;
+              padding: 14px 8px;
+              height: 80px;
+              border-radius: 8px;
+              width: 100%;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 24px;
-              margin-bottom: 4px;
+              font-size: 26px;
+              margin-bottom: 5px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
-              font-size: 10px;
+              font-size: 11px;
             }
           }
 
           /* Extra Small Mobile (0 - 374px) */
           @media (max-width: 374px) {
+            .scholarship-tabs-premium {
+              gap: 8px;
+            }
+
             .scholarship-tabs-premium .nav-link {
-              padding: 10px 4px;
-              height: 70px;
+              padding: 12px 6px;
+              height: 72px;
             }
 
             .scholarship-tabs-premium .nav-link i {
               font-size: 22px;
-              margin-bottom: 3px;
+              margin-bottom: 4px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
-              font-size: 9px;
+              font-size: 10px;
             }
           }
 
