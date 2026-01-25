@@ -11,25 +11,25 @@
       "id": "tanulmanyi",
       "name": "Tanulmányi",
       "nameEn": "Academic",
-      "color": "#BF8F55"
+      "color": "#55282e"
     },
     {
       "id": "bulik",
       "name": "Bulik/Szórakozás",
       "nameEn": "Parties/Entertainment",
-      "color": "#D97D6F"
+      "color": "#6d2180"
     },
     {
       "id": "sport",
       "name": "Sport",
       "nameEn": "Sports",
-      "color": "#6B9FBF"
+      "color": "#09ad86"
     },
     {
       "id": "adminisztrativ",
       "name": "Adminisztratív",
       "nameEn": "Administrative",
-      "color": "#A89968"
+      "color": "#013649"
     }
   ],
   "events": [
