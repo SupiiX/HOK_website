@@ -954,36 +954,34 @@
               background: #ffffff;
             }
 
-            /* Mobile responsiveness */
-            @media (max-width: 768px) {
-              .corvinus-toggle-wrapper {
-                max-width: 100%;
+            /* Tablet responsiveness for Corvinus section */
+            @media (min-width: 768px) and (max-width: 991px) {
+              .corvinus-chart-card .card-body {
+                padding: 1.25rem !important;
               }
 
-              .corvinus-toggle-label {
-                font-size: 13px;
-                padding: 12px 10px;
+              #tab-4 h3,
+              #tab-5 h3 {
+                font-size: 1.4rem;
               }
+            }
 
+            /* Mobile responsiveness for Corvinus section */
+            @media (max-width: 767px) {
               .corvinus-chart-card .card-body {
                 padding: 1rem !important;
               }
 
-              #tab-4 h3 {
-                font-size: 1.5rem;
+              #tab-4 h3,
+              #tab-5 h3 {
+                font-size: 1.3rem;
                 text-align: center;
               }
 
-              #tab-4 .text-muted {
+              #tab-4 .text-muted,
+              #tab-5 .text-muted {
                 font-size: 0.9rem;
                 text-align: center;
-              }
-            }
-
-            @media (max-width: 480px) {
-              .corvinus-toggle-label {
-                font-size: 12px;
-                padding: 10px 8px;
               }
             }
 
@@ -1118,15 +1116,36 @@
               margin-bottom: 0.5rem;
             }
 
-            /* Mobile responsiveness for sub-toggles */
-            @media (max-width: 768px) {
-              .scholarship-sub-toggle-wrapper {
+            /* Tablet responsiveness (768px - 991px) */
+            @media (min-width: 768px) and (max-width: 991px) {
+              .scholarship-sub-toggle-wrapper,
+              .corvinus-toggle-wrapper {
+                max-width: 350px;
+              }
+
+              .scholarship-sub-toggle-label,
+              .corvinus-toggle-label {
+                font-size: 13px;
+                padding: 12px 14px;
+              }
+
+              .scholarship-content-card,
+              .tool-content-card {
+                padding: 1.75rem;
+              }
+            }
+
+            /* Mobile responsiveness (575px - 767px) */
+            @media (min-width: 575px) and (max-width: 767px) {
+              .scholarship-sub-toggle-wrapper,
+              .corvinus-toggle-wrapper {
                 max-width: 100%;
               }
 
-              .scholarship-sub-toggle-label {
-                font-size: 12px;
-                padding: 10px 8px;
+              .scholarship-sub-toggle-label,
+              .corvinus-toggle-label {
+                font-size: 13px;
+                padding: 12px 16px;
               }
 
               .scholarship-content-card,
@@ -1137,13 +1156,53 @@
               .scholarship-actions .btn {
                 width: 100%;
                 margin-right: 0;
+                margin-bottom: 8px;
               }
             }
 
-            @media (max-width: 480px) {
-              .scholarship-sub-toggle-label {
+            /* Small mobile (0 - 574px) */
+            @media (max-width: 574px) {
+              .scholarship-sub-toggle-wrapper,
+              .corvinus-toggle-wrapper {
+                max-width: 100%;
+                margin-bottom: 16px;
+              }
+
+              .scholarship-sub-toggle-label,
+              .corvinus-toggle-label {
+                font-size: 12px;
+                padding: 14px 12px;
+                font-weight: 600;
+              }
+
+              .scholarship-content-card,
+              .tool-content-card {
+                padding: 1.25rem;
+                border-radius: 8px;
+              }
+
+              .scholarship-section {
+                margin: 1rem 0;
+              }
+
+              .scholarship-section h5 {
+                font-size: 1rem;
+              }
+
+              .scholarship-actions .btn {
+                width: 100%;
+                margin-right: 0;
+                margin-bottom: 8px;
+                padding: 12px 16px;
+              }
+            }
+
+            /* Extra small mobile (0 - 374px) */
+            @media (max-width: 374px) {
+              .scholarship-sub-toggle-label,
+              .corvinus-toggle-label {
                 font-size: 11px;
-                padding: 8px 6px;
+                padding: 12px 8px;
               }
 
               .scholarship-content-card,
