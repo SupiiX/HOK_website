@@ -240,86 +240,76 @@
         </ul>
 
         <style>
-          /* Modern Responsive Scholarship Tabs - Stable Design */
+          /* Flat Design Scholarship Tabs - Clean & Minimal */
           .scholarship-tabs-premium {
             margin-bottom: 30px;
-            gap: 10px;
+            gap: 12px;
             padding: 0;
           }
 
           .scholarship-tabs-premium .nav-item {
             padding: 0;
-            margin-bottom: 10px;
+            margin-bottom: 0;
           }
 
-          /* Base tab styling - Clean card design with brand colors */
+          /* Base tab styling - Flat, minimal design */
           .scholarship-tabs-premium .nav-link {
-            border: 2px solid #e8e8e8 !important;
-            border-radius: 16px;
-            padding: 20px 12px;
-            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            padding: 16px 12px;
+            transition: all 0.2s ease;
             background: #ffffff;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+            box-shadow: none;
             position: relative;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 100px;
+            height: 90px;
             color: #55282e;
             font-weight: 600;
-            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            font-family: "Argentum Sans Regular", sans-serif;
           }
 
-          /* Icon styling - Gold accent from palette */
+          /* Icon styling - Monochrome */
           .scholarship-tabs-premium .nav-link i {
-            font-size: 36px;
+            font-size: 32px;
             padding: 0;
             margin-bottom: 6px;
-            color: #b8915d;
-            transition: all 0.3s ease;
+            color: #55282e;
+            transition: all 0.2s ease;
           }
 
-          /* Text styling - Clean sans-serif */
+          /* Text styling */
           .scholarship-tabs-premium .nav-link h4 {
-            font-size: 13px;
+            font-size: 12px;
             margin: 0;
             color: #55282e;
             font-weight: 600;
-            letter-spacing: 0.3px;
-            transition: all 0.3s ease;
+            letter-spacing: 0.2px;
+            transition: all 0.2s ease;
             text-align: center;
-            line-height: 1.2;
-            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            line-height: 1.3;
+            font-family: "Argentum Sans Regular", sans-serif;
           }
 
-          /* Hover state - NO translateY, only border and shadow */
+          /* Hover state - Subtle */
           .scholarship-tabs-premium .nav-link:hover {
-            border-color: #c8aa81 !important;
-            box-shadow: 0 4px 12px rgba(184, 145, 93, 0.2);
-            background: #ffffff;
+            border-color: #55282e;
+            background: #faf8f7;
           }
 
-          .scholarship-tabs-premium .nav-link:hover i {
-            color: #c8aa81;
-            transform: scale(1.08);
-          }
-
-          /* Active state - Brand burgundy with gold accents */
+          /* Active state - Solid burgundy, no gradient */
           .scholarship-tabs-premium .nav-link.active,
           .scholarship-tabs-premium .nav-link.show {
-            background: linear-gradient(135deg, #55282e 0%, #751101 100%);
-            border-color: #b8915d !important;
-            box-shadow:
-              0 4px 16px rgba(85, 40, 46, 0.3),
-              0 0 0 3px rgba(184, 145, 93, 0.2);
+            background: #55282e;
+            border-color: #55282e;
             color: #ffffff;
           }
 
           .scholarship-tabs-premium .nav-link.active i,
           .scholarship-tabs-premium .nav-link.show i {
-            color: #c8aa81;
-            transform: scale(1.1);
+            color: #ffffff;
           }
 
           .scholarship-tabs-premium .nav-link.active h4,
@@ -330,31 +320,14 @@
           /* Desktop - Large screens (1200px+) */
           @media (min-width: 1200px) {
             .scholarship-tabs-premium .nav-link {
-              padding: 24px 16px;
-              height: 110px;
-              border-radius: 18px;
+              padding: 20px 16px;
+              height: 100px;
+              border-radius: 10px;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 40px;
+              font-size: 36px;
               margin-bottom: 8px;
-            }
-
-            .scholarship-tabs-premium .nav-link h4 {
-              font-size: 14px;
-            }
-          }
-
-          /* Desktop - Normal (992px - 1199px) */
-          @media (min-width: 992px) and (max-width: 1199px) {
-            .scholarship-tabs-premium .nav-link {
-              padding: 20px 12px;
-              height: 105px;
-            }
-
-            .scholarship-tabs-premium .nav-link i {
-              font-size: 38px;
-              margin-bottom: 7px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
@@ -362,25 +335,15 @@
             }
           }
 
-          /* Tablet - iPad & similar (768px - 991px) */
-          @media (min-width: 768px) and (max-width: 991px) {
-            .scholarship-tabs-premium {
-              gap: 12px;
-            }
-
-            .scholarship-tabs-premium .nav-item {
-              margin-bottom: 12px;
-            }
-
+          /* Desktop - Normal (992px - 1199px) */
+          @media (min-width: 992px) and (max-width: 1199px) {
             .scholarship-tabs-premium .nav-link {
-              padding: 18px 10px;
+              padding: 18px 12px;
               height: 95px;
-              border-radius: 16px;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 36px;
-              margin-bottom: 6px;
+              font-size: 34px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
@@ -388,73 +351,42 @@
             }
           }
 
-          /* Large Mobile - Landscape & Large Phones (576px - 767px) */
-          @media (min-width: 576px) and (max-width: 767px) {
+          /* Tablet - iPad & similar (768px - 991px) */
+          @media (min-width: 768px) and (max-width: 991px) {
             .scholarship-tabs-premium {
               gap: 10px;
             }
 
-            .scholarship-tabs-premium .nav-item {
-              margin-bottom: 10px;
-            }
-
             .scholarship-tabs-premium .nav-link {
               padding: 16px 10px;
-              height: 90px;
-              border-radius: 14px;
+              height: 88px;
+              border-radius: 8px;
             }
 
             .scholarship-tabs-premium .nav-link i {
-              font-size: 34px;
-              margin-bottom: 5px;
-            }
-
-            .scholarship-tabs-premium .nav-link h4 {
-              font-size: 11.5px;
-            }
-          }
-
-          /* Mobile - Portrait Phones (0 - 575px) */
-          @media (max-width: 575px) {
-            .scholarship-tabs-premium {
-              gap: 8px;
-              margin-bottom: 20px;
-            }
-
-            .scholarship-tabs-premium .nav-item {
-              padding: 0;
-              margin-bottom: 8px;
-            }
-
-            .scholarship-tabs-premium .nav-link {
-              padding: 14px 8px;
-              height: 85px;
-              border-radius: 14px;
-              border-width: 2px !important;
-            }
-
-            .scholarship-tabs-premium .nav-link i {
-              font-size: 30px;
-              margin-bottom: 4px;
+              font-size: 32px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
               font-size: 11px;
-              letter-spacing: 0.2px;
             }
           }
 
-          /* Extra Small Mobile (0 - 374px) */
-          @media (max-width: 374px) {
+          /* Large Mobile - Landscape & Large Phones (576px - 767px) */
+          @media (min-width: 576px) and (max-width: 767px) {
+            .scholarship-tabs-premium {
+              gap: 8px;
+            }
+
             .scholarship-tabs-premium .nav-link {
-              padding: 12px 6px;
-              height: 80px;
-              border-radius: 12px;
+              padding: 14px 8px;
+              height: 82px;
+              border-radius: 8px;
             }
 
             .scholarship-tabs-premium .nav-link i {
               font-size: 28px;
-              margin-bottom: 3px;
+              margin-bottom: 5px;
             }
 
             .scholarship-tabs-premium .nav-link h4 {
@@ -462,7 +394,47 @@
             }
           }
 
-          /* Smooth tab content transitions - NO layout shift */
+          /* Mobile - Portrait Phones (0 - 575px) */
+          @media (max-width: 575px) {
+            .scholarship-tabs-premium {
+              gap: 6px;
+              margin-bottom: 20px;
+            }
+
+            .scholarship-tabs-premium .nav-link {
+              padding: 12px 6px;
+              height: 75px;
+              border-radius: 6px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 24px;
+              margin-bottom: 4px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 10px;
+            }
+          }
+
+          /* Extra Small Mobile (0 - 374px) */
+          @media (max-width: 374px) {
+            .scholarship-tabs-premium .nav-link {
+              padding: 10px 4px;
+              height: 70px;
+            }
+
+            .scholarship-tabs-premium .nav-link i {
+              font-size: 22px;
+              margin-bottom: 3px;
+            }
+
+            .scholarship-tabs-premium .nav-link h4 {
+              font-size: 9px;
+            }
+          }
+
+          /* Smooth tab content transitions */
           .tab-content {
             position: relative;
           }
@@ -891,23 +863,18 @@
               visibility: visible;
             }
 
-            /* Corvinus Toggle Switch */
+            /* Corvinus Toggle - Segmented Control (same style as sub-toggle) */
             .corvinus-toggle-wrapper {
               position: relative;
               width: 100%;
               max-width: 400px;
               margin: 0 auto;
-              height: 60px;
-              background: linear-gradient(145deg, #e6e6e6, #ffffff);
-              border-radius: 50px;
-              box-shadow:
-                8px 8px 16px rgba(0, 0, 0, 0.15),
-                -8px -8px 16px rgba(255, 255, 255, 0.7),
-                inset 0px 0px 0px rgba(0, 0, 0, 0);
-              padding: 5px;
               display: flex;
-              align-items: center;
-              transition: all 0.3s ease;
+              align-items: stretch;
+              border: 1px solid #e0e0e0;
+              border-radius: 6px;
+              overflow: hidden;
+              background: #ffffff;
             }
 
             .corvinus-toggle-wrapper input[type="radio"] {
@@ -917,65 +884,53 @@
             .corvinus-toggle-label {
               flex: 1;
               text-align: center;
-              position: relative;
-              z-index: 2;
               cursor: pointer;
-              transition: all 0.3s ease;
+              transition: all 0.2s ease;
               font-weight: 600;
-              font-size: 15px;
-              padding: 15px 10px;
-              color: #666;
+              font-size: 14px;
+              padding: 14px 16px;
+              color: #55282e;
               user-select: none;
+              background: #ffffff;
+              border-right: 1px solid #e0e0e0;
+              font-family: "Argentum Sans Regular", sans-serif;
+            }
+
+            .corvinus-toggle-label:last-of-type {
+              border-right: none;
             }
 
             .corvinus-toggle-label span {
               display: inline-block;
-              transition: all 0.3s ease;
             }
 
+            .corvinus-toggle-label:hover {
+              background: #faf8f7;
+            }
+
+            /* Hide slider */
             .corvinus-toggle-slider {
-              position: absolute;
-              top: 5px;
-              left: 5px;
-              width: calc(50% - 5px);
-              height: calc(100% - 10px);
-              background: linear-gradient(145deg, #BF8F55, #d4a875);
-              border-radius: 50px;
-              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-              box-shadow:
-                4px 4px 12px rgba(191, 143, 85, 0.4),
-                -2px -2px 8px rgba(212, 168, 117, 0.2),
-                inset 2px 2px 4px rgba(255, 255, 255, 0.3),
-                inset -2px -2px 4px rgba(0, 0, 0, 0.2);
-              z-index: 1;
-            }
-
-            #corvinus-level-alap:checked ~ .corvinus-toggle-slider {
-              left: 5px;
-            }
-
-            #corvinus-level-mester:checked ~ .corvinus-toggle-slider {
-              left: calc(50% + 0px);
+              display: none;
             }
 
             #corvinus-level-alap:checked ~ .corvinus-toggle-left {
+              background: #55282e;
               color: #ffffff;
-              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
             }
 
             #corvinus-level-mester:checked ~ .corvinus-toggle-right {
+              background: #55282e;
               color: #ffffff;
-              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.3);
             }
 
             .corvinus-toggle-label:active {
               transform: scale(0.98);
             }
 
-            /* Chart card styling */
+            /* Chart card styling - Flat */
             .corvinus-chart-card {
-              border: none;
-              border-radius: 15px;
+              border: 1px solid #e0e0e0;
+              border-radius: 8px;
               overflow: hidden;
               background: #ffffff;
             }
@@ -983,13 +938,12 @@
             /* Mobile responsiveness */
             @media (max-width: 768px) {
               .corvinus-toggle-wrapper {
-                height: 55px;
                 max-width: 100%;
               }
 
               .corvinus-toggle-label {
                 font-size: 13px;
-                padding: 12px 8px;
+                padding: 12px 10px;
               }
 
               .corvinus-chart-card .card-body {
@@ -1008,61 +962,46 @@
             }
 
             @media (max-width: 480px) {
-              .corvinus-toggle-wrapper {
-                height: 50px;
-              }
-
               .corvinus-toggle-label {
                 font-size: 12px;
-                padding: 10px 5px;
-              }
-
-              .corvinus-toggle-label span {
-                display: inline-block;
-                max-width: 100%;
+                padding: 10px 8px;
               }
             }
 
-            /* Form select styling for consistency */
+            /* Form select styling - Flat */
             #corvinus-course-select {
-              border-radius: 10px;
-              border: 2px solid #e6e6e6;
+              border-radius: 6px;
+              border: 1px solid #e0e0e0;
               padding: 12px 16px;
-              font-size: 15px;
-              transition: all 0.3s ease;
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              font-size: 14px;
+              transition: all 0.2s ease;
             }
 
             #corvinus-course-select:focus {
-              border-color: #BF8F55;
-              box-shadow: 0 4px 12px rgba(191, 143, 85, 0.15);
+              border-color: #55282e;
+              box-shadow: none;
               outline: none;
             }
 
-            /* Alert info styling */
+            /* Alert info styling - Flat */
             #corvinus-info {
-              border-radius: 10px;
-              border-left: 4px solid #BF8F55;
-              background: linear-gradient(145deg, #fffbf5, #ffffff);
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+              border-radius: 6px;
+              border-left: 3px solid #55282e;
+              background: #faf8f7;
             }
 
-            /* Sub-toggle for scholarship tabs (smaller version) */
+            /* Segmented Control - Flat Design */
             .scholarship-sub-toggle-wrapper {
               position: relative;
               width: 100%;
-              max-width: 450px;
+              max-width: 400px;
               margin: 0 auto;
-              height: 50px;
-              background: linear-gradient(145deg, #f0f0f0, #ffffff);
-              border-radius: 40px;
-              box-shadow:
-                6px 6px 12px rgba(0, 0, 0, 0.1),
-                -6px -6px 12px rgba(255, 255, 255, 0.7);
-              padding: 4px;
               display: flex;
-              align-items: center;
-              transition: all 0.3s ease;
+              align-items: stretch;
+              border: 1px solid #e0e0e0;
+              border-radius: 6px;
+              overflow: hidden;
+              background: #ffffff;
             }
 
             .scholarship-sub-toggle-wrapper input[type="radio"] {
@@ -1072,87 +1011,58 @@
             .scholarship-sub-toggle-label {
               flex: 1;
               text-align: center;
-              position: relative;
-              z-index: 2;
               cursor: pointer;
-              transition: all 0.3s ease;
+              transition: all 0.2s ease;
               font-weight: 600;
-              font-size: 14px;
-              padding: 12px 8px;
-              color: #777;
+              font-size: 13px;
+              padding: 12px 16px;
+              color: #55282e;
               user-select: none;
+              background: #ffffff;
+              border-right: 1px solid #e0e0e0;
+              font-family: "Argentum Sans Regular", sans-serif;
+            }
+
+            .scholarship-sub-toggle-label:last-of-type {
+              border-right: none;
             }
 
             .scholarship-sub-toggle-label span {
               display: inline-block;
-              transition: all 0.3s ease;
             }
 
+            .scholarship-sub-toggle-label:hover {
+              background: #faf8f7;
+            }
+
+            /* Hide the slider - we don't need it anymore */
             .scholarship-sub-toggle-slider {
-              position: absolute;
-              top: 4px;
-              left: 4px;
-              width: calc(50% - 4px);
-              height: calc(100% - 8px);
-              background: linear-gradient(145deg, #BF8F55, #d4a875);
-              border-radius: 40px;
-              transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-              box-shadow:
-                3px 3px 8px rgba(191, 143, 85, 0.3),
-                -2px -2px 6px rgba(212, 168, 117, 0.2);
-              z-index: 1;
+              display: none;
             }
 
-            /* Two-option toggles */
-            #performance-tanulmany:checked ~ .scholarship-sub-toggle-slider,
-            #tools-calculator:checked ~ .scholarship-sub-toggle-slider {
-              left: 4px;
-            }
-
-            #performance-tudomanyos:checked ~ .scholarship-sub-toggle-slider,
-            #tools-stats:checked ~ .scholarship-sub-toggle-slider {
-              left: calc(50% + 0px);
-            }
-
+            /* Active states - solid background */
             #performance-tanulmany:checked ~ .scholarship-sub-toggle-left,
-            #tools-calculator:checked ~ .scholarship-sub-toggle-left {
+            #tools-calculator:checked ~ .scholarship-sub-toggle-left,
+            #social-rendszeres:checked ~ .scholarship-sub-toggle-left {
+              background: #55282e;
               color: #ffffff;
-              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
             #performance-tudomanyos:checked ~ .scholarship-sub-toggle-right,
-            #tools-stats:checked ~ .scholarship-sub-toggle-right {
-              color: #ffffff;
-              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-            }
-
-            /* Social toggle (2-option, same as performance) */
-            #social-rendszeres:checked ~ .scholarship-sub-toggle-slider {
-              left: 4px;
-            }
-
-            #social-rendkivuli:checked ~ .scholarship-sub-toggle-slider {
-              left: calc(50% + 0px);
-            }
-
-            #social-rendszeres:checked ~ .scholarship-sub-toggle-left {
-              color: #ffffff;
-              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
-            }
-
+            #tools-stats:checked ~ .scholarship-sub-toggle-right,
             #social-rendkivuli:checked ~ .scholarship-sub-toggle-right {
+              background: #55282e;
               color: #ffffff;
-              text-shadow: 0px 1px 2px rgba(0, 0, 0, 0.2);
             }
 
-            /* Content cards */
+            /* Content cards - Flat design */
             .scholarship-content-card,
             .tool-content-card {
               background: #ffffff;
-              border-radius: 15px;
+              border-radius: 8px;
               padding: 2rem;
-              box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-              transition: all 0.3s ease;
+              border: 1px solid #e0e0e0;
+              transition: all 0.2s ease;
             }
 
             .scholarship-section {
@@ -1160,7 +1070,7 @@
             }
 
             .scholarship-section h5 {
-              color: #BF8F55;
+              color: #55282e;
               font-weight: 600;
               margin-bottom: 1rem;
             }
@@ -1180,7 +1090,7 @@
               content: "✓";
               position: absolute;
               left: 0;
-              color: #BF8F55;
+              color: #55282e;
               font-weight: bold;
             }
 
@@ -1192,13 +1102,12 @@
             /* Mobile responsiveness for sub-toggles */
             @media (max-width: 768px) {
               .scholarship-sub-toggle-wrapper {
-                height: 45px;
                 max-width: 100%;
               }
 
               .scholarship-sub-toggle-label {
                 font-size: 12px;
-                padding: 10px 6px;
+                padding: 10px 8px;
               }
 
               .scholarship-content-card,
@@ -1213,13 +1122,9 @@
             }
 
             @media (max-width: 480px) {
-              .scholarship-sub-toggle-wrapper {
-                height: 42px;
-              }
-
               .scholarship-sub-toggle-label {
                 font-size: 11px;
-                padding: 8px 4px;
+                padding: 8px 6px;
               }
 
               .scholarship-content-card,
