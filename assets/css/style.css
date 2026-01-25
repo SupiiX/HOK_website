@@ -1752,19 +1752,19 @@ section {
 
 /* Kategória-specifikus színek checked állapotban */
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="tanulmanyi"]) {
-  background: linear-gradient(135deg, #BF8F55 0%, #a07842 100%);
+  background: #55282e;
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="bulik"]) {
-  background: linear-gradient(135deg, #D97D6F 0%, #c56659 100%);
+  background: #6d2180;
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="sport"]) {
-  background: linear-gradient(135deg, #6B9FBF 0%, #5a88a8 100%);
+  background: #09ad86;
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked):has([value="adminisztrativ"]) {
-  background: linear-gradient(135deg, #A89968 0%, #8f8155 100%);
+  background: #013649;
 }
 
 /* Színes kör indikátor */
