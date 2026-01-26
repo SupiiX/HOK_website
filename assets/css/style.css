@@ -1704,27 +1704,25 @@ section {
   justify-content: center;
 }
 
+/* Event filter buttons - uses CSS custom property --category-color from JS */
 .event-filter-label {
   display: flex;
   align-items: center;
   gap: 10px;
   cursor: pointer;
   padding: 12px 20px;
-  background: white;
   border-radius: 50px;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  border: 2px solid #e0e0e0;
+  transition: all 0.2s ease;
+  border: 1px solid #e0e0e0;
   user-select: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
   position: relative;
-  overflow: hidden;
+  background: white;
 }
 
-/* Hover effect - csak ha nincs checked */
+/* Hover effect */
 .event-filter-label:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.12);
-  border-color: #c0c0c0;
+  border-color: #ccc;
+  transform: translateY(-1px);
 }
 
 /* Checkbox elrejtése */
@@ -1734,58 +1732,45 @@ section {
   pointer-events: none;
 }
 
-/* Checked állapot - színes háttér */
-.event-filter-checkbox:checked + .filter-color-indicator {
-  transform: scale(1.2);
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked) {
-  border-color: transparent;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-  transform: translateY(-1px);
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked) .filter-name {
-  color: white;
-  font-weight: 700;
-}
-
-/* Kategória-specifikus színek checked állapotban */
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="tanulmanyi"]) {
-  background: linear-gradient(135deg, #BF8F55 0%, #a07842 100%);
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="bulik"]) {
-  background: linear-gradient(135deg, #D97D6F 0%, #c56659 100%);
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="sport"]) {
-  background: linear-gradient(135deg, #6B9FBF 0%, #5a88a8 100%);
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="adminisztrativ"]) {
-  background: linear-gradient(135deg, #A89968 0%, #8f8155 100%);
-}
-
-/* Színes kör indikátor */
+/* Színes kör - mindig kitöltve a kategória színével */
 .filter-color-indicator {
-  width: 20px;
-  height: 20px;
+  width: 18px;
+  height: 18px;
   border-radius: 50%;
   display: inline-block;
   flex-shrink: 0;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  background-color: var(--category-color);
   border: 2px solid white;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.1);
 }
 
-/* Név */
+/* Név - sötét alapból */
 .filter-name {
   font-weight: 600;
   color: #333;
   font-size: 14px;
-  transition: all 0.3s ease;
   letter-spacing: 0.3px;
+  transition: color 0.2s ease;
+}
+
+/* CHECKED állapot - színes háttér */
+.event-filter-label:has(.event-filter-checkbox:checked) {
+  background-color: var(--category-color);
+  border-color: var(--category-color);
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked) .filter-color-indicator {
+  background-color: var(--category-color);
+  border: 2px solid white;
+  box-shadow: none;
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked) .filter-name {
+  color: white;
+}
+
+.event-filter-label:has(.event-filter-checkbox:checked):hover {
+  opacity: 0.9;
 }
 
 /* Timeline konténer */
