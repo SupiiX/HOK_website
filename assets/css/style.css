@@ -1760,8 +1760,8 @@ section {
 }
 
 .event-filter-label:has(.event-filter-checkbox:checked) .filter-color-indicator {
-  background-color: white;
-  border-color: white;
+  background-color: var(--category-color);
+  border: 2px solid white;
   box-shadow: none;
 }
 
