@@ -179,7 +179,7 @@
     eventsData.categories.forEach(category => {
       const name = lang === 'en' ? category.nameEn : category.name;
       html += `
-        <label class="event-filter-label" style="background-color: ${category.color};">
+        <label class="event-filter-label" style="--category-color: ${category.color};">
           <input type="checkbox" class="event-filter-checkbox" value="${category.id}" checked>
           <span class="filter-color-indicator"></span>
           <span class="filter-name">${name}</span>
