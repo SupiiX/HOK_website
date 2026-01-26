@@ -1704,58 +1704,24 @@ section {
   justify-content: center;
 }
 
+/* Event filter buttons - always colored background from JS inline style */
 .event-filter-label {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 10px;
   cursor: pointer;
-  padding: 10px 18px;
-  background: white;
-  border-radius: 6px;
+  padding: 12px 20px;
+  border-radius: 50px;
   transition: all 0.2s ease;
-  border: 1px solid #e0e0e0;
-  border-left: 3px solid #e0e0e0;
+  border: none;
   user-select: none;
   position: relative;
 }
 
-/* Kategória-specifikus bal border inaktív állapotban */
-.event-filter-label:has([value="tanulmanyi"]) {
-  border-left-color: #55282e;
-}
-
-.event-filter-label:has([value="bulik"]) {
-  border-left-color: #6d2180;
-}
-
-.event-filter-label:has([value="sport"]) {
-  border-left-color: #09ad86;
-}
-
-.event-filter-label:has([value="adminisztrativ"]) {
-  border-left-color: #013649;
-}
-
 /* Hover effect */
 .event-filter-label:hover {
-  background: #faf8f7;
-  border-color: #ccc;
-}
-
-.event-filter-label:has([value="tanulmanyi"]):hover {
-  border-left-color: #55282e;
-}
-
-.event-filter-label:has([value="bulik"]):hover {
-  border-left-color: #6d2180;
-}
-
-.event-filter-label:has([value="sport"]):hover {
-  border-left-color: #09ad86;
-}
-
-.event-filter-label:has([value="adminisztrativ"]):hover {
-  border-left-color: #013649;
+  opacity: 0.85;
+  transform: translateY(-1px);
 }
 
 /* Checkbox elrejtése */
@@ -1765,37 +1731,32 @@ section {
   pointer-events: none;
 }
 
-/* Színes kör elrejtése */
+/* Színes kör - fehér outline */
 .filter-color-indicator {
-  display: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+  background: transparent;
+  border: 2px solid rgba(255, 255, 255, 0.8);
 }
 
-/* Checked állapot - színes háttér */
-.event-filter-label:has(.event-filter-checkbox:checked) {
-  border: none;
-  color: white;
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked) .filter-name {
-  color: white;
+/* Név - fehér */
+.filter-name {
   font-weight: 600;
+  color: white;
+  font-size: 14px;
+  letter-spacing: 0.3px;
 }
 
-/* Kategória-specifikus színek checked állapotban */
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="tanulmanyi"]) {
-  background: #55282e;
+/* Unchecked állapot - halványabb */
+.event-filter-label:has(.event-filter-checkbox:not(:checked)) {
+  opacity: 0.5;
 }
 
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="bulik"]) {
-  background: #6d2180;
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="sport"]) {
-  background: #09ad86;
-}
-
-.event-filter-label:has(.event-filter-checkbox:checked):has([value="adminisztrativ"]) {
-  background: #013649;
+.event-filter-label:has(.event-filter-checkbox:not(:checked)):hover {
+  opacity: 0.7;
 }
 
 /* Név */
