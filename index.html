@@ -1472,10 +1472,23 @@
             });
 
             function navigateToCorvinusChart() {
-              // Tab 5 aktiválása Bootstrap Tab API-val
+              // Tab 5 aktiválása - manuális class váltás (a custom handler nem triggerelődik API hívásnál)
+              const tabLinks = document.querySelectorAll('.scholarship-tabs-premium .nav-link');
+              tabLinks.forEach(link => link.classList.remove('active', 'show'));
+
               const tab5Link = document.querySelector('a[href="#tab-5"]');
-              const tab5 = new bootstrap.Tab(tab5Link);
-              tab5.show();
+              if (tab5Link) {
+                tab5Link.classList.add('active', 'show');
+              }
+
+              // Tab pane váltás
+              const allPanes = document.querySelectorAll('.tab-content .tab-pane');
+              allPanes.forEach(pane => pane.classList.remove('active', 'show'));
+
+              const tab5Pane = document.getElementById('tab-5');
+              if (tab5Pane) {
+                tab5Pane.classList.add('active', 'show');
+              }
 
               // Sub-tab váltás: Statisztikák
               requestAnimationFrame(() => {
@@ -1491,11 +1504,17 @@
                       window.initCorvinusChart();
                     }
 
-                    // Smooth scroll a chart szekcióhoz (kis delay: tab animáció miatt)
+                    // Smooth scroll a chart szekcióhoz header offset-tel
                     setTimeout(() => {
                       const corvinusSection = document.getElementById('corvinus-chart-section');
-                      if (corvinusSection) {
-                        corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      const header = document.getElementById('header');
+                      if (corvinusSection && header) {
+                        const offset = header.offsetHeight + 20; // +20px extra padding
+                        const elementPos = corvinusSection.offsetTop;
+                        window.scrollTo({
+                          top: elementPos - offset,
+                          behavior: 'smooth'
+                        });
                       }
                     }, 100);
                   });

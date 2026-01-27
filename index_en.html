@@ -1482,10 +1482,23 @@
              * requestAnimationFrame: smooth UX, operations run after DOM update
              */
             function navigateToCorvinusChart() {
-              // Activate Tab 5 using Bootstrap Tab API
+              // Activate Tab 5 - manual class switching (custom handler not triggered by API call)
+              const tabLinks = document.querySelectorAll('.scholarship-tabs-premium .nav-link');
+              tabLinks.forEach(link => link.classList.remove('active', 'show'));
+
               const tab5Link = document.querySelector('a[href="#tab-5"]');
-              const tab5 = new bootstrap.Tab(tab5Link);
-              tab5.show();
+              if (tab5Link) {
+                tab5Link.classList.add('active', 'show');
+              }
+
+              // Tab pane switch
+              const allPanes = document.querySelectorAll('.tab-content .tab-pane');
+              allPanes.forEach(pane => pane.classList.remove('active', 'show'));
+
+              const tab5Pane = document.getElementById('tab-5');
+              if (tab5Pane) {
+                tab5Pane.classList.add('active', 'show');
+              }
 
               // Sub-tab switch: Statistics
               requestAnimationFrame(() => {
@@ -1501,11 +1514,17 @@
                       window.initCorvinusChart();
                     }
 
-                    // Smooth scroll to chart section (small delay for tab animation)
+                    // Smooth scroll to chart section with header offset
                     setTimeout(() => {
                       const corvinusSection = document.getElementById('corvinus-chart-section');
-                      if (corvinusSection) {
-                        corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                      const header = document.getElementById('header');
+                      if (corvinusSection && header) {
+                        const offset = header.offsetHeight + 20; // +20px extra padding
+                        const elementPos = corvinusSection.offsetTop;
+                        window.scrollTo({
+                          top: elementPos - offset,
+                          behavior: 'smooth'
+                        });
                       }
                     }, 100);
                   });
