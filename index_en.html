@@ -1514,17 +1514,15 @@
                       window.initCorvinusChart();
                     }
 
-                    // Smooth scroll to chart section with header offset
+                    // Smooth scroll to chart section (with small correction for header)
                     setTimeout(() => {
                       const corvinusSection = document.getElementById('corvinus-chart-section');
-                      const header = document.getElementById('header');
-                      if (corvinusSection && header) {
-                        const offset = header.offsetHeight + 20; // +20px extra padding
-                        const elementPos = corvinusSection.offsetTop;
-                        window.scrollTo({
-                          top: elementPos - offset,
-                          behavior: 'smooth'
-                        });
+                      if (corvinusSection) {
+                        corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Small correction to scroll down so header doesn't cover
+                        setTimeout(() => {
+                          window.scrollBy({ top: -80, behavior: 'smooth' });
+                        }, 400);
                       }
                     }, 100);
                   });

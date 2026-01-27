@@ -1504,17 +1504,15 @@
                       window.initCorvinusChart();
                     }
 
-                    // Smooth scroll a chart szekcióhoz header offset-tel
+                    // Smooth scroll a chart szekcióhoz (kis korrekcióval a header miatt)
                     setTimeout(() => {
                       const corvinusSection = document.getElementById('corvinus-chart-section');
-                      const header = document.getElementById('header');
-                      if (corvinusSection && header) {
-                        const offset = header.offsetHeight + 20; // +20px extra padding
-                        const elementPos = corvinusSection.offsetTop;
-                        window.scrollTo({
-                          top: elementPos - offset,
-                          behavior: 'smooth'
-                        });
+                      if (corvinusSection) {
+                        corvinusSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        // Kis korrekcióval lejjebb görgetünk hogy a header ne takarja
+                        setTimeout(() => {
+                          window.scrollBy({ top: -80, behavior: 'smooth' });
+                        }, 400);
                       }
                     }, 100);
                   });
