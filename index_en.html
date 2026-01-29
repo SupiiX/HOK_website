@@ -1095,12 +1095,15 @@
             }
 
             /* Source info - small text at bottom */
+            /* Source info - subtle gray box at bottom */
             .corvinus-source-info {
-              margin: 16px 0 0 0;
-              padding: 0;
-              font-size: 11px;
-              color: #999;
+              margin: 20px 0 0 0;
+              padding: 12px 16px;
+              font-size: 12px;
+              color: #666;
               text-align: center;
+              background: #f5f5f5;
+              border-radius: 8px;
             }
 
             /* Mobile responsiveness */
@@ -1957,10 +1960,8 @@
                               <p class="empty-text">Choose a program from the dropdown to see scholarship place ratio trends.</p>
                             </div>
                             <canvas id="corvinus-chart" class="d-none"></canvas>
-                            <!-- Source info - small text at bottom -->
-                            <p id="corvinus-info" class="corvinus-source-info d-none">
-                              Source: Corvinus Scholarship Application and Review 2024/2025
-                            </p>
+                            <!-- Source info - dynamically filled from JSON -->
+                            <p id="corvinus-info" class="corvinus-source-info d-none"></p>
                           </div>
                         </div>
                       </div>

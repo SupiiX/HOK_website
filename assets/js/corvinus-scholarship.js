@@ -106,6 +106,11 @@
 
       scholarshipData = await response.json();
 
+      // Forrás info beállítása a JSON-ból (dinamikus évszám)
+      if (scholarshipData.dataset_info && scholarshipData.dataset_info.source) {
+        elements.infoBox.textContent = 'Forrás: ' + scholarshipData.dataset_info.source;
+      }
+
       // Alapértelmezett szaklista: alapképzés
       updateCourseList('alapképzés');
 

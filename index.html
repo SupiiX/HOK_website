@@ -1108,13 +1108,15 @@
               width: 100% !important;
             }
 
-            /* Source info - small text at bottom */
+            /* Source info - subtle gray box at bottom */
             .corvinus-source-info {
-              margin: 16px 0 0 0;
-              padding: 0;
-              font-size: 11px;
-              color: #999;
+              margin: 20px 0 0 0;
+              padding: 12px 16px;
+              font-size: 12px;
+              color: #666;
               text-align: center;
+              background: #f5f5f5;
+              border-radius: 8px;
             }
 
             /* Tablet responsiveness for Corvinus section */
@@ -1928,10 +1930,8 @@
                               <p class="empty-text">Válassz ki egy szakot a legördülő listából, hogy megjelenjen az ösztöndíjas helyek arányának alakulása.</p>
                             </div>
                             <canvas id="corvinus-chart" class="d-none"></canvas>
-                            <!-- Forrás info - alul kis betűkkel -->
-                            <p id="corvinus-info" class="corvinus-source-info d-none">
-                              Forrás: Corvinus Ösztöndíj pályázat és felülvizsgálat 2024/2025
-                            </p>
+                            <!-- Forrás info - dinamikusan töltődik a JSON-ból -->
+                            <p id="corvinus-info" class="corvinus-source-info d-none"></p>
                           </div>
                         </div>
                       </div>
