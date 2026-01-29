@@ -903,23 +903,131 @@
           </div>
 
           <style>
+            /* Calculator styling */
             .subject-row {
-              border: 1px solid rgba(0, 0, 0, .08);
-              border-radius: .75rem;
-              padding: .75rem;
+              border: 1px solid #e0e0e0;
+              border-radius: 12px;
+              padding: 16px;
               background: #fff;
+              transition: all 0.2s ease;
+            }
+
+            .subject-row:hover {
+              border-color: #BF8F55;
+              box-shadow: 0 2px 8px rgba(191, 143, 85, 0.1);
             }
 
             .subject-row .form-label {
               font-weight: 600;
+              font-size: 13px;
+              color: #55282e;
+              margin-bottom: 6px;
+            }
+
+            .subject-row .form-control,
+            .subject-row .form-select {
+              border-radius: 8px;
+              border: 1px solid #e0e0e0;
+              padding: 10px 12px;
+              font-size: 14px;
+              transition: all 0.2s ease;
+            }
+
+            .subject-row .form-control:focus,
+            .subject-row .form-select:focus {
+              border-color: #BF8F55;
+              box-shadow: 0 0 0 3px rgba(191, 143, 85, 0.15);
             }
 
             .subject-row .remove-btn {
               visibility: hidden;
+              opacity: 0;
+              transition: all 0.2s ease;
+              border-radius: 50%;
+              width: 32px;
+              height: 32px;
+              padding: 0;
+              display: flex;
+              align-items: center;
+              justify-content: center;
             }
 
             .subject-row:hover .remove-btn {
               visibility: visible;
+              opacity: 1;
+            }
+
+            /* Formula box */
+            .calculator-formula-box {
+              background: linear-gradient(135deg, #faf8f7 0%, #f5f0eb 100%);
+              border: 1px solid #e0e0e0;
+              border-radius: 12px;
+              padding: 20px;
+            }
+
+            .calculator-formula-box strong {
+              color: #55282e;
+            }
+
+            /* Result box */
+            .calculator-result-box {
+              background: linear-gradient(135deg, #55282e 0%, #6d3a42 100%);
+              border-radius: 12px;
+              padding: 20px 24px;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+
+            .calculator-result-box .result-label {
+              color: rgba(255, 255, 255, 0.85);
+              font-size: 16px;
+              font-weight: 500;
+            }
+
+            .calculator-result-box .result-value {
+              color: #fff;
+              font-size: 28px;
+              font-weight: 700;
+            }
+
+            /* Calculator buttons */
+            #oszto-add {
+              border-radius: 8px;
+              padding: 10px 20px;
+              font-weight: 600;
+              border-color: #BF8F55;
+              color: #BF8F55;
+            }
+
+            #oszto-add:hover {
+              background: #BF8F55;
+              border-color: #BF8F55;
+              color: #fff;
+            }
+
+            #oszto-calc {
+              border-radius: 8px;
+              padding: 10px 24px;
+              font-weight: 600;
+              background: #55282e;
+              border-color: #55282e;
+            }
+
+            #oszto-calc:hover {
+              background: #6d3a42;
+              border-color: #6d3a42;
+            }
+
+            @media (max-width: 767px) {
+              .calculator-result-box {
+                flex-direction: column;
+                text-align: center;
+                gap: 8px;
+              }
+              .calculator-result-box .result-value {
+                font-size: 32px;
+              }
             }
 
             /* Corvinus Toggle - Segmented Control (same style as sub-toggle) */
@@ -1649,27 +1757,27 @@
                   <div class="row g-4 align-items-center">
                     <!-- BAL: Kalkulátor -->
                     <div class="col-lg-6 col-md-12">
-                      <h3 class="mb-3"><i class="ri-calculator-line"></i> Ösztöndíj-kalkulátor</h3>
+                      <h3 class="mb-3"><i class="ri-calculator-line"></i> Tanulmányi átlag kalkulátor</h3>
                       <p class="text-muted mb-3">
                         Add meg a tárgyakat, típusukat, a kreditértéket és az érdemjegyet.
                       </p>
-                      <div class="mb-4 p-3 bg-light rounded">
-                        <strong>Az átlag számítása:</strong>
-                        <div class="mt-2" style="font-size: 0.95em;">
-                          <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 8px;">
+                      <div class="calculator-formula-box mb-4">
+                        <strong><i class="ri-formula"></i> Az átlag számítása:</strong>
+                        <div class="mt-3" style="font-size: 0.95em;">
+                          <div class="d-flex justify-content-center align-items-center flex-wrap" style="gap: 12px;">
                             <span style="text-align: center;">
-                              <small class="d-block text-muted" style="font-size: 0.85em;">KÖTELEZŐ TÁRGYAK (K)</small>
-                              <span class="fw-bold">(1,2 × kredit × jegy)</span>
+                              <small class="d-block text-muted mb-1" style="font-size: 0.8em;">KÖTELEZŐ (K)</small>
+                              <span class="fw-bold" style="color: #55282e;">(1,2 × kredit × jegy)</span>
                             </span>
-                            <span class="fw-bold">+</span>
+                            <span class="fw-bold" style="color: #BF8F55; font-size: 1.2em;">+</span>
                             <span style="text-align: center;">
-                              <small class="d-block text-muted" style="font-size: 0.85em;">SZABADON VÁLASZTHATÓ (V)</small>
-                              <span class="fw-bold">(kredit × jegy)</span>
+                              <small class="d-block text-muted mb-1" style="font-size: 0.8em;">VÁLASZTHATÓ (V)</small>
+                              <span class="fw-bold" style="color: #55282e;">(kredit × jegy)</span>
                             </span>
                           </div>
-                          <div class="text-center mt-2">
-                            <hr style="border-top: 2px solid #333; width: 100%; margin: 8px 0;">
-                            <span class="fw-bold">Összes FELVETT kredit</span>
+                          <div class="text-center mt-3">
+                            <hr style="border-top: 2px solid #55282e; width: 80%; margin: 12px auto;">
+                            <span class="fw-bold" style="color: #55282e;">Összes felvett kredit</span>
                           </div>
                         </div>
                       </div>
@@ -1689,9 +1797,9 @@
                         </button>
                       </div>
 
-                      <div class="mt-4">
-                        <h5 class="mb-1">Ösztöndíj átlag:</h5>
-                        <div id="oszto-result" class="fs-4 fw-bold">–</div>
+                      <div class="calculator-result-box mt-4">
+                        <span class="result-label">Tanulmányi átlag:</span>
+                        <span id="oszto-result" class="result-value">–</span>
                       </div>
                     </div>
 
