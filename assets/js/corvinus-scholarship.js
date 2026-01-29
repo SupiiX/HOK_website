@@ -244,66 +244,87 @@
     const ctx = elements.chartCanvas.getContext('2d');
 
     // Gradient fill a sávokhoz
-    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-    gradient.addColorStop(0, 'rgba(191, 143, 85, 0.85)');
-    gradient.addColorStop(1, 'rgba(191, 143, 85, 0.35)');
+    const gradient = ctx.createLinearGradient(0, 0, 0, 300);
+    gradient.addColorStop(0, 'rgba(191, 143, 85, 0.9)');
+    gradient.addColorStop(1, 'rgba(191, 143, 85, 0.5)');
+
+    // Plugin: adatcímkék megjelenítése a sávokon
+    const dataLabelsPlugin = {
+      id: 'dataLabels',
+      afterDatasetsDraw(chart) {
+        const { ctx, data, scales } = chart;
+        ctx.save();
+
+        data.datasets[0].data.forEach((value, index) => {
+          const bar = chart.getDatasetMeta(0).data[index];
+          const x = bar.x;
+          const y = bar.y - 10;
+
+          ctx.font = 'bold 14px "Argentum Sans Regular", sans-serif';
+          ctx.fillStyle = '#55282e';
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(value + '%', x, y);
+        });
+
+        ctx.restore();
+      }
+    };
 
     currentChart = new Chart(ctx, {
       type: 'bar',
+      plugins: [dataLabelsPlugin],
       data: {
         labels: data.labels,
         datasets: [{
-          label: 'Ösztöndíjas helyek aránya (%)',
+          label: 'Ösztöndíjas helyek aránya',
           data: data.values,
           backgroundColor: gradient,
           borderColor: '#BF8F55',
           borderWidth: 2,
-          borderRadius: 8,
-          borderSkipped: false
+          borderRadius: 6,
+          borderSkipped: false,
+          maxBarThickness: 60
         }]
       },
       options: {
         responsive: true,
-        maintainAspectRatio: true,
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+            top: 30
+          }
+        },
         animation: {
-          duration: 800,
+          duration: 600,
           easing: 'easeOutQuart'
         },
         plugins: {
           legend: {
-            display: true,
-            position: 'top',
-            labels: {
-              color: '#55282e',
-              padding: 16,
-              usePointStyle: true,
-              font: {
-                size: 13
-              }
-            }
+            display: false
           },
           title: {
             display: true,
             text: courseName,
             color: '#55282e',
             font: {
-              size: 16,
+              size: 15,
               weight: 'bold'
             },
             padding: {
-              bottom: 16
+              bottom: 20
             }
           },
           tooltip: {
             backgroundColor: 'rgba(85, 40, 46, 0.95)',
             titleColor: '#fff',
             bodyColor: '#fff',
-            cornerRadius: 8,
-            padding: 12,
+            cornerRadius: 6,
+            padding: 10,
             displayColors: false,
             callbacks: {
               label: function(context) {
-                return context.parsed.y + '%';
+                return 'Ösztöndíjas: ' + context.parsed.y + '%';
               }
             }
           }
@@ -312,43 +333,19 @@
           y: {
             beginAtZero: true,
             max: 100,
-            grid: {
-              color: 'rgba(0, 0, 0, 0.06)',
-              drawBorder: false
-            },
-            ticks: {
-              color: '#666',
-              padding: 8,
-              callback: function(value) {
-                return value + '%';
-              }
-            },
-            title: {
-              display: true,
-              text: 'Ösztöndíjas helyek aránya (%)',
-              color: '#55282e',
-              font: {
-                size: 12,
-                weight: '600'
-              }
-            }
+            display: false
           },
           x: {
             grid: {
               display: false
             },
             ticks: {
-              color: '#666',
-              padding: 8
-            },
-            title: {
-              display: true,
-              text: 'Tanév',
               color: '#55282e',
               font: {
                 size: 12,
                 weight: '600'
-              }
+              },
+              padding: 8
             }
           }
         }

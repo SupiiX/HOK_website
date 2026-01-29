@@ -1082,10 +1082,16 @@
 
             /* Chart card styling */
             .corvinus-chart-card {
-              border: none;
-              border-radius: 15px;
+              border: 1px solid #e0e0e0;
+              border-radius: 12px;
               overflow: hidden;
               background: #ffffff;
+            }
+
+            /* Chart canvas container */
+            #corvinus-chart {
+              height: 280px !important;
+              width: 100% !important;
             }
 
             /* Mobile responsiveness */
@@ -1112,6 +1118,10 @@
               #tab-4 .text-muted {
                 font-size: 0.9rem;
                 text-align: center;
+              }
+
+              #corvinus-chart {
+                height: 220px !important;
               }
             }
 
