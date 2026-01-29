@@ -253,19 +253,30 @@
     gradient.addColorStop(0, 'rgba(191, 143, 85, 0.9)');
     gradient.addColorStop(1, 'rgba(191, 143, 85, 0.5)');
 
+    // Dinamikus betűméretek képernyőszélesség alapján
+    const getResponsiveSizes = () => {
+      const width = window.innerWidth;
+      if (width >= 1200) return { title: 20, label: 16 };   // Nagy desktop
+      if (width >= 992) return { title: 18, label: 15 };    // Desktop
+      if (width >= 768) return { title: 16, label: 14 };    // Tablet
+      return { title: 14, label: 13 };                       // Mobil
+    };
+
+    const sizes = getResponsiveSizes();
+
     // Plugin: adatcímkék megjelenítése a sávokon
     const dataLabelsPlugin = {
       id: 'dataLabels',
       afterDatasetsDraw(chart) {
-        const { ctx, data, scales } = chart;
+        const { ctx, data } = chart;
         ctx.save();
 
         data.datasets[0].data.forEach((value, index) => {
           const bar = chart.getDatasetMeta(0).data[index];
           const x = bar.x;
-          const y = bar.y - 10;
+          const y = bar.y - 8;
 
-          ctx.font = 'bold 14px "Argentum Sans Regular", sans-serif';
+          ctx.font = `bold ${sizes.label}px "Argentum Sans Regular", sans-serif`;
           ctx.fillStyle = '#55282e';
           ctx.textAlign = 'center';
           ctx.textBaseline = 'bottom';
@@ -313,7 +324,7 @@
             text: courseName,
             color: '#55282e',
             font: {
-              size: 15,
+              size: sizes.title,
               weight: 'bold'
             },
             padding: {
