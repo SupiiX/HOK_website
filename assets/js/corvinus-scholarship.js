@@ -14,7 +14,8 @@
     chartCanvas: null,           // Canvas elem a chart-hoz
     infoBox: null,               // Info box az adatforrásról
     loadingSpinner: null,        // Loading spinner
-    errorMessage: null           // Hibaüzenet elem
+    errorMessage: null,          // Hibaüzenet elem
+    emptyState: null             // Empty state placeholder
   };
   function showLoading() {
     if (elements.loadingSpinner) {
@@ -52,6 +53,25 @@
       elements.errorMessage.classList.add('d-none');
     }
   }
+
+  function showEmptyState() {
+    if (elements.emptyState) {
+      elements.emptyState.classList.remove('d-none');
+    }
+    if (elements.chartCanvas) {
+      elements.chartCanvas.classList.add('d-none');
+    }
+  }
+
+  function hideEmptyState() {
+    if (elements.emptyState) {
+      elements.emptyState.classList.add('d-none');
+    }
+    if (elements.chartCanvas) {
+      elements.chartCanvas.classList.remove('d-none');
+    }
+  }
+
   async function init() {
     if (initialized) return;
     initialized = true;
@@ -70,6 +90,7 @@
     elements.infoBox = document.getElementById('corvinus-info');
     elements.loadingSpinner = document.getElementById('corvinus-loading');
     elements.errorMessage = document.getElementById('corvinus-error');
+    elements.emptyState = document.getElementById('corvinus-chart-empty');
 
     // JSON adatok betöltése fetch API-val
     showLoading();
@@ -128,6 +149,7 @@
       currentChart = null;
     }
     elements.infoBox.classList.add('d-none');
+    showEmptyState();
   }
   function updateCourseList(level) {
     // Map használata: szak név alapján deduplikálás
@@ -164,16 +186,18 @@
     const courseName = event.target.value;
 
     if (!courseName) {
-      // Nincs kiválasztott szak → chart törlése
+      // Nincs kiválasztott szak → chart törlése, empty state megjelenítése
       if (currentChart) {
         currentChart.destroy();
         currentChart = null;
       }
       elements.infoBox.classList.add('d-none');
+      showEmptyState();
       return;
     }
 
-    // Loading state (spinner + disabled controls)
+    // Empty state elrejtése, loading state megjelenítése
+    hideEmptyState();
     showLoading();
 
     // Adatok gyűjtése a kiválasztott szakhoz
@@ -219,39 +243,67 @@
 
     const ctx = elements.chartCanvas.getContext('2d');
 
+    // Gradient fill a sávokhoz
+    const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+    gradient.addColorStop(0, 'rgba(191, 143, 85, 0.85)');
+    gradient.addColorStop(1, 'rgba(191, 143, 85, 0.35)');
+
     currentChart = new Chart(ctx, {
       type: 'bar',
       data: {
-        labels: data.labels,  // ["2020/21", "2021/22", ...]
+        labels: data.labels,
         datasets: [{
           label: 'Ösztöndíjas helyek aránya (%)',
-          data: data.values,  // [80, 85, 90, ...]
-          backgroundColor: 'rgba(191, 143, 85, 0.6)',  // Bronz (transzparens)
-          borderColor: 'rgba(191, 143, 85, 1)',        // Bronz (solid)
+          data: data.values,
+          backgroundColor: gradient,
+          borderColor: '#BF8F55',
           borderWidth: 2,
-          borderRadius: 5,  // Lekerekített oszlopok
+          borderRadius: 8,
+          borderSkipped: false
         }]
       },
       options: {
         responsive: true,
         maintainAspectRatio: true,
+        animation: {
+          duration: 800,
+          easing: 'easeOutQuart'
+        },
         plugins: {
           legend: {
             display: true,
             position: 'top',
+            labels: {
+              color: '#55282e',
+              padding: 16,
+              usePointStyle: true,
+              font: {
+                size: 13
+              }
+            }
           },
           title: {
             display: true,
-            text: courseName,  // Szak neve a chart tetején
+            text: courseName,
+            color: '#55282e',
             font: {
               size: 16,
               weight: 'bold'
+            },
+            padding: {
+              bottom: 16
             }
           },
           tooltip: {
+            backgroundColor: 'rgba(85, 40, 46, 0.95)',
+            titleColor: '#fff',
+            bodyColor: '#fff',
+            cornerRadius: 8,
+            padding: 12,
+            displayColors: false,
             callbacks: {
               label: function(context) {
-                return context.dataset.label + ': ' + context.parsed.y + '%';
+                return context.parsed.y + '%';
               }
             }
           }
@@ -259,21 +311,44 @@
         scales: {
           y: {
             beginAtZero: true,
-            max: 100,  // 0-100% skála
+            max: 100,
+            grid: {
+              color: 'rgba(0, 0, 0, 0.06)',
+              drawBorder: false
+            },
             ticks: {
+              color: '#666',
+              padding: 8,
               callback: function(value) {
                 return value + '%';
               }
             },
             title: {
               display: true,
-              text: 'Ösztöndíjas helyek aránya (%)'
+              text: 'Ösztöndíjas helyek aránya (%)',
+              color: '#55282e',
+              font: {
+                size: 12,
+                weight: '600'
+              }
             }
           },
           x: {
+            grid: {
+              display: false
+            },
+            ticks: {
+              color: '#666',
+              padding: 8
+            },
             title: {
               display: true,
-              text: 'Tanév'
+              text: 'Tanév',
+              color: '#55282e',
+              font: {
+                size: 12,
+                weight: '600'
+              }
             }
           }
         }

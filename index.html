@@ -1047,6 +1047,71 @@
               background: #faf8f7;
             }
 
+            /* Empty state placeholder */
+            .corvinus-chart-empty {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              min-height: 300px;
+              padding: 40px 20px;
+              text-align: center;
+            }
+
+            .corvinus-chart-empty.d-none + #corvinus-chart {
+              display: block !important;
+            }
+
+            .corvinus-chart-empty .empty-icon {
+              width: 80px;
+              height: 80px;
+              border-radius: 50%;
+              background: linear-gradient(135deg, #faf8f7 0%, #f0ece8 100%);
+              display: flex;
+              align-items: center;
+              justify-content: center;
+              margin-bottom: 24px;
+              border: 2px dashed #d0d0d0;
+            }
+
+            .corvinus-chart-empty .empty-icon i {
+              font-size: 36px;
+              color: #BF8F55;
+              opacity: 0.7;
+            }
+
+            .corvinus-chart-empty .empty-title {
+              color: #55282e;
+              margin-bottom: 8px;
+              font-size: 18px;
+              font-weight: 600;
+            }
+
+            .corvinus-chart-empty .empty-text {
+              color: #888;
+              font-size: 14px;
+              max-width: 280px;
+              line-height: 1.5;
+              margin: 0;
+            }
+
+            @media (max-width: 767px) {
+              .corvinus-chart-empty {
+                min-height: 250px;
+                padding: 30px 15px;
+              }
+              .corvinus-chart-empty .empty-icon {
+                width: 64px;
+                height: 64px;
+              }
+              .corvinus-chart-empty .empty-icon i {
+                font-size: 28px;
+              }
+              .corvinus-chart-empty .empty-title {
+                font-size: 16px;
+              }
+            }
+
             /* Segmented Control - Flat Design */
             .scholarship-sub-toggle-wrapper {
               position: relative;
@@ -1724,7 +1789,15 @@
                       <div class="col-lg-7 col-md-12">
                         <div class="card shadow-sm corvinus-chart-card">
                           <div class="card-body p-3 p-md-4">
-                            <canvas id="corvinus-chart"></canvas>
+                            <!-- Empty state placeholder -->
+                            <div id="corvinus-chart-empty" class="corvinus-chart-empty">
+                              <div class="empty-icon">
+                                <i class="ri-bar-chart-box-line"></i>
+                              </div>
+                              <h5 class="empty-title">Válassz egy szakot</h5>
+                              <p class="empty-text">Válassz ki egy szakot a legördülő listából, hogy megjelenjen az ösztöndíjas helyek arányának alakulása.</p>
+                            </div>
+                            <canvas id="corvinus-chart" class="d-none"></canvas>
                           </div>
                         </div>
                       </div>
