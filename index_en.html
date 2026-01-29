@@ -1090,8 +1090,17 @@
 
             /* Chart canvas container */
             #corvinus-chart {
-              height: 280px !important;
+              height: 320px !important;
               width: 100% !important;
+            }
+
+            /* Source info - small text at bottom */
+            .corvinus-source-info {
+              margin: 16px 0 0 0;
+              padding: 0;
+              font-size: 11px;
+              color: #999;
+              text-align: center;
             }
 
             /* Mobile responsiveness */
@@ -1121,7 +1130,11 @@
               }
 
               #corvinus-chart {
-                height: 220px !important;
+                height: 240px !important;
+              }
+
+              .corvinus-source-info {
+                font-size: 10px;
               }
             }
 
@@ -1155,14 +1168,6 @@
               border-color: #BF8F55;
               box-shadow: 0 4px 12px rgba(191, 143, 85, 0.15);
               outline: none;
-            }
-
-            /* Alert info styling */
-            #corvinus-info {
-              border-radius: 10px;
-              border-left: 4px solid #BF8F55;
-              background: linear-gradient(145deg, #fffbf5, #ffffff);
-              box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
             }
 
             /* Empty state placeholder */
@@ -1937,11 +1942,6 @@
                             <option value="">-- Select program --</option>
                           </select>
                         </div>
-
-                        <!-- Info box -->
-                        <div id="corvinus-info" class="alert alert-info d-none" role="alert">
-                          <strong>Data source:</strong> Corvinus scholarship places ratio (2020-2024)
-                        </div>
                       </div>
 
                       <!-- RIGHT: Chart -->
@@ -1957,6 +1957,10 @@
                               <p class="empty-text">Choose a program from the dropdown to see scholarship place ratio trends.</p>
                             </div>
                             <canvas id="corvinus-chart" class="d-none"></canvas>
+                            <!-- Source info - small text at bottom -->
+                            <p id="corvinus-info" class="corvinus-source-info d-none">
+                              Source: Corvinus Scholarship Application and Review 2024/2025
+                            </p>
                           </div>
                         </div>
                       </div>

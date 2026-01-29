@@ -1104,8 +1104,17 @@
 
             /* Chart canvas container */
             #corvinus-chart {
-              height: 280px !important;
+              height: 320px !important;
               width: 100% !important;
+            }
+
+            /* Source info - small text at bottom */
+            .corvinus-source-info {
+              margin: 16px 0 0 0;
+              padding: 0;
+              font-size: 11px;
+              color: #999;
+              text-align: center;
             }
 
             /* Tablet responsiveness for Corvinus section */
@@ -1120,7 +1129,7 @@
               }
 
               #corvinus-chart {
-                height: 260px !important;
+                height: 280px !important;
               }
             }
 
@@ -1143,7 +1152,11 @@
               }
 
               #corvinus-chart {
-                height: 220px !important;
+                height: 240px !important;
+              }
+
+              .corvinus-source-info {
+                font-size: 10px;
               }
             }
 
@@ -1900,11 +1913,6 @@
                             <option value="">-- Válassz szakot --</option>
                           </select>
                         </div>
-
-                        <!-- Info box -->
-                        <div id="corvinus-info" class="alert alert-info d-none" role="alert">
-                          <strong>Forrás:</strong> Corvinus Ösztöndíj pályázat és felülvizsgálat 2024/2025
-                        </div>
                       </div>
 
                       <!-- JOBB: Diagram -->
@@ -1920,6 +1928,10 @@
                               <p class="empty-text">Válassz ki egy szakot a legördülő listából, hogy megjelenjen az ösztöndíjas helyek arányának alakulása.</p>
                             </div>
                             <canvas id="corvinus-chart" class="d-none"></canvas>
+                            <!-- Forrás info - alul kis betűkkel -->
+                            <p id="corvinus-info" class="corvinus-source-info d-none">
+                              Forrás: Corvinus Ösztöndíj pályázat és felülvizsgálat 2024/2025
+                            </p>
                           </div>
                         </div>
                       </div>
