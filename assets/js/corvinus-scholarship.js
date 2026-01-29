@@ -308,7 +308,7 @@
         maintainAspectRatio: false,
         layout: {
           padding: {
-            top: 30
+            top: 35
           }
         },
         animation: {
@@ -328,7 +328,7 @@
               weight: 'bold'
             },
             padding: {
-              bottom: 20
+              bottom: 30
             }
           },
           tooltip: {
