@@ -145,6 +145,32 @@
     });
 
     container.innerHTML = html;
+
+    // Stagger animáció a timeline elemekhez
+    animateTimelineItems(container);
+  }
+
+  // Timeline elemek belépő animációja stagger effekttel
+  function animateTimelineItems(container) {
+    const items = container.querySelectorAll('.timeline-event');
+
+    // Ellenőrizzük, hogy a felhasználó preferálja-e a csökkentett mozgást
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    if (prefersReducedMotion) {
+      // Ha csökkentett mozgást preferál, azonnal megjelenítjük
+      items.forEach(item => {
+        item.classList.add('animate-in');
+      });
+      return;
+    }
+
+    // Stagger animáció
+    items.forEach((item, index) => {
+      setTimeout(() => {
+        item.classList.add('animate-in');
+      }, index * 80); // 80ms késleltetés elemenként
+    });
   }
 
   // Szűrés kategóriák szerint

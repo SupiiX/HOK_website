@@ -2181,3 +2181,222 @@ section {
     font-size: 14px;
   }
 }
+
+/*--------------------------------------------------------------
+# Animációk és interakciók
+--------------------------------------------------------------*/
+
+/* 1. Gombok - Lenyomás effekt és focus ring */
+.btn:active,
+.cta-btn:active,
+.btn-get-started:active,
+.btn-learn-more:active,
+button[type="submit"]:active {
+  transform: scale(0.97);
+  transition: transform 0.1s ease;
+}
+
+/* Focus ring animáció (accessibility) */
+.btn:focus-visible,
+.cta-btn:focus-visible,
+.btn-get-started:focus-visible,
+.btn-learn-more:focus-visible,
+button[type="submit"]:focus-visible {
+  outline: 2px solid #BF8F55;
+  outline-offset: 3px;
+  transition: outline-offset 0.2s ease;
+}
+
+/* Icon forgatás hover-re */
+.btn i,
+.cta-btn i,
+.btn-get-started i {
+  transition: transform 0.3s ease;
+}
+
+.btn:hover i,
+.cta-btn:hover i,
+.btn-get-started:hover i {
+  transform: rotate(5deg) scale(1.1);
+}
+
+/* 2. Form input focus animációk */
+.form-control,
+.form-select {
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: #BF8F55;
+  box-shadow: 0 0 0 4px rgba(191, 143, 85, 0.15);
+}
+
+/* Placeholder fade animáció */
+.form-control::placeholder {
+  transition: opacity 0.3s ease;
+}
+
+.form-control:focus::placeholder {
+  opacity: 0.5;
+}
+
+/* Hibás input rázás animáció */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+.form-control.is-invalid,
+.form-control.error {
+  animation: shake 0.4s ease;
+}
+
+/* 3. Timeline szűrőgombok - Ripple és lenyomás effekt */
+.event-filter-label {
+  overflow: hidden;
+}
+
+.event-filter-label:active {
+  transform: scale(0.95);
+}
+
+.event-filter-label::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 70%);
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+.event-filter-label:active::after {
+  opacity: 1;
+  transform: scale(1.5);
+}
+
+/* Kiválasztott szűrő - finomabb árnyék */
+.event-filter-label:has(.event-filter-checkbox:checked) {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 4. Kártyák hover effekt */
+.services .icon-box {
+  position: relative;
+  overflow: hidden;
+}
+
+.services .icon-box::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(191, 143, 85, 0.08), transparent);
+  transition: left 0.6s ease;
+  pointer-events: none;
+}
+
+.services .icon-box:hover::before {
+  left: 100%;
+}
+
+/* FAQ kártyák hover */
+.faq .faq-list li {
+  transition: transform 0.3s ease;
+}
+
+.faq .faq-list li:hover {
+  transform: translateX(5px);
+}
+
+/* Team member kártyák */
+.team .member {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.team .member:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+/* 5. Navigáció - Dropdown stagger animáció */
+.navbar .dropdown ul li {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.navbar .dropdown:hover ul li {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.navbar .dropdown ul li:nth-child(1) { transition-delay: 0.05s; }
+.navbar .dropdown ul li:nth-child(2) { transition-delay: 0.1s; }
+.navbar .dropdown ul li:nth-child(3) { transition-delay: 0.15s; }
+.navbar .dropdown ul li:nth-child(4) { transition-delay: 0.2s; }
+.navbar .dropdown ul li:nth-child(5) { transition-delay: 0.25s; }
+.navbar .dropdown ul li:nth-child(6) { transition-delay: 0.3s; }
+
+/* 6. Back-to-top gomb animáció */
+.back-to-top:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(85, 40, 46, 0.3);
+}
+
+.back-to-top i {
+  animation: bounce-up 2s ease-in-out infinite;
+}
+
+@keyframes bounce-up {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+/* 7. Portfolio képek zoom */
+.portfolio .portfolio-img img {
+  transition: transform 0.6s ease, filter 0.3s ease;
+}
+
+.portfolio .portfolio-item:hover .portfolio-img img {
+  transform: scale(1.15);
+  filter: brightness(0.9);
+}
+
+/* 8. Timeline események belépő animáció */
+.timeline-event {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-event.animate-in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* 9. Accessibility - Reduced motion támogatás */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .timeline-event {
+    opacity: 1;
+    transform: none;
+  }
+
+  .back-to-top i {
+    animation: none;
+  }
+}
