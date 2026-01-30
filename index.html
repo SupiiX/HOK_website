@@ -957,6 +957,31 @@
               opacity: 1;
             }
 
+            /* Mobilon mindig látható a törlés gomb */
+            @media (max-width: 768px) {
+              .subject-row .remove-btn {
+                visibility: visible;
+                opacity: 1;
+              }
+            }
+
+            /* Kis képernyőn a form mezők egymás alatt */
+            @media (max-width: 576px) {
+              .subject-row .col-4 {
+                flex: 0 0 100%;
+                max-width: 100%;
+                margin-bottom: 8px;
+              }
+              .subject-row .col-12.col-md-1 {
+                margin-top: 8px;
+                text-align: center !important;
+              }
+              .subject-row .remove-btn {
+                width: 100%;
+                border-radius: 8px;
+              }
+            }
+
             /* Formula box */
             .calculator-formula-box {
               background: linear-gradient(135deg, #faf8f7 0%, #f5f0eb 100%);
@@ -1541,10 +1566,10 @@
                     const grade = Number(row.querySelector('.subject-grade').value);
 
                     const validCredit = Number.isFinite(credit) && credit > 0;
-                    const validGrade = Number.isFinite(grade) && grade >= 1 && grade <= 5;
+                    const validGrade = Number.isInteger(grade) && grade >= 1 && grade <= 5;
 
                     if (!validCredit || !validGrade) {
-                      alertEl.textContent = 'Nincs minden mező kitöltve vagy érvényes tartományban.';
+                      alertEl.textContent = 'Kérlek ellenőrizd a mezőket! A jegy csak egész szám lehet (1-5).';
                       alertEl.classList.remove('d-none');
                       resultEl.textContent = '–';
                       return;
@@ -1746,6 +1771,16 @@
                   e.preventDefault();
                   const tabId = this.getAttribute('data-tab');
                   if (tabId) {
+                    // Mobil menü bezárása
+                    const navbar = document.getElementById('navbar');
+                    if (navbar && navbar.classList.contains('navbar-mobile')) {
+                      navbar.classList.remove('navbar-mobile');
+                      const navbarToggle = document.querySelector('.mobile-nav-toggle');
+                      if (navbarToggle) {
+                        navbarToggle.classList.remove('bi-x');
+                        navbarToggle.classList.add('bi-list');
+                      }
+                    }
                     navigateToScholarshipTab(tabId);
                   }
                 });
@@ -1755,6 +1790,16 @@
               if (corvinusChartNavBtn) {
                 corvinusChartNavBtn.addEventListener('click', function(e) {
                   e.preventDefault();
+                  // Mobil menü bezárása
+                  const navbar = document.getElementById('navbar');
+                  if (navbar && navbar.classList.contains('navbar-mobile')) {
+                    navbar.classList.remove('navbar-mobile');
+                    const navbarToggle = document.querySelector('.mobile-nav-toggle');
+                    if (navbarToggle) {
+                      navbarToggle.classList.remove('bi-x');
+                      navbarToggle.classList.add('bi-list');
+                    }
+                  }
                   navigateToCorvinusChart();
                 });
               }
