@@ -207,31 +207,31 @@
 
         <ul class="nav nav-tabs row d-flex scholarship-tabs-premium">
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in">
-            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+            <a class="nav-link active show" href="#tab-1">
               <i class="ri-award-line"></i>
               <h4 class="d-none d-lg-block">Corvinus</h4>
             </a>
           </li>
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="50">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
+            <a class="nav-link" href="#tab-2">
               <i class="ri-trophy-line"></i>
               <h4 class="d-none d-lg-block">Performance</h4>
             </a>
           </li>
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="100">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
+            <a class="nav-link" href="#tab-3">
               <i class="ri-hand-heart-line"></i>
               <h4 class="d-none d-lg-block">Social</h4>
             </a>
           </li>
           <li class="nav-item col-lg-2 col-md-4 col-6" data-aos="zoom-in" data-aos-delay="150">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
+            <a class="nav-link" href="#tab-4">
               <i class="ri-community-line"></i>
               <h4 class="d-none d-lg-block">Public Affairs</h4>
             </a>
           </li>
           <li class="nav-item col-lg-2 col-md-4 col-6 offset-md-2 offset-lg-0" data-aos="zoom-in" data-aos-delay="200">
-            <a class="nav-link" data-bs-toggle="tab" href="#tab-5">
+            <a class="nav-link" href="#tab-5">
               <i class="ri-tools-line"></i>
               <h4 class="d-none d-lg-block">Calculator</h4>
             </a>
@@ -1828,12 +1828,24 @@
                 scholarshipSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
               }
 
-              // Activate tab (requestAnimationFrame: smooth UX)
+              // Tab activation - MANUAL (no Bootstrap Tab API)
               requestAnimationFrame(() => {
-                const tabLink = document.querySelector('a[href="#' + tabId + '"]');
-                if (tabLink) {
-                  const tab = new bootstrap.Tab(tabLink);
-                  tab.show();
+                // Handle tab buttons
+                const allTabLinks = document.querySelectorAll('.scholarship-tabs-premium .nav-link');
+                allTabLinks.forEach(link => link.classList.remove('active', 'show'));
+
+                const targetTabLink = document.querySelector('.scholarship-tabs-premium a[href="#' + tabId + '"]');
+                if (targetTabLink) {
+                  targetTabLink.classList.add('active', 'show');
+                }
+
+                // Handle tab panes
+                const allPanes = document.querySelectorAll('.tab-content .tab-pane');
+                allPanes.forEach(pane => pane.classList.remove('active', 'show'));
+
+                const targetPane = document.getElementById(tabId);
+                if (targetPane) {
+                  targetPane.classList.add('active', 'show');
                 }
               });
             }
