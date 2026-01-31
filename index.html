@@ -1757,21 +1757,66 @@
               });
             }
 
-            // GLOBÁLIS függvény a dropdown menü aktív állapotának frissítésére
-            // Ez az EGYETLEN hely ahol a scholarship dropdown active class-t módosítjuk
-            window.syncScholarshipDropdownActive = function(activeTabId) {
-              const allLinks = document.querySelectorAll('.scholarship-nav-link');
-              // ELŐSZÖR mindről eltávolítjuk az active-ot
-              allLinks.forEach(function(link) {
-                link.classList.remove('active');
-              });
-              // AZTÁN csak a megfelelőhöz adjuk hozzá
-              allLinks.forEach(function(link) {
-                if (link.getAttribute('data-tab') === activeTabId) {
-                  link.classList.add('active');
+            // EGYSZERŰ ÉS MEGBÍZHATÓ: Egyetlen event delegation handler a scholarship dropdown-hoz
+            // Ez az EGYETLEN helyen kezeli a dropdown aktív állapotát
+            (function() {
+              'use strict';
+
+              // Globális függvény amit bárhonnan meg lehet hívni
+              window.syncScholarshipDropdownActive = function(activeTabId) {
+                // Azonnal és közvetlenül módosítjuk a DOM-ot
+                var allLinks = document.querySelectorAll('.scholarship-nav-link');
+                for (var i = 0; i < allLinks.length; i++) {
+                  allLinks[i].classList.remove('active');
                 }
+                for (var i = 0; i < allLinks.length; i++) {
+                  if (allLinks[i].getAttribute('data-tab') === activeTabId) {
+                    allLinks[i].classList.add('active');
+                  }
+                }
+              };
+
+              // Event delegation - egyetlen handler a document-en
+              document.addEventListener('click', function(e) {
+                // Csak scholarship-nav-link kattintásokra reagálunk
+                var target = e.target.closest('.scholarship-nav-link');
+                if (!target) return;
+
+                e.preventDefault();
+                e.stopPropagation(); // Megállítjuk az event propagation-t
+
+                var tabId = target.getAttribute('data-tab');
+                if (!tabId) return;
+
+                // 1. AZONNAL frissítjük az aktív állapotot
+                window.syncScholarshipDropdownActive(tabId);
+
+                // 2. Mobil menü bezárása
+                var navbar = document.getElementById('navbar');
+                if (navbar && navbar.classList.contains('navbar-mobile')) {
+                  navbar.classList.remove('navbar-mobile');
+                  var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                  for (var i = 0; i < activeDropdowns.length; i++) {
+                    activeDropdowns[i].classList.remove('dropdown-active');
+                  }
+                  var navbarToggle = document.querySelector('.mobile-nav-toggle');
+                  if (navbarToggle) {
+                    navbarToggle.classList.remove('bi-x');
+                    navbarToggle.classList.add('bi-list');
+                  }
+                }
+
+                // 3. Navigálás a tabhoz
+                if (typeof navigateToScholarshipTab === 'function') {
+                  navigateToScholarshipTab(tabId);
+                }
+              }, true); // useCapture: true - a capture phase-ben kezeljük
+
+              // Kezdeti állapot beállítása
+              document.addEventListener('DOMContentLoaded', function() {
+                window.syncScholarshipDropdownActive('tab-1');
               });
-            };
+            })();
 
             function navigateToScholarshipTab(tabId) {
               // Scroll az ösztöndíj szekcióhoz
@@ -1790,66 +1835,21 @@
               });
             }
 
+            // Csak a Corvinus chart gomb kezelése itt
             document.addEventListener('DOMContentLoaded', function() {
-              const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
-
-              // Aktív állapot frissítése - használjuk a globális függvényt
-              function updateScholarshipNavActive(activeTabId) {
-                if (window.syncScholarshipDropdownActive) {
-                  window.syncScholarshipDropdownActive(activeTabId);
-                }
-              }
-
-              // Kezdeti aktív állapot beállítása (tab-1 az alapértelmezett)
-              updateScholarshipNavActive('tab-1');
-
-              scholarshipNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  const tabId = this.getAttribute('data-tab');
-                  if (tabId) {
-                    // Aktív állapot frissítése a dropdown linkeken
-                    updateScholarshipNavActive(tabId);
-
-                    // Mobil menü TELJES bezárása
-                    const navbar = document.getElementById('navbar');
-                    if (navbar && navbar.classList.contains('navbar-mobile')) {
-                      navbar.classList.remove('navbar-mobile');
-                      // Dropdown-ok bezárása is!
-                      const activeDropdowns = navbar.querySelectorAll('.dropdown-active');
-                      activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'));
-                      const navbarToggle = document.querySelector('.mobile-nav-toggle');
-                      if (navbarToggle) {
-                        navbarToggle.classList.remove('bi-x');
-                        navbarToggle.classList.add('bi-list');
-                      }
-                    }
-                    navigateToScholarshipTab(tabId);
-                  }
-                });
-              });
-
-              // Bootstrap tab esemény figyelése - szinkronizálás ha közvetlenül váltanak tabot
-              const scholarshipTabLinks = document.querySelectorAll('#osztondij .nav-tabs .nav-link');
-              scholarshipTabLinks.forEach(tabLink => {
-                tabLink.addEventListener('shown.bs.tab', function(e) {
-                  const tabId = e.target.getAttribute('href').replace('#', '');
-                  updateScholarshipNavActive(tabId);
-                });
-              });
-
-              const corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
+              var corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
               if (corvinusChartNavBtn) {
                 corvinusChartNavBtn.addEventListener('click', function(e) {
                   e.preventDefault();
-                  // Mobil menü TELJES bezárása
-                  const navbar = document.getElementById('navbar');
+                  // Mobil menü bezárása
+                  var navbar = document.getElementById('navbar');
                   if (navbar && navbar.classList.contains('navbar-mobile')) {
                     navbar.classList.remove('navbar-mobile');
-                    // Dropdown-ok bezárása is!
-                    const activeDropdowns = navbar.querySelectorAll('.dropdown-active');
-                    activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'));
-                    const navbarToggle = document.querySelector('.mobile-nav-toggle');
+                    var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                    for (var i = 0; i < activeDropdowns.length; i++) {
+                      activeDropdowns[i].classList.remove('dropdown-active');
+                    }
+                    var navbarToggle = document.querySelector('.mobile-nav-toggle');
                     if (navbarToggle) {
                       navbarToggle.classList.remove('bi-x');
                       navbarToggle.classList.add('bi-list');

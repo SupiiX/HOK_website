@@ -1771,21 +1771,66 @@
              * 1. Smooth scroll to scholarship section
              * 2. Activate selected tab
              */
-            // GLOBAL function for syncing dropdown menu active state
-            // This is the ONLY place where scholarship dropdown active class is modified
-            window.syncScholarshipDropdownActive = function(activeTabId) {
-              const allLinks = document.querySelectorAll('.scholarship-nav-link');
-              // FIRST remove active from all
-              allLinks.forEach(function(link) {
-                link.classList.remove('active');
-              });
-              // THEN add only to the correct one
-              allLinks.forEach(function(link) {
-                if (link.getAttribute('data-tab') === activeTabId) {
-                  link.classList.add('active');
+            // SIMPLE AND RELIABLE: Single event delegation handler for scholarship dropdown
+            // This is the ONLY place that handles dropdown active state
+            (function() {
+              'use strict';
+
+              // Global function that can be called from anywhere
+              window.syncScholarshipDropdownActive = function(activeTabId) {
+                // Immediately and directly modify the DOM
+                var allLinks = document.querySelectorAll('.scholarship-nav-link');
+                for (var i = 0; i < allLinks.length; i++) {
+                  allLinks[i].classList.remove('active');
                 }
+                for (var i = 0; i < allLinks.length; i++) {
+                  if (allLinks[i].getAttribute('data-tab') === activeTabId) {
+                    allLinks[i].classList.add('active');
+                  }
+                }
+              };
+
+              // Event delegation - single handler on document
+              document.addEventListener('click', function(e) {
+                // Only react to scholarship-nav-link clicks
+                var target = e.target.closest('.scholarship-nav-link');
+                if (!target) return;
+
+                e.preventDefault();
+                e.stopPropagation(); // Stop event propagation
+
+                var tabId = target.getAttribute('data-tab');
+                if (!tabId) return;
+
+                // 1. IMMEDIATELY update active state
+                window.syncScholarshipDropdownActive(tabId);
+
+                // 2. Close mobile menu
+                var navbar = document.getElementById('navbar');
+                if (navbar && navbar.classList.contains('navbar-mobile')) {
+                  navbar.classList.remove('navbar-mobile');
+                  var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                  for (var i = 0; i < activeDropdowns.length; i++) {
+                    activeDropdowns[i].classList.remove('dropdown-active');
+                  }
+                  var navbarToggle = document.querySelector('.mobile-nav-toggle');
+                  if (navbarToggle) {
+                    navbarToggle.classList.remove('bi-x');
+                    navbarToggle.classList.add('bi-list');
+                  }
+                }
+
+                // 3. Navigate to tab
+                if (typeof navigateToScholarshipTab === 'function') {
+                  navigateToScholarshipTab(tabId);
+                }
+              }, true); // useCapture: true - handle in capture phase
+
+              // Set initial state
+              document.addEventListener('DOMContentLoaded', function() {
+                window.syncScholarshipDropdownActive('tab-1');
               });
-            };
+            })();
 
             function navigateToScholarshipTab(tabId) {
               // Scroll to scholarship section
@@ -1804,82 +1849,21 @@
               });
             }
 
-            /**
-             * Event listener registration (modern method, not inline onclick)
-             *
-             * UX best practices:
-             * - Use addEventListener instead of inline onclick
-             * - Better maintainability
-             * - Easier testability
-             */
+            // Only handle Corvinus chart button here
             document.addEventListener('DOMContentLoaded', function() {
-              /**
-               * Header menu navigation
-               * Elements: .scholarship-nav-link (with data-tab attribute)
-               */
-              const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
-
-              // Update active state on dropdown links - use global function
-              function updateScholarshipNavActive(activeTabId) {
-                if (window.syncScholarshipDropdownActive) {
-                  window.syncScholarshipDropdownActive(activeTabId);
-                }
-              }
-
-              // Set initial active state (tab-1 is default)
-              updateScholarshipNavActive('tab-1');
-
-              scholarshipNavLinks.forEach(link => {
-                link.addEventListener('click', function(e) {
-                  e.preventDefault();
-                  const tabId = this.getAttribute('data-tab');
-                  if (tabId) {
-                    // Update active state on dropdown links
-                    updateScholarshipNavActive(tabId);
-
-                    // Close mobile menu completely
-                    const navbar = document.getElementById('navbar');
-                    if (navbar && navbar.classList.contains('navbar-mobile')) {
-                      navbar.classList.remove('navbar-mobile');
-                      // Close dropdowns too!
-                      const activeDropdowns = navbar.querySelectorAll('.dropdown-active');
-                      activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'));
-                      const navbarToggle = document.querySelector('.mobile-nav-toggle');
-                      if (navbarToggle) {
-                        navbarToggle.classList.remove('bi-x');
-                        navbarToggle.classList.add('bi-list');
-                      }
-                    }
-                    navigateToScholarshipTab(tabId);
-                  }
-                });
-              });
-
-              // Listen to Bootstrap tab events - sync when tabs are changed directly
-              const scholarshipTabLinks = document.querySelectorAll('#osztondij .nav-tabs .nav-link');
-              scholarshipTabLinks.forEach(tabLink => {
-                tabLink.addEventListener('shown.bs.tab', function(e) {
-                  const tabId = e.target.getAttribute('href').replace('#', '');
-                  updateScholarshipNavActive(tabId);
-                });
-              });
-
-              /**
-               * Corvinus chart navigation button
-               * Element: #corvinus-chart-nav-btn (Tab 1, Corvinus info card)
-               */
-              const corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
+              var corvinusChartNavBtn = document.getElementById('corvinus-chart-nav-btn');
               if (corvinusChartNavBtn) {
                 corvinusChartNavBtn.addEventListener('click', function(e) {
                   e.preventDefault();
-                  // Close mobile menu completely
-                  const navbar = document.getElementById('navbar');
+                  // Close mobile menu
+                  var navbar = document.getElementById('navbar');
                   if (navbar && navbar.classList.contains('navbar-mobile')) {
                     navbar.classList.remove('navbar-mobile');
-                    // Close dropdowns too!
-                    const activeDropdowns = navbar.querySelectorAll('.dropdown-active');
-                    activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'));
-                    const navbarToggle = document.querySelector('.mobile-nav-toggle');
+                    var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                    for (var i = 0; i < activeDropdowns.length; i++) {
+                      activeDropdowns[i].classList.remove('dropdown-active');
+                    }
+                    var navbarToggle = document.querySelector('.mobile-nav-toggle');
                     if (navbarToggle) {
                       navbarToggle.classList.remove('bi-x');
                       navbarToggle.classList.add('bi-list');
