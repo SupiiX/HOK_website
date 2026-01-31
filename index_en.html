@@ -1791,11 +1791,29 @@
                * Elements: .scholarship-nav-link (with data-tab attribute)
                */
               const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
+
+              // Update active state on dropdown links
+              function updateScholarshipNavActive(activeTabId) {
+                scholarshipNavLinks.forEach(link => {
+                  if (link.getAttribute('data-tab') === activeTabId) {
+                    link.classList.add('active');
+                  } else {
+                    link.classList.remove('active');
+                  }
+                });
+              }
+
+              // Set initial active state (tab-1 is default)
+              updateScholarshipNavActive('tab-1');
+
               scholarshipNavLinks.forEach(link => {
                 link.addEventListener('click', function(e) {
                   e.preventDefault();
                   const tabId = this.getAttribute('data-tab');
                   if (tabId) {
+                    // Update active state on dropdown links
+                    updateScholarshipNavActive(tabId);
+
                     // Close mobile menu completely
                     const navbar = document.getElementById('navbar');
                     if (navbar && navbar.classList.contains('navbar-mobile')) {
@@ -1811,6 +1829,15 @@
                     }
                     navigateToScholarshipTab(tabId);
                   }
+                });
+              });
+
+              // Listen to Bootstrap tab events - sync when tabs are changed directly
+              const scholarshipTabLinks = document.querySelectorAll('#osztondij .nav-tabs .nav-link');
+              scholarshipTabLinks.forEach(tabLink => {
+                tabLink.addEventListener('shown.bs.tab', function(e) {
+                  const tabId = e.target.getAttribute('href').replace('#', '');
+                  updateScholarshipNavActive(tabId);
                 });
               });
 
