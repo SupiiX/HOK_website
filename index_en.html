@@ -517,16 +517,11 @@
                     targetPane.classList.add('active', 'show');
                   }
 
-                  // Sync dropdown menu active state
+                  // Sync dropdown menu active state (global function)
                   const activeTabId = targetId.replace('#', '');
-                  const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
-                  scholarshipNavLinks.forEach(function(link) {
-                    if (link.getAttribute('data-tab') === activeTabId) {
-                      link.classList.add('active');
-                    } else {
-                      link.classList.remove('active');
-                    }
-                  });
+                  if (window.syncScholarshipDropdownActive) {
+                    window.syncScholarshipDropdownActive(activeTabId);
+                  }
                 });
               });
 
@@ -1717,6 +1712,11 @@
                 tab5Link.classList.add('active', 'show');
               }
 
+              // Sync dropdown menu active state
+              if (window.syncScholarshipDropdownActive) {
+                window.syncScholarshipDropdownActive('tab-5');
+              }
+
               // Tab pane switch
               const allPanes = document.querySelectorAll('.tab-content .tab-pane');
               allPanes.forEach(pane => pane.classList.remove('active', 'show'));
@@ -1771,6 +1771,22 @@
              * 1. Smooth scroll to scholarship section
              * 2. Activate selected tab
              */
+            // GLOBAL function for syncing dropdown menu active state
+            // This is the ONLY place where scholarship dropdown active class is modified
+            window.syncScholarshipDropdownActive = function(activeTabId) {
+              const allLinks = document.querySelectorAll('.scholarship-nav-link');
+              // FIRST remove active from all
+              allLinks.forEach(function(link) {
+                link.classList.remove('active');
+              });
+              // THEN add only to the correct one
+              allLinks.forEach(function(link) {
+                if (link.getAttribute('data-tab') === activeTabId) {
+                  link.classList.add('active');
+                }
+              });
+            };
+
             function navigateToScholarshipTab(tabId) {
               // Scroll to scholarship section
               const scholarshipSection = document.getElementById('osztondij');
@@ -1803,15 +1819,11 @@
                */
               const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
 
-              // Update active state on dropdown links
+              // Update active state on dropdown links - use global function
               function updateScholarshipNavActive(activeTabId) {
-                scholarshipNavLinks.forEach(link => {
-                  if (link.getAttribute('data-tab') === activeTabId) {
-                    link.classList.add('active');
-                  } else {
-                    link.classList.remove('active');
-                  }
-                });
+                if (window.syncScholarshipDropdownActive) {
+                  window.syncScholarshipDropdownActive(activeTabId);
+                }
               }
 
               // Set initial active state (tab-1 is default)

@@ -548,16 +548,11 @@
                     targetPane.classList.add('active', 'show');
                   }
 
-                  // Szinkronizáljuk a dropdown menü aktív állapotát
+                  // Szinkronizáljuk a dropdown menü aktív állapotát (globális függvény)
                   const activeTabId = targetId.replace('#', '');
-                  const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
-                  scholarshipNavLinks.forEach(function(link) {
-                    if (link.getAttribute('data-tab') === activeTabId) {
-                      link.classList.add('active');
-                    } else {
-                      link.classList.remove('active');
-                    }
-                  });
+                  if (window.syncScholarshipDropdownActive) {
+                    window.syncScholarshipDropdownActive(activeTabId);
+                  }
                 });
               });
 
@@ -1718,6 +1713,11 @@
                 tab5Link.classList.add('active', 'show');
               }
 
+              // Dropdown menü aktív állapot szinkronizálása
+              if (window.syncScholarshipDropdownActive) {
+                window.syncScholarshipDropdownActive('tab-5');
+              }
+
               // Tab pane váltás
               const allPanes = document.querySelectorAll('.tab-content .tab-pane');
               allPanes.forEach(pane => pane.classList.remove('active', 'show'));
@@ -1757,6 +1757,22 @@
               });
             }
 
+            // GLOBÁLIS függvény a dropdown menü aktív állapotának frissítésére
+            // Ez az EGYETLEN hely ahol a scholarship dropdown active class-t módosítjuk
+            window.syncScholarshipDropdownActive = function(activeTabId) {
+              const allLinks = document.querySelectorAll('.scholarship-nav-link');
+              // ELŐSZÖR mindről eltávolítjuk az active-ot
+              allLinks.forEach(function(link) {
+                link.classList.remove('active');
+              });
+              // AZTÁN csak a megfelelőhöz adjuk hozzá
+              allLinks.forEach(function(link) {
+                if (link.getAttribute('data-tab') === activeTabId) {
+                  link.classList.add('active');
+                }
+              });
+            };
+
             function navigateToScholarshipTab(tabId) {
               // Scroll az ösztöndíj szekcióhoz
               const scholarshipSection = document.getElementById('osztondij');
@@ -1777,15 +1793,11 @@
             document.addEventListener('DOMContentLoaded', function() {
               const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
 
-              // Aktív állapot frissítése a dropdown linkeken
+              // Aktív állapot frissítése - használjuk a globális függvényt
               function updateScholarshipNavActive(activeTabId) {
-                scholarshipNavLinks.forEach(link => {
-                  if (link.getAttribute('data-tab') === activeTabId) {
-                    link.classList.add('active');
-                  } else {
-                    link.classList.remove('active');
-                  }
-                });
+                if (window.syncScholarshipDropdownActive) {
+                  window.syncScholarshipDropdownActive(activeTabId);
+                }
               }
 
               // Kezdeti aktív állapot beállítása (tab-1 az alapértelmezett)
