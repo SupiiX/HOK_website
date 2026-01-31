@@ -553,6 +553,13 @@
                   if (window.syncScholarshipDropdownActive) {
                     window.syncScholarshipDropdownActive(activeTabId);
                   }
+
+                  // Ha tab-5 (Kalkulátor), inicializáljuk a kalkulátort
+                  if (activeTabId === 'tab-5' && window.initCalculatorIfNeeded) {
+                    setTimeout(function() {
+                      window.initCalculatorIfNeeded();
+                    }, 50);
+                  }
                 });
               });
 
@@ -1602,18 +1609,8 @@
                 });
               }
 
-              // Bootstrap tab esemény – amikor a 4. fülre váltanak
-              document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
-                tab.addEventListener('shown.bs.tab', (e) => {
-                  if (e.target.getAttribute('href') === '#tab-4') {
-                    // Ellenőrzi hogy a kalkulátor sub-tab aktív-e
-                    const calcRadio = document.getElementById('tools-calculator');
-                    if (calcRadio && calcRadio.checked) {
-                      initCalculatorOnce();
-                    }
-                  }
-                });
-              });
+              // Bootstrap tab esemény – NEM HASZNÁLJUK (manuális tab kezelés van)
+              // Ehelyett a custom tab handlertől kapjuk az értesítést
 
               // Eszközök sub-tab változásának figyelése
               document.addEventListener('DOMContentLoaded', () => {
@@ -1627,7 +1624,24 @@
                     }
                   });
                 });
+
+                // FONTOS: Ha a kalkulátor sub-tab már aktív oldalbetöltéskor, inicializáljuk
+                const calcRadio = document.getElementById('tools-calculator');
+                if (calcRadio && calcRadio.checked) {
+                  // Késleltetés hogy a DOM biztosan renderelve legyen
+                  setTimeout(() => {
+                    initCalculatorOnce();
+                  }, 100);
+                }
               });
+
+              // Globális függvény amit a custom tab handler hívhat
+              window.initCalculatorIfNeeded = function() {
+                const calcRadio = document.getElementById('tools-calculator');
+                if (calcRadio && calcRadio.checked && !initialized) {
+                  initCalculatorOnce();
+                }
+              };
             })();
           </script>
 
@@ -1832,6 +1846,13 @@
                 const targetPane = document.getElementById(tabId);
                 if (targetPane) {
                   targetPane.classList.add('active', 'show');
+                }
+
+                // Ha tab-5 (Kalkulátor), inicializáljuk a kalkulátort
+                if (tabId === 'tab-5' && window.initCalculatorIfNeeded) {
+                  setTimeout(function() {
+                    window.initCalculatorIfNeeded();
+                  }, 50);
                 }
               });
             }

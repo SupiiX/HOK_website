@@ -522,6 +522,13 @@
                   if (window.syncScholarshipDropdownActive) {
                     window.syncScholarshipDropdownActive(activeTabId);
                   }
+
+                  // If tab-5 (Calculator), initialize the calculator
+                  if (activeTabId === 'tab-5' && window.initCalculatorIfNeeded) {
+                    setTimeout(function() {
+                      window.initCalculatorIfNeeded();
+                    }, 50);
+                  }
                 });
               });
 
@@ -1571,18 +1578,8 @@
                 });
               }
 
-              // Bootstrap tab event – when switching to tab 4
-              document.querySelectorAll('[data-bs-toggle="tab"]').forEach(tab => {
-                tab.addEventListener('shown.bs.tab', (e) => {
-                  if (e.target.getAttribute('href') === '#tab-4') {
-                    // Check if calculator sub-tab is active
-                    const calcRadio = document.getElementById('tools-calculator');
-                    if (calcRadio && calcRadio.checked) {
-                      initCalculatorOnce();
-                    }
-                  }
-                });
-              });
+              // Bootstrap tab event – NOT USED (manual tab handling)
+              // Custom tab handler will call initCalculatorIfNeeded instead
 
               // Watch for tools sub-tab changes
               document.addEventListener('DOMContentLoaded', () => {
@@ -1596,7 +1593,24 @@
                     }
                   });
                 });
+
+                // IMPORTANT: If calculator sub-tab is already active on page load, initialize
+                const calcRadio = document.getElementById('tools-calculator');
+                if (calcRadio && calcRadio.checked) {
+                  // Delay to ensure DOM is rendered
+                  setTimeout(() => {
+                    initCalculatorOnce();
+                  }, 100);
+                }
               });
+
+              // Global function that custom tab handler can call
+              window.initCalculatorIfNeeded = function() {
+                const calcRadio = document.getElementById('tools-calculator');
+                if (calcRadio && calcRadio.checked && !initialized) {
+                  initCalculatorOnce();
+                }
+              };
             })();
           </script>
 
@@ -1846,6 +1860,13 @@
                 const targetPane = document.getElementById(tabId);
                 if (targetPane) {
                   targetPane.classList.add('active', 'show');
+                }
+
+                // If tab-5 (Calculator), initialize the calculator
+                if (tabId === 'tab-5' && window.initCalculatorIfNeeded) {
+                  setTimeout(function() {
+                    window.initCalculatorIfNeeded();
+                  }, 50);
                 }
               });
             }
