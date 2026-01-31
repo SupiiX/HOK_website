@@ -136,6 +136,32 @@ onscroll(document, navbarlinksActive);
   }, true)
 
   /**
+   * Dropdown menu items - close mobile nav and scroll
+   * (for items inside dropdowns that are not .scrollto)
+   */
+  on('click', '.navbar .dropdown ul a', function(e) {
+    // Skip if this link has special handling (scholarship-nav-link)
+    if (this.classList.contains('scholarship-nav-link')) return
+
+    // Only handle if has a valid hash target
+    if (this.hash && select(this.hash)) {
+      e.preventDefault()
+
+      let navbar = select('#navbar')
+      if (navbar.classList.contains('navbar-mobile')) {
+        navbar.classList.remove('navbar-mobile')
+        // Close any open dropdowns
+        let activeDropdowns = navbar.querySelectorAll('.dropdown-active')
+        activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'))
+        let navbarToggle = select('.mobile-nav-toggle')
+        navbarToggle.classList.toggle('bi-list')
+        navbarToggle.classList.toggle('bi-x')
+      }
+      scrollto(this.hash)
+    }
+  }, true)
+
+  /**
    * Scrool with ofset on links with a class name .scrollto
    */
   on('click', '.scrollto', function(e) {

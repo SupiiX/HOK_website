@@ -63,19 +63,19 @@
             <ul>
               <li class="dropdown"><a href="#"><span>Our departments</span> <i class="bi bi-chevron-right"></i></a>
                 <ul>
-                  <li><a class="scrollto" href="#hasznos">Communication department</a></li>
-                  <li><a class="scrollto" href="#hasznos">International department</a></li>
-                  <li><a class="scrollto" href="#hasznos">Teaching department</a></li>
-                  <li><a class="scrollto" href="#hasznos">Cabinet</a></li>
-                  <li><a class="scrollto" href="#hasznos">Student organization department</a></li>
-                  <li><a class="scrollto" href="#hasznos">Student Social Committee</a></li>
-                  <li><a class="scrollto" href="#hasznos">Event Organizational department</a></li>
+                  <li><a href="#hasznos">Communication department</a></li>
+                  <li><a href="#hasznos">International department</a></li>
+                  <li><a href="#hasznos">Teaching department</a></li>
+                  <li><a href="#hasznos">Cabinet</a></li>
+                  <li><a href="#hasznos">Student organization department</a></li>
+                  <li><a href="#hasznos">Student Social Committee</a></li>
+                  <li><a href="#hasznos">Event Organizational department</a></li>
                 </ul>
               </li>
-              <li><a class="scrollto" href="#hasznos">Order of academic year</a></li>
-              <li><a class="scrollto" href="#hasznos">Office 365 registration</a></li>
-              <li><a class="scrollto" href="#hasznos">Consulting hours</a></li>
-              <li><a class="scrollto" href="#hasznos">Student area</a></li>
+              <li><a href="#hasznos">Order of academic year</a></li>
+              <li><a href="#hasznos">Office 365 registration</a></li>
+              <li><a href="#hasznos">Consulting hours</a></li>
+              <li><a href="#hasznos">Student area</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#hallgatoi">Student life</a></li>
@@ -516,6 +516,17 @@
                     // Show target pane INSTANTLY (CSS handles the smooth opacity transition)
                     targetPane.classList.add('active', 'show');
                   }
+
+                  // Sync dropdown menu active state
+                  const activeTabId = targetId.replace('#', '');
+                  const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
+                  scholarshipNavLinks.forEach(function(link) {
+                    if (link.getAttribute('data-tab') === activeTabId) {
+                      link.classList.add('active');
+                    } else {
+                      link.classList.remove('active');
+                    }
+                  });
                 });
               });
 

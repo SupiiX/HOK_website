@@ -62,10 +62,10 @@
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Hasznos</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a class="scrollto" href="#hasznos">Tanév rendje</a></li>
-              <li><a class="scrollto" href="#hasznos">Office 365 regisztráció</a></li>
-              <li><a class="scrollto" href="#hasznos">Fogadóórák</a></li>
-              <li><a class="scrollto" href="#hasznos">Hallgatói tér</a></li>
+              <li><a href="#hasznos">Tanév rendje</a></li>
+              <li><a href="#hasznos">Office 365 regisztráció</a></li>
+              <li><a href="#hasznos">Fogadóórák</a></li>
+              <li><a href="#hasznos">Hallgatói tér</a></li>
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#hallgatoi">Hallgatói élet</a></li>
@@ -547,6 +547,17 @@
                     // Show target pane INSTANTLY (CSS handles the smooth opacity transition)
                     targetPane.classList.add('active', 'show');
                   }
+
+                  // Szinkronizáljuk a dropdown menü aktív állapotát
+                  const activeTabId = targetId.replace('#', '');
+                  const scholarshipNavLinks = document.querySelectorAll('.scholarship-nav-link');
+                  scholarshipNavLinks.forEach(function(link) {
+                    if (link.getAttribute('data-tab') === activeTabId) {
+                      link.classList.add('active');
+                    } else {
+                      link.classList.remove('active');
+                    }
+                  });
                 });
               });
 
