@@ -145,6 +145,9 @@ onscroll(document, navbarlinksActive);
       let navbar = select('#navbar')
       if (navbar.classList.contains('navbar-mobile')) {
         navbar.classList.remove('navbar-mobile')
+        // Close any open dropdowns
+        let activeDropdowns = navbar.querySelectorAll('.dropdown-active')
+        activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'))
         let navbarToggle = select('.mobile-nav-toggle')
         navbarToggle.classList.toggle('bi-list')
         navbarToggle.classList.toggle('bi-x')
