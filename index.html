@@ -1771,10 +1771,13 @@
                   e.preventDefault();
                   const tabId = this.getAttribute('data-tab');
                   if (tabId) {
-                    // Mobil menü bezárása
+                    // Mobil menü TELJES bezárása
                     const navbar = document.getElementById('navbar');
                     if (navbar && navbar.classList.contains('navbar-mobile')) {
                       navbar.classList.remove('navbar-mobile');
+                      // Dropdown-ok bezárása is!
+                      const activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                      activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'));
                       const navbarToggle = document.querySelector('.mobile-nav-toggle');
                       if (navbarToggle) {
                         navbarToggle.classList.remove('bi-x');
@@ -1790,10 +1793,13 @@
               if (corvinusChartNavBtn) {
                 corvinusChartNavBtn.addEventListener('click', function(e) {
                   e.preventDefault();
-                  // Mobil menü bezárása
+                  // Mobil menü TELJES bezárása
                   const navbar = document.getElementById('navbar');
                   if (navbar && navbar.classList.contains('navbar-mobile')) {
                     navbar.classList.remove('navbar-mobile');
+                    // Dropdown-ok bezárása is!
+                    const activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                    activeDropdowns.forEach(dd => dd.classList.remove('dropdown-active'));
                     const navbarToggle = document.querySelector('.mobile-nav-toggle');
                     if (navbarToggle) {
                       navbarToggle.classList.remove('bi-x');
