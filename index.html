@@ -52,11 +52,11 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Ösztöndíjak</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Corvinus ösztöndíj</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Teljesítményalapú</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Szociális</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Közéleti</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-5">Kalkulátor & Statisztikák</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link active" data-tab="tab-1" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Corvinus ösztöndíj</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Teljesítményalapú</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Szociális</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Közéleti</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-5" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Kalkulátor & Statisztikák</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Hasznos</span> <i
@@ -1757,66 +1757,55 @@
               });
             }
 
-            // EGYSZERŰ ÉS MEGBÍZHATÓ: Egyetlen event delegation handler a scholarship dropdown-hoz
-            // Ez az EGYETLEN helyen kezeli a dropdown aktív állapotát
-            (function() {
-              'use strict';
+            // INLINE ONCLICK HANDLER - a legközvetlenebb megoldás
+            // Minden dropdown elem onclick-ja ezt a függvényt hívja
+            window.handleScholarshipClick = function(event, clickedElement) {
+              event.preventDefault();
+              event.stopPropagation();
 
-              // Globális függvény amit bárhonnan meg lehet hívni
-              window.syncScholarshipDropdownActive = function(activeTabId) {
-                // Azonnal és közvetlenül módosítjuk a DOM-ot
-                var allLinks = document.querySelectorAll('.scholarship-nav-link');
-                for (var i = 0; i < allLinks.length; i++) {
-                  allLinks[i].classList.remove('active');
+              // 1. AZONNAL eltávolítjuk az active-ot MINDEN elemről
+              var allLinks = document.querySelectorAll('.scholarship-nav-link');
+              for (var i = 0; i < allLinks.length; i++) {
+                allLinks[i].classList.remove('active');
+              }
+
+              // 2. Hozzáadjuk az active-ot CSAK a kattintott elemhez
+              clickedElement.classList.add('active');
+
+              // 3. Mobil menü bezárása
+              var navbar = document.getElementById('navbar');
+              if (navbar && navbar.classList.contains('navbar-mobile')) {
+                navbar.classList.remove('navbar-mobile');
+                var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                for (var i = 0; i < activeDropdowns.length; i++) {
+                  activeDropdowns[i].classList.remove('dropdown-active');
                 }
-                for (var i = 0; i < allLinks.length; i++) {
-                  if (allLinks[i].getAttribute('data-tab') === activeTabId) {
-                    allLinks[i].classList.add('active');
-                  }
+                var navbarToggle = document.querySelector('.mobile-nav-toggle');
+                if (navbarToggle) {
+                  navbarToggle.classList.remove('bi-x');
+                  navbarToggle.classList.add('bi-list');
                 }
-              };
+              }
 
-              // Event delegation - egyetlen handler a document-en
-              document.addEventListener('click', function(e) {
-                // Csak scholarship-nav-link kattintásokra reagálunk
-                var target = e.target.closest('.scholarship-nav-link');
-                if (!target) return;
+              // 4. Navigálás a tabhoz
+              var tabId = clickedElement.getAttribute('data-tab');
+              if (tabId && typeof navigateToScholarshipTab === 'function') {
+                navigateToScholarshipTab(tabId);
+              }
+            };
 
-                e.preventDefault();
-                e.stopPropagation(); // Megállítjuk az event propagation-t
-
-                var tabId = target.getAttribute('data-tab');
-                if (!tabId) return;
-
-                // 1. AZONNAL frissítjük az aktív állapotot
-                window.syncScholarshipDropdownActive(tabId);
-
-                // 2. Mobil menü bezárása
-                var navbar = document.getElementById('navbar');
-                if (navbar && navbar.classList.contains('navbar-mobile')) {
-                  navbar.classList.remove('navbar-mobile');
-                  var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
-                  for (var i = 0; i < activeDropdowns.length; i++) {
-                    activeDropdowns[i].classList.remove('dropdown-active');
-                  }
-                  var navbarToggle = document.querySelector('.mobile-nav-toggle');
-                  if (navbarToggle) {
-                    navbarToggle.classList.remove('bi-x');
-                    navbarToggle.classList.add('bi-list');
-                  }
+            // Globális sync függvény a tab váltáshoz (a szekcióban lévő tabok használják)
+            window.syncScholarshipDropdownActive = function(activeTabId) {
+              var allLinks = document.querySelectorAll('.scholarship-nav-link');
+              for (var i = 0; i < allLinks.length; i++) {
+                allLinks[i].classList.remove('active');
+              }
+              for (var i = 0; i < allLinks.length; i++) {
+                if (allLinks[i].getAttribute('data-tab') === activeTabId) {
+                  allLinks[i].classList.add('active');
                 }
-
-                // 3. Navigálás a tabhoz
-                if (typeof navigateToScholarshipTab === 'function') {
-                  navigateToScholarshipTab(tabId);
-                }
-              }, true); // useCapture: true - a capture phase-ben kezeljük
-
-              // Kezdeti állapot beállítása
-              document.addEventListener('DOMContentLoaded', function() {
-                window.syncScholarshipDropdownActive('tab-1');
-              });
-            })();
+              }
+            };
 
             function navigateToScholarshipTab(tabId) {
               // Scroll az ösztöndíj szekcióhoz

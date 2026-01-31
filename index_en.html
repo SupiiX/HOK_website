@@ -51,11 +51,11 @@
           <li class="dropdown nav-link scrollto"><a href="#osztondij"><span>Scholarships</span> <i
                 class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-1">Corvinus Scholarship</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2">Performance-based</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3">Social</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4">Public Affairs</a></li>
-              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-5">Calculator & Statistics</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link active" data-tab="tab-1" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Corvinus Scholarship</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-2" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Performance-based</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-3" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Social</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-4" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Public Affairs</a></li>
+              <li><a href="#osztondij" class="scholarship-nav-link" data-tab="tab-5" onclick="window.handleScholarshipClick && window.handleScholarshipClick(event, this)">Calculator & Statistics</a></li>
             </ul>
           </li>
           <li class="dropdown nav-link scrollto"><a href="#hasznos"><span>Useful links</span> <i
@@ -1771,66 +1771,55 @@
              * 1. Smooth scroll to scholarship section
              * 2. Activate selected tab
              */
-            // SIMPLE AND RELIABLE: Single event delegation handler for scholarship dropdown
-            // This is the ONLY place that handles dropdown active state
-            (function() {
-              'use strict';
+            // INLINE ONCLICK HANDLER - most direct solution
+            // Each dropdown element's onclick calls this function
+            window.handleScholarshipClick = function(event, clickedElement) {
+              event.preventDefault();
+              event.stopPropagation();
 
-              // Global function that can be called from anywhere
-              window.syncScholarshipDropdownActive = function(activeTabId) {
-                // Immediately and directly modify the DOM
-                var allLinks = document.querySelectorAll('.scholarship-nav-link');
-                for (var i = 0; i < allLinks.length; i++) {
-                  allLinks[i].classList.remove('active');
+              // 1. IMMEDIATELY remove active from ALL elements
+              var allLinks = document.querySelectorAll('.scholarship-nav-link');
+              for (var i = 0; i < allLinks.length; i++) {
+                allLinks[i].classList.remove('active');
+              }
+
+              // 2. Add active ONLY to clicked element
+              clickedElement.classList.add('active');
+
+              // 3. Close mobile menu
+              var navbar = document.getElementById('navbar');
+              if (navbar && navbar.classList.contains('navbar-mobile')) {
+                navbar.classList.remove('navbar-mobile');
+                var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
+                for (var i = 0; i < activeDropdowns.length; i++) {
+                  activeDropdowns[i].classList.remove('dropdown-active');
                 }
-                for (var i = 0; i < allLinks.length; i++) {
-                  if (allLinks[i].getAttribute('data-tab') === activeTabId) {
-                    allLinks[i].classList.add('active');
-                  }
+                var navbarToggle = document.querySelector('.mobile-nav-toggle');
+                if (navbarToggle) {
+                  navbarToggle.classList.remove('bi-x');
+                  navbarToggle.classList.add('bi-list');
                 }
-              };
+              }
 
-              // Event delegation - single handler on document
-              document.addEventListener('click', function(e) {
-                // Only react to scholarship-nav-link clicks
-                var target = e.target.closest('.scholarship-nav-link');
-                if (!target) return;
+              // 4. Navigate to tab
+              var tabId = clickedElement.getAttribute('data-tab');
+              if (tabId && typeof navigateToScholarshipTab === 'function') {
+                navigateToScholarshipTab(tabId);
+              }
+            };
 
-                e.preventDefault();
-                e.stopPropagation(); // Stop event propagation
-
-                var tabId = target.getAttribute('data-tab');
-                if (!tabId) return;
-
-                // 1. IMMEDIATELY update active state
-                window.syncScholarshipDropdownActive(tabId);
-
-                // 2. Close mobile menu
-                var navbar = document.getElementById('navbar');
-                if (navbar && navbar.classList.contains('navbar-mobile')) {
-                  navbar.classList.remove('navbar-mobile');
-                  var activeDropdowns = navbar.querySelectorAll('.dropdown-active');
-                  for (var i = 0; i < activeDropdowns.length; i++) {
-                    activeDropdowns[i].classList.remove('dropdown-active');
-                  }
-                  var navbarToggle = document.querySelector('.mobile-nav-toggle');
-                  if (navbarToggle) {
-                    navbarToggle.classList.remove('bi-x');
-                    navbarToggle.classList.add('bi-list');
-                  }
+            // Global sync function for tab switching (used by section tabs)
+            window.syncScholarshipDropdownActive = function(activeTabId) {
+              var allLinks = document.querySelectorAll('.scholarship-nav-link');
+              for (var i = 0; i < allLinks.length; i++) {
+                allLinks[i].classList.remove('active');
+              }
+              for (var i = 0; i < allLinks.length; i++) {
+                if (allLinks[i].getAttribute('data-tab') === activeTabId) {
+                  allLinks[i].classList.add('active');
                 }
-
-                // 3. Navigate to tab
-                if (typeof navigateToScholarshipTab === 'function') {
-                  navigateToScholarshipTab(tabId);
-                }
-              }, true); // useCapture: true - handle in capture phase
-
-              // Set initial state
-              document.addEventListener('DOMContentLoaded', function() {
-                window.syncScholarshipDropdownActive('tab-1');
-              });
-            })();
+              }
+            };
 
             function navigateToScholarshipTab(tabId) {
               // Scroll to scholarship section
